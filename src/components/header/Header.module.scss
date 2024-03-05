@@ -1,7 +1,7 @@
 .header {
   position: fixed;
   width: 100%;
-  background-color: black;
+  background-color: transparent;
   z-index: 1000;
 
   &__inner {
@@ -57,11 +57,6 @@
   position: absolute;
   right: 20px;
 
-  .info__img {
-    width: 30px;
-    height: 30px;
-  }
-
   li {
     background-color: #fff;
     padding: 41px 11px 14px;
@@ -74,4 +69,9 @@
       transition: transform 0.3s;
     }
   }
+}
+
+.info__img {
+  width: 30px;
+  height: 30px;
 }

@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
-  /* font-family: "Karla", sans-serif; */
+  /* font-family: "Comfortaa", sans-serif; */
   background-color: #fff;
   color: #031412;
   font-weight: 400;
@@ -12,4 +12,8 @@ body {
     max-width: 1436px;
     padding: 0 18px;
     margin: 0 auto;
+}
+
+.slick-track {
+	display: flex;
 }
