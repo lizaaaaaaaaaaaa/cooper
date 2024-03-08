@@ -17,3 +17,7 @@ body {
 .slick-track {
 	display: flex;
 }
+
+.intro__slider-second .slick-slide.slick-current > div > span {
+    background: linear-gradient(124deg, #5e3928 0%, #e4a16f 91.15%);
+}

@@ -1,22 +1,21 @@
 import SlickSlider from "react-slick";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SliderItem from "./itemInfo/SliderItem";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-import ItemInfo from "./itemInfo/ItemInfo";
 import styles from "./Intro.module.scss";
+import { PrevArrow, NextArrow } from "../UI/PrevNextArrows";
 
-const Slider = ({ onData }) => {
+const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
   const [distillers, setDistillers] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
+  let sliderRef1 = useRef(null);
 
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
       <button className={styles["arrow-prev"]} onClick={onClick}>
-        prev
+        <PrevArrow />
       </button>
     );
   };
@@ -25,7 +24,7 @@ const Slider = ({ onData }) => {
     const { onClick } = props;
     return (
       <button className={styles["arrow-next"]} onClick={onClick}>
-        next
+        <NextArrow />
       </button>
     );
   };
@@ -35,9 +34,13 @@ const Slider = ({ onData }) => {
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    dots: true,
     afterChange: (index) => setActiveSlide(index),
+    asNavFor: nav2,
   };
 
   useEffect(() => {
@@ -62,6 +65,7 @@ const Slider = ({ onData }) => {
       }
       setDistillers(loadedDistillers);
       setIsLoading(false);
+      onTakeDistillersCount(loadedDistillers.length);
     };
 
     fetchDestillers().catch((err) => {
@@ -70,16 +74,27 @@ const Slider = ({ onData }) => {
     });
   }, []); //залежності не потрібно, оскільки вони будуть завантажені лише один раз при завантаженні сторінки
 
+  useEffect(() => {
+    onTakeNav1(sliderRef1);
+  }, [sliderRef1]);
+
   const distillersSlider = distillers.map((distiller) => (
     <SliderItem key={distiller.id} id={distiller.id} image={distiller.image} />
   ));
+
   const activeDistiller = distillers[activeSlide];
+
   useEffect(() => {
     onData(activeDistiller);
   }, [activeDistiller]);
+  
   return (
     <React.Fragment>
-      <SlickSlider {...settings} className={styles["intro__slider"]}>
+      <SlickSlider
+        {...settings}
+        className={`intro__slider-first ${styles["intro__slider"]}`}
+        ref={(slider) => (sliderRef1 = slider)}
+      >
         {distillersSlider}
       </SlickSlider>
     </React.Fragment>
