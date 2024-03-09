@@ -1,23 +1,31 @@
 body {
-  font-family: "Roboto", sans-serif;
-  /* font-family: "Comfortaa", sans-serif; */
-  background-color: #fff;
-  color: #031412;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1;
+    font-family: "Roboto", sans-serif;
+    /* font-family: "Comfortaa", sans-serif; */
+    background-color: #fff;
+    color: #031412;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 1436px;
-    padding: 0 18px;
+    max-width: 1500px;
+    padding: 0 50px;
     margin: 0 auto;
 }
 
 .slick-track {
-	display: flex;
+    display: flex;
 }
 
-.intro__slider-second .slick-slide.slick-current > div > span {
+.intro__slider-second .slick-slide.slick-current>div>span {
     background: linear-gradient(124deg, #5e3928 0%, #e4a16f 91.15%);
+}
+
+@media (max-width: 769px) {
+    .container {
+        max-width: 1468px;
+        padding: 0 18px;
+    }
 }

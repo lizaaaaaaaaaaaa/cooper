@@ -153,6 +153,10 @@
 .arrow-next {
   position: absolute;
   top: 50%;
+
+  @media (max-width: 1575px) {
+    display: none;
+  }
 }
 
 .arrow-prev {
