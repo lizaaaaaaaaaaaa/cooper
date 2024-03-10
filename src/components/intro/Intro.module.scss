@@ -409,6 +409,10 @@
     @media (max-height: 600px) and (min-width: 630px) and (max-width: 1000px) {
       margin-top: 29px;
     }
+
+    @media (max-height: 300px) and (min-width: 630px) and (max-width: 1000px) {
+        display: none;
+    }
   }
 
   &__dots {

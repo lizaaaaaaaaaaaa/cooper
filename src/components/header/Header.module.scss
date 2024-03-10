@@ -78,6 +78,8 @@
     left: 0;
     top: -200%;
     transition: all 0.3s;
+    padding: 50px 18px 50px;
+    overflow-y: auto;
 
     &.active {
       top: 0;
@@ -100,6 +102,8 @@
     left: 0;
     top: -200%;
     transition: all 0.3s;
+    padding: 250px 18px 50px;
+    overflow-y: auto;
 
     &.active {
       top: 0;
@@ -240,6 +244,8 @@
 
   &.active {
     background: transparent;
+    margin-right: -140px;
+    transition: all .3s;
 
     span {
       &:nth-child(2) {
@@ -255,6 +261,7 @@
         width: 27px;
         transform: rotate(45deg);
         top: 50%;
+        transition: all .3s;
       }
 
       &:last-child {
@@ -262,6 +269,7 @@
         width: 27px;
         transform: rotate(-45deg);
         top: 50%;
+        transition: all .3s;
       }
     }
   }

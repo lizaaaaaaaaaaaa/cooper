@@ -8,8 +8,13 @@ const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(true);
 
   useEffect(() => {
-    if (window.innerWidth <= 580) {
-      setIsMenuActive(false);
+    if (
+      window.innerWidth < 580 ||
+      (window.innerHeight <= 600 &&
+        window.innerWidth >= 630 &&
+        window.innerWidth <= 1000)
+    ) {
+      setIsMenuActive(!isMenuActive);
     }
   }, []);
 
@@ -18,7 +23,13 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (isMenuActive) {
+    if (
+      isMenuActive &&
+      (window.innerWidth < 580 ||
+        (window.innerHeight <= 600 &&
+          window.innerWidth >= 630 &&
+          window.innerWidth <= 1000))
+    ) {
       document.body.classList.add(styles.lock);
     } else document.body.classList.remove(styles.lock);
   }, [isMenuActive]);
