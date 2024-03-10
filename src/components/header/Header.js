@@ -17,6 +17,12 @@ const Header = () => {
     setIsMenuActive(!isMenuActive);
   };
 
+  useEffect(() => {
+    if (isMenuActive) {
+      document.body.classList.add(styles.lock);
+    } else document.body.classList.remove(styles.lock);
+  }, [isMenuActive]);
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles["header__inner"]}`}>
