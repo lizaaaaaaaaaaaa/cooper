@@ -27,7 +27,12 @@ const Header = () => {
           <Nav activeMenu={isMenuActive} />
         </nav>
         <HeaderInfo activeMenu={isMenuActive} />
-        <button className={styles.menu} onClick={changeMenuActivity}>
+        <button
+          className={
+            !isMenuActive ? `${styles.menu}` : `${styles.menu} ${styles.active}`
+          }
+          onClick={changeMenuActivity}
+        >
           <span></span>
           <span></span>
           <span></span>

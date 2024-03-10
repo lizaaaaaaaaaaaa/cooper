@@ -34,11 +34,10 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 5000,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
-    dots: true,
     afterChange: (index) => setActiveSlide(index),
     asNavFor: nav2,
   };

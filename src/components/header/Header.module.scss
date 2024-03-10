@@ -3,7 +3,6 @@
   width: 100%;
   background-color: transparent;
   z-index: 1000;
-
   &__inner {
     display: flex;
     align-items: center;
@@ -34,9 +33,11 @@
     align-self: flex-start;
   }
 
-  @media (max-width: 375px) {
-    width: 115px;
-    height: 31px;
+  @media (max-width: 425px) {
+    img {
+      width: 115px;
+      height: 31px;
+    }
   }
 }
 
@@ -60,11 +61,12 @@
     width: 100vw;
     height: 100vh;
     left: 0;
-    top: 0;
-    display: none;
+    top: -200%;
+    transition: all 0.3s;
 
     &.active {
-      display: flex;
+      top: 0;
+      transition: all 0.3s;
     }
   }
 }
@@ -104,6 +106,10 @@
   position: absolute;
   right: 50px;
 
+  @media (max-width: 450px) {
+    gap: 0 14px;
+  }
+
   li {
     background-color: #fff;
     padding: 41px 11px 14px;
@@ -134,10 +140,12 @@
 
   @media (max-width: 580px) {
     justify-content: center;
-    right: 17%;
+    left: 45%;
+    transition: left 0.3s;
     &.active {
       left: 4%;
       right: 0;
+      transition: left 0.3s;
 
       li:first-child {
         display: block;
@@ -158,13 +166,41 @@
 .menu {
   width: 180px;
   height: 35px;
-  margin-right: -149px;
+  margin-right: -150px;
   background: linear-gradient(210deg, #5e3928 0%, #e4a16f 91.15%);
   position: relative;
   display: none;
 
   @media (max-width: 580px) {
     display: block;
+  }
+
+  &.active {
+    background: transparent;
+
+    span {
+      &:nth-child(2) {
+        display: none;
+      }
+
+      &:before {
+        display: none;
+      }
+
+      &:first-child {
+        left: 0;
+        width: 27px;
+        transform: rotate(45deg);
+        top: 50%;
+      }
+
+      &:last-child {
+        left: 0;
+        width: 27px;
+        transform: rotate(-45deg);
+        top: 50%;
+      }
+    }
   }
 
   span {
