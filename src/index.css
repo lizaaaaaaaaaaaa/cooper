@@ -23,9 +23,38 @@ body {
     background: linear-gradient(124deg, #5e3928 0%, #e4a16f 91.15%);
 }
 
+.section {
+    padding: 80px 0;
+}
+
+.title {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 50px;
+    line-height: 0.75;
+    text-align: center;
+}
+
 @media (max-width: 769px) {
     .container {
         max-width: 1468px;
         padding: 0 18px;
+    }
+}
+
+@media (max-width: 660px) {
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 325px) {
+    .section {
+        padding: 41px 0;
     }
 }

@@ -7,7 +7,6 @@ import { PrevArrow, NextArrow } from "../UI/PrevNextArrows";
 const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
   const [distillers, setDistillers] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
   let sliderRef1 = useRef(null);
 
@@ -43,7 +42,6 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchDestillers = async () => {
       const response = await fetch(
         "https://cooper-3c826-default-rtdb.firebaseio.com/introSlider.json"
@@ -63,12 +61,10 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
         });
       }
       setDistillers(loadedDistillers);
-      setIsLoading(false);
       onTakeDistillersCount(loadedDistillers.length);
     };
 
     fetchDestillers().catch((err) => {
-      setIsLoading(false);
       setHttpErrorMessage(err.message);
     });
   }, []); //залежності не потрібно, оскільки вони будуть завантажені лише один раз при завантаженні сторінки
@@ -86,7 +82,15 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
   useEffect(() => {
     onData(activeDistiller);
   }, [activeDistiller]);
-  
+
+  if (httpErrorMessage) {
+    return (
+      <section className={styles.error}>
+        <h1>{httpErrorMessage}</h1>
+      </section>
+    );
+  }
+
   return (
     <React.Fragment>
       <SlickSlider

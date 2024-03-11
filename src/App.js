@@ -1,13 +1,12 @@
 import React from "react";
 import Header from "./components/header/Header";
-import Intro from "./components/intro/Intro";
+import Main from "./pages/Main";
 
 function App() {
   return (
     <React.Fragment>
      <Header/>
-     <Intro/>
-     <h1 className="container">ddddddddddddddd</h1>
+     <Main/>
     </React.Fragment>
   );
 }

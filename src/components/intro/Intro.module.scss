@@ -24,7 +24,7 @@
     }
 
     @media (max-height: 600px) and (min-width: 630px) and (max-width: 1000px) {
-        width: 55%;
+      width: 55%;
     }
   }
 
@@ -278,7 +278,7 @@
     bottom: 0;
 
     @media (max-width: 550px) {
-        display: none;
+      display: none;
     }
 
     @media (max-height: 600px) and (min-width: 630px) and (max-width: 1000px) {
@@ -411,7 +411,7 @@
     }
 
     @media (max-height: 300px) and (min-width: 630px) and (max-width: 1000px) {
-        display: none;
+      display: none;
     }
   }
 
@@ -472,6 +472,25 @@
   right: -1px;
   padding: 10px 34px 10px 25px;
   border: 1px solid #fff;
+}
+
+.error {
+  position: absolute;
+  background-color: rgba(3, 20, 18, 0.5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  h1 {
+    font-size: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+    height: 100%;
+  }
 }
 
 @keyframes heartbeatButton {
