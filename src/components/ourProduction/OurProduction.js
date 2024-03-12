@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./OurProduction.module.scss";
 import ProductItem from "./ProductItem";
+import { Navigate } from "react-router-dom";
 
 const OurProduction = () => {
   const [production, setProduction] = useState([]);
@@ -10,30 +11,32 @@ const OurProduction = () => {
   useEffect(() => {
     setIsLoading(true);
     const fetchProduction = async () => {
-      const response = await fetch(
-        "https://cooper-3c826-default-rtdb.firebaseio.com/ourProduction.json"
-      );
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const responseData = await response.json();
+      try {
+        const response = await fetch(
+          "https://cooper-3c826-default-rtdb.firebaseio.com/ourProduction.json"
+        );
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
+        }
+        const responseData = await response.json();
 
-      const loadedProduction = [];
-      for (const key in responseData) {
-        loadedProduction.push({
-          id: key,
-          title: responseData[key].title,
-          image: responseData[key].image,
-        });
+        const loadedProduction = [];
+        for (const key in responseData) {
+          loadedProduction.push({
+            id: key,
+            title: responseData[key].title,
+            image: responseData[key].image,
+          });
+        }
+        setProduction(loadedProduction);
+      } catch (error) {
+        setHttpErrorMessage(error.message);
+      } finally {
+        setIsLoading(false);
       }
-      setProduction(loadedProduction);
-      setIsLoading(false);
     };
 
-    fetchProduction().catch((err) => {
-      setIsLoading(false);
-      setHttpErrorMessage(err.message);
-    });
+    fetchProduction();
   }, []);
 
   const productionList = production.map((productionItem) => (
@@ -46,17 +49,11 @@ const OurProduction = () => {
   ));
 
   if (isLoading) {
-    return (
-      <div>Loading</div>
-    );
+    return <div>Loading</div>;
   }
 
   if (httpErrorMessage) {
-    return (
-      <section className={styles.error}>
-        <h1>{httpErrorMessage}</h1>
-      </section>
-    );
+    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
   }
 
   return (

@@ -3,9 +3,32 @@ import logo from "../../assets/logo.png";
 import HeaderInfo from "./HeaderInfo";
 import Nav from "./Nav";
 import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(true);
+//   const [isHeaderTransparent, setIsHeaderTransparent] = useState(true);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (window.scrollY <= 200) {
+//         setIsHeaderTransparent(true);
+//       } else {
+//         setIsHeaderTransparent(false);
+//       }
+//     };
+  
+//     window.addEventListener("scroll", handleScroll);
+  
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//     };
+//   }, []);
+
+  const location = useLocation();
+  const isMainPage = location.pathname === "/main";
+  const headerClassName =
+    isMainPage ? `${styles.header}  ${styles["header-main"]}` : styles.header;
 
   useEffect(() => {
     if (
@@ -17,10 +40,6 @@ const Header = () => {
       setIsMenuActive(!isMenuActive);
     }
   }, []);
-
-  const changeMenuActivity = () => {
-    setIsMenuActive(!isMenuActive);
-  };
 
   useEffect(() => {
     if (
@@ -34,12 +53,16 @@ const Header = () => {
     } else document.body.classList.remove(styles.lock);
   }, [isMenuActive]);
 
+  const changeMenuActivity = () => {
+    setIsMenuActive(!isMenuActive);
+  };
+
   return (
-    <header className={styles.header}>
+    <header className={headerClassName}>
       <div className={`container ${styles["header__inner"]}`}>
-        <a href="" className={styles.logo}>
+        <NavLink to="/main" className={styles.logo}>
           <img src={logo} alt="logo" />
-        </a>
+        </NavLink>
         <nav>
           <Nav activeMenu={isMenuActive} />
         </nav>

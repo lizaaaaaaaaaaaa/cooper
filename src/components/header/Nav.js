@@ -1,4 +1,5 @@
 import styles from "./Header.module.scss";
+import { NavLink } from "react-router-dom";
 
 const Nav = ({ activeMenu }) => {
   return (
@@ -10,29 +11,29 @@ const Nav = ({ activeMenu }) => {
       }
     >
       <li>
-        <a className={styles.link} href="">
+        <NavLink to="/catalog" className={styles.link}>
           Каталог
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a className={styles.link} href="">
+        <NavLink to="/news" className={styles.link}>
           Новости
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a className={styles.link} href="">
+        <div className={styles.link}>
           Доставка
-        </a>
+        </div>
       </li>
       <li>
-        <a className={styles.link} href="">
+        <NavLink to="/about" className={styles.link}>
           О нас
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a className={styles.link} href="">
+        <div className={styles.link}>
           Контакты
-        </a>
+        </div>
       </li>
     </ul>
   );

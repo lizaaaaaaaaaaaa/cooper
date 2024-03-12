@@ -1,8 +1,17 @@
 .header {
-  position: fixed;
+  //   position: fixed;
+  position: absolute;
   width: 100%;
-  background-color: transparent;
+  background: url("../../assets/headerBack.jpg") center/cover no-repeat;
   z-index: 1000;
+  height: auto;
+  transition: all 1s;
+
+  &-main {
+    background: transparent;
+    transition: all 1s;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
@@ -116,6 +125,7 @@
   font-weight: 400;
   transition: all 0.3s;
   position: relative;
+  cursor: pointer;
 
   &:hover {
     background-image: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
@@ -245,7 +255,7 @@
   &.active {
     background: transparent;
     margin-right: -140px;
-    transition: all .3s;
+    transition: all 0.3s;
 
     span {
       &:nth-child(2) {
@@ -261,7 +271,7 @@
         width: 27px;
         transform: rotate(45deg);
         top: 50%;
-        transition: all .3s;
+        transition: all 0.3s;
       }
 
       &:last-child {
@@ -269,7 +279,7 @@
         width: 27px;
         transform: rotate(-45deg);
         top: 50%;
-        transition: all .3s;
+        transition: all 0.3s;
       }
     }
   }

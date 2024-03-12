@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import SliderItem from "./itemInfo/SliderItem";
 import styles from "./Intro.module.scss";
 import { PrevArrow, NextArrow } from "../UI/PrevNextArrows";
+import { Navigate } from "react-router-dom";
 
 const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
   const [distillers, setDistillers] = useState([]);
@@ -84,11 +85,7 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
   }, [activeDistiller]);
 
   if (httpErrorMessage) {
-    return (
-      <section className={styles.error}>
-        <h1>{httpErrorMessage}</h1>
-      </section>
-    );
+    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
   }
 
   return (
