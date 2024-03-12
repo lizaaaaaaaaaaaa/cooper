@@ -32,12 +32,18 @@ body {
     font-size: 50px;
     line-height: 0.75;
     text-align: center;
+    padding-bottom: 46px;
 }
 
 @media (max-width: 769px) {
     .container {
         max-width: 1468px;
         padding: 0 18px;
+    }
+
+    .title {
+        font-size: 40px;
+        padding-bottom: 39px;
     }
 }
 

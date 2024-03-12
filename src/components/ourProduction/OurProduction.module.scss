@@ -2,11 +2,46 @@
   overflow-x: hidden;
 
   &__inner {
-    padding-top: 46px;
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(2, 491px);
     gap: 30px 31px;
+
+    @media (max-width: 1200px) {
+      grid-template-rows: repeat(2, 390px);
+    }
+
+    @media (max-width: 1050px) {
+      grid-template-rows: repeat(2, 340px);
+      gap: 25px;
+    }
+
+    @media (max-width: 940px) {
+      grid-template-rows: repeat(2, 290px);
+      gap: 20px;
+    }
+
+    @media (max-width: 769px) {
+      grid-template-rows: repeat(2, 235px);
+      gap: 15px;
+    }
+
+    @media (max-width: 645px) {
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(3, 335px);
+    }
+
+    @media (max-width: 545px) {
+      grid-template-rows: repeat(3, 235px);
+    }
+
+    @media (max-width: 420px) {
+      grid-template-rows: repeat(3, 185px);
+    }
+
+    @media (max-width: 325px) {
+      grid-template-rows: repeat(3, 155px);
+    }
   }
 
   &__item {
@@ -15,6 +50,10 @@
     background-repeat: no-repeat;
     position: relative;
     box-shadow: 0 0 70px 0 rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 769px) {
+      box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
+    }
 
     &:before {
       content: "";
@@ -48,66 +87,23 @@
     line-height: 0.96;
     color: #fff;
     z-index: 3;
-  }
-}
+    padding: 0 10px;
 
-// .loader {
-//   width: 48px;
-//   height: 48px;
-//   border-radius: 50%;
-//   position: relative;
-//   animation: rotate 1s linear infinite;
-//   font-size: 0;
-// }
-// .loader::before {
-//   content: "";
-//   box-sizing: border-box;
-//   position: absolute;
-//   inset: 0px;
-//   border-radius: 50%;
-//   border: 5px solid rgba(7, 44, 38, 0.5);
-//   animation: prixClipFix 2s linear infinite;
-// }
+    @media (max-width: 1040px) {
+      font-size: 25px;
+    }
 
-// @keyframes rotate {
-//   100% {
-//     transform: rotate(360deg);
-//   }
-// }
+    @media (max-width: 769px) {
+      font-size: 20px;
+    }
 
-// @keyframes prixClipFix {
-//   0% {
-//     clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
-//   }
-//   25% {
-//     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-//   }
-//   50% {
-//     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
-//   }
-//   75% {
-//     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-//   }
-//   100% {
-//     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
-//   }
-// }
+    @media (max-width: 645px) {
+      font-size: 15px;
+    }
 
-.error {
-  position: absolute;
-  background-color: rgba(3, 20, 18, 0.5);
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  h1 {
-    font-size: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto 0;
-    height: 100%;
+    @media (max-width: 405px) {
+      font-size: 12px;
+      word-wrap: break-word;
+    }
   }
 }
