@@ -1,0 +1,139 @@
+.slider {
+  overflow: hidden;
+  padding: 40px;
+  margin: -40px -55px;
+
+  &__item {
+    max-width: 447px;
+    position: relative;
+  }
+
+  &__badge {
+    position: absolute;
+    padding: 9px 18px;
+    background-color: #9b0000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    top: 27px;
+    left: 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 491px;
+    transition: all 0.2s;
+
+    &:hover {
+      box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.15);
+      transition: all 0.2s;
+    }
+  }
+
+  &__content {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0 10px;
+  }
+
+  &__name {
+    max-width: 280px;
+    font-size: 20px;
+  }
+
+  &__price {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+  }
+
+  &__sale {
+    position: relative;
+
+    &-old {
+      font-weight: 300;
+      font-size: 20px;
+      opacity: 0.3;
+      position: absolute;
+      right: 0;
+      top: -24px;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 95px;
+        height: 1px;
+        transform: rotate(14deg);
+        background: #031412;
+        opacity: 0.3;
+        bottom: 8px;
+        left: -16px;
+      }
+    }
+
+    &-new {
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: -1.5px;
+      line-height: 0.96;
+      color: #9b0000;
+    }
+  }
+
+  &__arrow-prev,
+  &__arrow-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #031412;
+    transition: all 0.3s;
+
+    svg > path {
+      fill: #031412;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      border: 1px solid #fff;
+      background: linear-gradient(210deg, #5e3928 0%, #e4a16f 91.15%);
+      transition: all 0.3s;
+
+      svg > path {
+        fill: #fff;
+        transition: all 0.3s;
+      }
+    }
+
+    @media (max-width: 1575px) {
+      display: none;
+    }
+  }
+
+  &__arrow-prev {
+    left: -1px;
+    padding: 10px 25px 10px 34px;
+  }
+
+  &__arrow-next {
+    right: -1px;
+    padding: 10px 34px 10px 25px;
+    border: 1px solid #031412;
+  }
+}
+
+.slider .slick-slide {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  padding: 0 15px;
+}
+
+.slider .slick-slide.slick-active {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s;
+}
