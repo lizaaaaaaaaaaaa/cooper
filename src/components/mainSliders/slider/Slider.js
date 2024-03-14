@@ -40,7 +40,22 @@ const Slider = ({ slidersInfo }) => {
     slidesToShow: 3,
     infinite: false,
     slidesToScroll: 1,
-    variableWidth: true,
+    variableWidth: false,
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 475,
+        settings: {
+          slidesToShow: 1,
+        //   variableWidth: false,
+        },
+      },
+    ],
   };
 
   const slidersInfoList = slidersInfo.map((sliderInfo) => (

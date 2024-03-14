@@ -2,7 +2,7 @@ import React from "react";
 import Intro from "../components/intro/Intro";
 import OurProduction from "../components/ourProduction/OurProduction";
 import BestSellers from "../components/mainSliders/bestsellers/BestSellers";
-import NewItems from './../components/mainSliders/newItems/NewItems';
+import NewItems from "./../components/mainSliders/newItems/NewItems";
 
 const Main = () => {
   return (
@@ -10,7 +10,7 @@ const Main = () => {
       <Intro />
       <OurProduction />
       <BestSellers />
-      <NewItems/>
+      <NewItems />
     </React.Fragment>
   );
 };
