@@ -3,6 +3,8 @@ import SlickSlider from "react-slick";
 import { PrevArrow, NextArrow } from "../../UI/PrevNextArrows";
 import SliderItem from "./SliderItem";
 import React, { useRef } from "react";
+import Button from "../../UI/Button";
+import { NavLink } from "react-router-dom";
 
 const Slider = ({ slidersInfo }) => {
   let sliderRef = useRef(null);
@@ -33,14 +35,12 @@ const Slider = ({ slidersInfo }) => {
   };
 
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     slidesToShow: 3,
     infinite: false,
     slidesToScroll: 1,
     variableWidth: true,
-    // prevArrow: <CustomPrevArrow />,
-    // nextArrow: <CustomNextArrow />,
   };
 
   const slidersInfoList = slidersInfo.map((sliderInfo) => (
@@ -73,6 +73,10 @@ const Slider = ({ slidersInfo }) => {
       <button className="slider__arrow-next" onClick={nextSlide}>
         <CustomNextArrow />
       </button>
+
+      <NavLink to="/catalog" replace>
+        <Button className="slider__button">Перейти в каталог</Button>
+      </NavLink>
     </React.Fragment>
   );
 };

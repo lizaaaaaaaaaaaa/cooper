@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Loader from "../../UI/Loader";
 
-const BestSellersContent = () => {
-  const [bestsellers, setBestsellers] = useState([]);
+const NewItemsContent = () => {
+  const [newItems, setNewItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    const fetchBestSellers = async () => {
+    const fetchNewItems = async () => {
       try {
         const response = await fetch(
           "https://cooper-3c826-default-rtdb.firebaseio.com/catalog.json"
@@ -20,12 +20,12 @@ const BestSellersContent = () => {
         }
         const responseData = await response.json();
 
-        const loadedBestSellers = [];
+        const loadedNewItems = [];
         const filteredKeys = ["c1", "c3", "с4", "c5", "c6", "c9"];
 
         for (const key in responseData) {
           if (filteredKeys.includes(key)) {
-            loadedBestSellers.push({
+            loadedNewItems.push({
               id: key,
               name: responseData[key].name,
               price: responseData[key].price,
@@ -36,15 +36,14 @@ const BestSellersContent = () => {
             });
           }
         }
-        setBestsellers(loadedBestSellers);
-        console.log(loadedBestSellers)
+        setNewItems(loadedNewItems);
         setIsLoading(false);
       } catch (error) {
         setHttpErrorMessage(error.message);
         setIsLoading(false);
       }
     };
-    fetchBestSellers();
+    fetchNewItems();
   }, []);
 
   if (isLoading) {
@@ -56,9 +55,9 @@ const BestSellersContent = () => {
   }
   return (
     <React.Fragment>
-      <Slider slidersInfo={bestsellers} />
+      <Slider slidersInfo={newItems} />
     </React.Fragment>
   );
 };
 
-export default BestSellersContent;
+export default NewItemsContent;
