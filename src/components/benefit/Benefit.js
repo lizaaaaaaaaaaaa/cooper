@@ -13,7 +13,7 @@ const Benefit = () => {
             Закажите два товара и получите третий бесплатно
           </h4>
           <NavLink to="/catalog" replace>
-            <Button>Перейти в каталог</Button>
+            <Button className={styles.benefit__btn}>Перейти в каталог</Button>
           </NavLink>
         </div>
         <img src={distiller} className={styles.benefit__img} alt="distiller" />
