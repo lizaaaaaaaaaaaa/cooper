@@ -1,8 +1,8 @@
 import styles from "../Intro.module.scss"
 
-const DotsSliderItem = () => {
+const DotsSliderItem = ({isSlideActive, onClick}) => {
    
-   return <span className={styles['intro__dot']}></span>
+   return <button onClick={onClick} className={isSlideActive ? styles['intro__dot-active'] : styles.intro__dot}></button>
 };
 
 export default DotsSliderItem;

@@ -34,7 +34,6 @@ const NewItemsContent = () => {
           });
         }
         setNewItems(loadedNewItems);
-        console.log(loadedNewItems);
         setIsLoading(false);
       } catch (error) {
         setHttpErrorMessage(error.message);

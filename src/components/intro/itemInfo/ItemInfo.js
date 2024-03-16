@@ -1,42 +1,31 @@
 import styles from "../Intro.module.scss";
 import Button from "../../UI/Button";
-import SlickSlider from "react-slick";
-import React, { useEffect, useRef } from "react";
 import DotsSliderItem from "./DotsSliderItem";
 
-const ItemInfo = (props) => {
-  const settings = {
-    arrows: false,
-    dots: false,
-    infinite: false,
-    slidesToShow: 3,
-    asNavFor: props.nav1,
-    focusOnSelect: true,
-    variableWidth: true,
+const ItemInfo = ({ distillersCount, name, price, activeSlide, onDotClick }) => {
+    
+  const handleDotClick = (index) => {
+    onDotClick(index);
   };
-  let sliderRef2 = useRef(null);
 
-  useEffect(() => {
-    props.onTakeNav2(sliderRef2);
-  }, [sliderRef2]);
-
-  const sliderItems = Array.from({ length: props.distillersCount }).map(
-    (_, index) => <DotsSliderItem key={index} />
+  const sliderItems = Array.from({ length: distillersCount }).map(
+    (_, index) => (
+      <DotsSliderItem
+        key={index}
+        isSlideActive={index === activeSlide}
+        onClick={() => handleDotClick(index)} // Оновлено
+      />
+    )
   );
+
   return (
     <div className={styles["intro__info"]}>
-      <h2 className={styles["intro__name"]}>{props.name}</h2>
+      <h2 className={styles["intro__name"]}>{name}</h2>
       <div className={styles["intro__price"]}>
-        Цена: <span>{props.price} грн</span>
+        Цена: <span>{price} грн</span>
       </div>
       <Button className={styles["intro__button"]}>Купить</Button>
-      <SlickSlider
-        {...settings}
-        className={`intro__slider-second ${styles['intro__dots']}`}
-        ref={(slider) => (sliderRef2 = slider)}
-      >
-        {sliderItems}
-      </SlickSlider>
+      <div className={styles.intro__dots}>{sliderItems}</div>
     </div>
   );
 };

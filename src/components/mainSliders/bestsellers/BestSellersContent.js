@@ -37,7 +37,6 @@ const BestSellersContent = () => {
           }
         }
         setBestsellers(loadedBestSellers);
-        console.log(loadedBestSellers)
         setIsLoading(false);
       } catch (error) {
         setHttpErrorMessage(error.message);

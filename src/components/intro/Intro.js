@@ -5,23 +5,19 @@ import { useState } from "react";
 
 const Intro = () => {
   const [info, setInfo] = useState(null);
-  const [receivingNav1, setReceivingNav1] = useState(null);
-  const [receivingNav2, setReceivingNav2] = useState(null);
   const [receivingLength, setReceivingLength] = useState(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const takeDataHandler = (data) => {
     setInfo(data);
   };
 
-  const takeNav1Handler = (nav1) => {
-    setReceivingNav1(nav1);
-  };
-
-  const takeNav2Handler = (nav2) => {
-    setReceivingNav2(nav2);
-  };
-
   const takeDistillersCountHandler = (count) => {
     setReceivingLength(count);
+  };
+
+  const handleDotClick = (index) => {
+    setActiveSlide(index);
   };
 
   return (
@@ -32,16 +28,16 @@ const Intro = () => {
           <ItemInfo
             name={info?.name}
             price={info?.price}
-            nav1={receivingNav1}
-            onTakeNav2={takeNav2Handler}
             distillersCount={receivingLength}
+            activeSlide={activeSlide}
+            onDotClick={handleDotClick}
           />
         </div>
         <Slider
           onData={takeDataHandler}
-          onTakeNav1={takeNav1Handler}
-          nav2={receivingNav2}
           onTakeDistillersCount={takeDistillersCountHandler}
+          onTakeActiveSlide={setActiveSlide}
+          activeDot={activeSlide}
         />
       </div>
 

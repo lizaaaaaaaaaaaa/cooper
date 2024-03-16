@@ -5,11 +5,16 @@ import styles from "./Intro.module.scss";
 import { PrevArrow, NextArrow } from "../UI/PrevNextArrows";
 import { Navigate } from "react-router-dom";
 
-const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
+const Slider = ({
+  onData,
+  onTakeDistillersCount,
+  onTakeActiveSlide,
+  activeDot,
+}) => {
   const [distillers, setDistillers] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
-  let sliderRef1 = useRef(null);
+  const sliderRef = useRef(null);
 
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
@@ -34,13 +39,19 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    infinite: true,
     autoplay: true,
     autoplaySpeed: 5000,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     afterChange: (index) => setActiveSlide(index),
-    asNavFor: nav2,
   };
+
+  useEffect(() => {
+    if (activeDot !== null) {
+      sliderRef.current.slickGoTo(activeDot);
+    }
+  }, [activeDot]);
 
   useEffect(() => {
     const fetchDestillers = async () => {
@@ -68,11 +79,7 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
     fetchDestillers().catch((err) => {
       setHttpErrorMessage(err.message);
     });
-  }, []); //залежності не потрібно, оскільки вони будуть завантажені лише один раз при завантаженні сторінки
-
-  useEffect(() => {
-    onTakeNav1(sliderRef1);
-  }, [sliderRef1]);
+  }, []);
 
   const distillersSlider = distillers.map((distiller) => (
     <SliderItem key={distiller.id} id={distiller.id} image={distiller.image} />
@@ -82,6 +89,7 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
 
   useEffect(() => {
     onData(activeDistiller);
+    onTakeActiveSlide(activeSlide);
   }, [activeDistiller]);
 
   if (httpErrorMessage) {
@@ -93,7 +101,7 @@ const Slider = ({ onData, onTakeNav1, nav2, onTakeDistillersCount }) => {
       <SlickSlider
         {...settings}
         className={`intro__slider-first ${styles["intro__slider"]}`}
-        ref={(slider) => (sliderRef1 = slider)}
+        ref={sliderRef}
       >
         {distillersSlider}
       </SlickSlider>

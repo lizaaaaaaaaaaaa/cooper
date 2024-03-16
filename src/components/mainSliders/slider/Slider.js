@@ -82,12 +82,12 @@ const Slider = ({ slidersInfo }) => {
       >
         {slidersInfoList}
       </SlickSlider>
-      <button className="slider__arrow-prev" onClick={previousSlide}>
+      <div className="slider__arrow-prev" onClick={previousSlide}>
         <CustomPrevArrow />
-      </button>
-      <button className="slider__arrow-next" onClick={nextSlide}>
+      </div>
+      <div className="slider__arrow-next" onClick={nextSlide}>
         <CustomNextArrow />
-      </button>
+      </div>
 
       <NavLink to="/catalog" replace>
         <Button className="slider__button">Перейти в каталог</Button>
