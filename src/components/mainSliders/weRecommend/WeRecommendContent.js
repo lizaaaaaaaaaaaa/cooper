@@ -21,7 +21,7 @@ const WeRecomendedContent = () => {
         const responseData = await response.json();
 
         const loadedRecommendations = [];
-        const filteredKeys = ["c1", "c3", "с4", "c5", "c6", "c9"];
+        const filteredKeys = ["c6", "c9", "с11", "c24", "c25", "c29"];
 
         for (const key in responseData) {
           if (filteredKeys.includes(key)) {

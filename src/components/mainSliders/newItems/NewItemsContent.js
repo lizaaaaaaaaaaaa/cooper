@@ -9,11 +9,11 @@ const NewItemsContent = () => {
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchNewItems = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
-          "https://cooper-3c826-default-rtdb.firebaseio.com/catalog.json"
+          'https://cooper-3c826-default-rtdb.firebaseio.com/catalog.json?orderBy="$key"&limitToLast=5' //для выбору останніх п'яти елементів
         );
         if (!response.ok) {
           throw new Error("Something went wrong!");
@@ -21,28 +21,27 @@ const NewItemsContent = () => {
         const responseData = await response.json();
 
         const loadedNewItems = [];
-        const filteredKeys = ["c1", "c3", "с4", "c5", "c6", "c9"];
 
         for (const key in responseData) {
-          if (filteredKeys.includes(key)) {
-            loadedNewItems.push({
-              id: key,
-              name: responseData[key].name,
-              price: responseData[key].price,
-              image: responseData[key].image,
-              filter: responseData[key].filter,
-              isSale: responseData[key].isSale,
-              salePrice: responseData[key].salePrice,
-            });
-          }
+          loadedNewItems.push({
+            id: key,
+            name: responseData[key].name,
+            price: responseData[key].price,
+            image: responseData[key].image,
+            filter: responseData[key].filter,
+            isSale: responseData[key].isSale,
+            salePrice: responseData[key].salePrice,
+          });
         }
         setNewItems(loadedNewItems);
+        console.log(loadedNewItems);
         setIsLoading(false);
       } catch (error) {
         setHttpErrorMessage(error.message);
         setIsLoading(false);
       }
     };
+
     fetchNewItems();
   }, []);
 

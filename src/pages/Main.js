@@ -5,6 +5,7 @@ import BestSellers from "../components/mainSliders/bestsellers/BestSellers";
 import NewItems from "./../components/mainSliders/newItems/NewItems";
 import Benefit from "../components/benefit/Benefit";
 import WeRecomended from './../components/mainSliders/weRecommend/WeReccomend';
+import Sales from "../components/mainSliders/sales/Sales";
 
 const Main = () => {
   return (
@@ -15,6 +16,7 @@ const Main = () => {
       <NewItems />
       <Benefit />
       <WeRecomended/>
+      <Sales/>
     </React.Fragment>
   );
 };
