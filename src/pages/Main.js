@@ -4,8 +4,10 @@ import OurProduction from "../components/ourProduction/OurProduction";
 import BestSellers from "../components/mainSliders/bestsellers/BestSellers";
 import NewItems from "./../components/mainSliders/newItems/NewItems";
 import Benefit from "../components/benefit/Benefit";
-import WeRecomended from './../components/mainSliders/weRecommend/WeReccomend';
+import WeRecomended from "./../components/mainSliders/weRecommend/WeReccomend";
 import Sales from "../components/mainSliders/sales/Sales";
+import Opinions from "./../components/opinions/Opinions";
+import WhyWe from "./../components/whyWe/WhyWe";
 
 const Main = () => {
   return (
@@ -15,8 +17,10 @@ const Main = () => {
       <BestSellers />
       <NewItems />
       <Benefit />
-      <WeRecomended/>
-      <Sales/>
+      <WeRecomended />
+      <Sales />
+      <Opinions />
+      <WhyWe />
     </React.Fragment>
   );
 };
