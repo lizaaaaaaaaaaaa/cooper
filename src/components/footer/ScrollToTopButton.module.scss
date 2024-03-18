@@ -1,0 +1,20 @@
+.scrollToTop {
+  position: fixed;
+  bottom: -200px;
+  right: -1%;
+  background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+  color: white;
+  padding: 17px 93px 17px 27px;
+  cursor: pointer;
+  z-index: 999;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transform: rotate(90deg);
+  transition: bottom 0.6s ease;
+}
+
+.scrollToTop.visible {
+  bottom: 44px;
+}

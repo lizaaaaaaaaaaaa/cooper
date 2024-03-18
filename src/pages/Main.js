@@ -10,6 +10,7 @@ import Opinions from "./../components/opinions/Opinions";
 import WhyWe from "./../components/whyWe/WhyWe";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
+import ScrollToTopButton from "../components/footer/ScrollToTopButton";
 
 const Main = () => {
   return (
@@ -25,6 +26,7 @@ const Main = () => {
       <Opinions />
       <WhyWe />
       <Footer />
+      <ScrollToTopButton />
     </React.Fragment>
   );
 };
