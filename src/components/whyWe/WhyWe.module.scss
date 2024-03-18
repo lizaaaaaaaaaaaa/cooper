@@ -3,8 +3,38 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(4, 327px);
+    grid-template-columns: repeat(4, auto);
     gap: 34px 28px;
+
+    @media (max-width: 1150px) {
+      grid-template-columns: repeat(3, auto);
+    }
+
+    @media (max-width: 940px) {
+      grid-template-columns: repeat(2, 308px);
+      justify-content: space-between;
+    }
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(2, 250px);
+    }
+
+    @media (max-width: 580px) {
+      grid-template-columns: repeat(2, 200px);
+      gap: 24px 18px;
+    }
+
+    @media (max-width: 465px) {
+      grid-template-columns: repeat(2, 170px);
+    }
+
+    @media (max-width: 400px) {
+      grid-template-columns: repeat(2, 137px);
+    }
+
+    @media (max-width: 325px) {
+      grid-template-columns: auto;
+    }
   }
 
   &__img {
@@ -12,6 +42,11 @@
     height: 76px;
     display: block;
     margin-bottom: 24px;
+
+    @media (max-width: 465px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &__title {
@@ -19,6 +54,10 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 0.96;
+
+    @media (max-width: 465px) {
+      font-size: 16px;
+    }
   }
 
   &__text {
@@ -26,6 +65,15 @@
     font-weight: 300;
     line-height: 1.34;
     padding-bottom: 15px;
+    max-width: 327px;
+
+    @media (max-width: 940px) {
+      max-width: 100%;
+    }
+
+    @media (max-width: 465px) {
+      font-size: 12px;
+    }
   }
 
   &__button {
