@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Header from "./components/header/Header";
 import Main from "./pages/Main";
 import HttpError from "./pages/HttpError";
 import About from "./pages/About";
@@ -16,7 +15,6 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/main" element={<Main />} />

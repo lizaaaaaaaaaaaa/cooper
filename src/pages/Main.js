@@ -8,10 +8,13 @@ import WeRecomended from "./../components/mainSliders/weRecommend/WeReccomend";
 import Sales from "../components/mainSliders/sales/Sales";
 import Opinions from "./../components/opinions/Opinions";
 import WhyWe from "./../components/whyWe/WhyWe";
+import Footer from "../components/footer/Footer";
+import Header from "../components/header/Header";
 
 const Main = () => {
   return (
     <React.Fragment>
+      <Header />
       <Intro />
       <OurProduction />
       <BestSellers />
@@ -21,6 +24,7 @@ const Main = () => {
       <Sales />
       <Opinions />
       <WhyWe />
+      <Footer />
     </React.Fragment>
   );
 };
