@@ -2,33 +2,41 @@ import styles from "./Header.module.scss";
 import logo from "../../assets/logo.png";
 import HeaderInfo from "./HeaderInfo";
 import Nav from "./Nav";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(true);
-//   const [isHeaderTransparent, setIsHeaderTransparent] = useState(true);
+  //   const [isHeaderTransparent, setIsHeaderTransparent] = useState(true);
 
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       if (window.scrollY <= 200) {
-//         setIsHeaderTransparent(true);
-//       } else {
-//         setIsHeaderTransparent(false);
-//       }
-//     };
-  
-//     window.addEventListener("scroll", handleScroll);
-  
-//     return () => {
-//       window.removeEventListener("scroll", handleScroll);
-//     };
-//   }, []);
+  //   useEffect(() => {
+  //     const handleScroll = () => {
+  //       if (window.scrollY <= 200) {
+  //         setIsHeaderTransparent(true);
+  //       } else {
+  //         setIsHeaderTransparent(false);
+  //       }
+  //     };
+
+  //     window.addEventListener("scroll", handleScroll);
+
+  //     return () => {
+  //       window.removeEventListener("scroll", handleScroll);
+  //     };
+  //   }, []);
 
   const location = useLocation();
   const isMainPage = location.pathname === "/main";
-  const headerClassName =
-    isMainPage ? `${styles.header}  ${styles["header-main"]}` : styles.header;
+  const isRegOrEnterPage =
+    location.pathname === "/registration" || location.pathname === "/enter";
+  let headerClassName;
+  if (isMainPage) {
+    headerClassName = `${styles.header}  ${styles["header-main"]}`;
+  } else if (isRegOrEnterPage) {
+    headerClassName = `${styles.header}  ${styles["header-auth"]}`;
+  } else {
+    headerClassName = styles.header;
+  }
 
   useEffect(() => {
     if (
@@ -39,7 +47,7 @@ const Header = () => {
     ) {
       setIsMenuActive(!isMenuActive);
     }
-  }, []);
+  }, [isMenuActive]);
 
   useEffect(() => {
     if (
@@ -63,20 +71,26 @@ const Header = () => {
         <NavLink to="/main" className={styles.logo}>
           <img src={logo} alt="logo" />
         </NavLink>
-        <nav>
-          <Nav activeMenu={isMenuActive} />
-        </nav>
-        <HeaderInfo activeMenu={isMenuActive} />
-        <button
-          className={
-            !isMenuActive ? `${styles.menu}` : `${styles.menu} ${styles.active}`
-          }
-          onClick={changeMenuActivity}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        {!isRegOrEnterPage && (
+          <React.Fragment>
+            <nav>
+              <Nav activeMenu={isMenuActive} />
+            </nav>
+            <HeaderInfo activeMenu={isMenuActive} />
+            <button
+              className={
+                !isMenuActive
+                  ? `${styles.menu}`
+                  : `${styles.menu} ${styles.active}`
+              }
+              onClick={changeMenuActivity}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </React.Fragment>
+        )}
       </div>
     </header>
   );

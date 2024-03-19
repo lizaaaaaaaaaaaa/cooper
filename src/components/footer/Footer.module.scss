@@ -4,6 +4,11 @@
   height: auto;
   overflow: hidden;
 
+  &-auth {
+    display: flex;
+    justify-content: center;
+  }
+
   &__inner {
     display: flex;
     gap: 0 50px;
@@ -38,6 +43,15 @@
     @media (max-width: 375px) {
       font-size: 12px;
       padding: 17px 0 12px;
+    }
+  }
+
+  &-auth &__text {
+    padding: 24px 0 0;
+
+    @media (max-width: 375px) {
+      font-size: 12px;
+      padding: 17px 0 0;
     }
   }
 

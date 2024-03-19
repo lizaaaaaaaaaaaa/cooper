@@ -1,3 +1,8 @@
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     /* font-family: "Comfortaa", sans-serif; */
@@ -13,6 +18,16 @@ body {
     max-width: 1500px;
     padding: 0 50px;
     margin: 0 auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex-grow: 1;
 }
 
 .slick-track {

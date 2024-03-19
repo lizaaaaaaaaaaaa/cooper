@@ -1,5 +1,5 @@
 .header {
-  //   position: fixed;
+    position: relative;
   width: 100%;
   background: url("../../assets/navBack.jpg") center/cover no-repeat;
   z-index: 1000;
@@ -11,6 +11,11 @@
     position: absolute;
     background: transparent;
     transition: all 1s;
+  }
+
+  &-auth {
+    display: flex;
+    justify-content: center;
   }
 
   &__inner {

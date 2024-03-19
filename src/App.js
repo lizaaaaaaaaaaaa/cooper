@@ -11,6 +11,8 @@ import About from "./pages/About";
 import News from "./pages/News";
 import Catalog from "./pages/Catalog";
 import NotFound from "./pages/NotFound";
+import Registration from "./pages/Registration";
+import Enter from "./pages/Enter";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/news" element={<News />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/enter" element={<Enter />} />
         <Route path="/httpError" element={<HttpError />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
