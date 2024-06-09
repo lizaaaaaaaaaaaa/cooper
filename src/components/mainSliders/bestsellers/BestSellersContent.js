@@ -13,7 +13,7 @@ const BestSellersContent = () => {
     const fetchBestSellers = async () => {
       try {
         const response = await fetch(
-          "https://cooper-3c826-default-rtdb.firebaseio.com/catalog.json"
+          "https://cooper-3c826-default-rtdb.firebaseio.com/userEnter.json"
         );
         if (!response.ok) {
           throw new Error("Something went wrong!");
