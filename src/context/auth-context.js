@@ -11,12 +11,22 @@ const AuthContext = React.createContext({
 export const AuthProvider = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    const storageLoginInfo = localStorage.getItem("isLoggedIn");
+
+    if (storageLoginInfo === "auth") {
+        setIsAuthenticated(true);
+    }
+  }, []);
+
   const login = () => {
     setIsAuthenticated(true);
+    localStorage.setItem("isLoggedIn", "auth");
     console.log(isAuthenticated);
   };
 
   const logout = () => {
+    localStorage.removeItem("isLoggedIn");
     setIsAuthenticated(false);
   };
 
