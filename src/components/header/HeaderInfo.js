@@ -3,8 +3,11 @@ import user from "../../assets/user.svg";
 import cart from "../../assets/cart.svg";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../context/auth-context";
 
 const HeaderInfo = ({ activeMenu }) => {
+    const context = useContext(AuthContext);
   return (
     <ul
       className={
@@ -17,7 +20,7 @@ const HeaderInfo = ({ activeMenu }) => {
         <img className={styles["info__img"]} src={favorites} alt="favorites" />
       </li>
       <li>
-        <NavLink to="/enter" replace>
+        <NavLink to={context.isAuthenticated ? "/user" : "/enter"} replace>
           <img className={styles["info__img"]} src={user} alt="user" />
         </NavLink>
       </li>
