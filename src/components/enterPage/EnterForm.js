@@ -91,6 +91,7 @@ const EnterForm = () => {
       onSubmit={formSubmitHandler}
       className={`${styles.form} ${isLoading ? styles.form__loading : ""}`}
     >
+      <h2 className={styles.form__title}>Авторизация</h2>
       <div>
         <input
           type="email"

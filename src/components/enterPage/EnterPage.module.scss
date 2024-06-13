@@ -1,4 +1,8 @@
 .enter {
+  &__container {
+    margin: 0;
+  }
+
   &__link {
     font-weight: 600;
     font-size: 18px;
@@ -7,6 +11,19 @@
     padding: 17px;
     width: 327px;
     margin-top: 68px;
+
+    @media (max-width: 768px) {
+      margin-top: 30px;
+    }
+
+    @media (max-width: 375px) {
+      margin-top: 20px;
+      width: 290px;
+    }
+
+    @media (max-width: 300px) {
+      width: 250px;
+    }
   }
 
   &__content {
@@ -15,6 +32,10 @@
     align-items: center;
     flex-direction: column;
     padding: 95px 0 213px;
+
+    @media (max-width: 768px) {
+      padding: 53px 0 66px;
+    }
   }
 
   &__button {
@@ -28,6 +49,16 @@
     color: #fff;
     font-size: 18px;
     font-weight: 100;
+
+    @media (max-width: 550px) {
+      width: 346px;
+    }
+
+    @media (max-width: 375px) {
+      width: 290px;
+      font-size: 16px;
+      padding: 20px 25px;
+    }
 
     &-nav {
       font-weight: 600;
@@ -45,8 +76,32 @@
   width: 446px;
   position: relative;
 
+  @media (max-width: 550px) {
+    padding: 28px 20px 31px;
+    gap: 20px 0;
+    width: 346px;
+  }
+
+  @media (max-width: 375px) {
+    width: 290px;
+  }
+
   & > div {
     width: 100%;
+  }
+
+  &__title {
+    font-size: 35px;
+    font-family: "Comfortaa", sans-serif;
+    text-align: center;
+
+    @media (max-width: 550px) {
+      font-size: 28px;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 24px;
+    }
   }
 
   &__input {
@@ -108,6 +163,10 @@
     position: relative;
     z-index: 2;
     transition: all 0.2s;
+
+    @media (max-width: 375px) {
+      font-weight: 600;
+    }
 
     &:hover {
       transform: scale(1.05);
