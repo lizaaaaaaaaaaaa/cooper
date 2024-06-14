@@ -47,7 +47,7 @@ const Header = () => {
     ) {
       setIsMenuActive(!isMenuActive);
     }
-  }, [isMenuActive]);
+  }, []);
 
   useEffect(() => {
     if (
@@ -59,7 +59,7 @@ const Header = () => {
     ) {
       document.body.classList.add(styles.lock);
     } else document.body.classList.remove(styles.lock);
-  }, [isMenuActive]);
+  }, []);
 
   const changeMenuActivity = () => {
     setIsMenuActive(!isMenuActive);

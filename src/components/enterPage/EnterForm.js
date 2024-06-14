@@ -69,9 +69,9 @@ const EnterForm = () => {
       }
 
       if (userFound) {
-        console.log("Успішний вхід");
         context.login(email, password);
         setWrongSubmit("");
+        return <Navigate to="/user" replace />;
       } else {
         setWrongSubmit("Ви ввели неправильний логин и/или пароль!");
       }
@@ -84,6 +84,10 @@ const EnterForm = () => {
 
   if (httpErrorMessage) {
     return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
+  }
+
+  if (context.isAuthenticated) {
+    return <Navigate to="/user" replace />;
   }
 
   return (
