@@ -13,7 +13,7 @@ import Catalog from "./pages/Catalog";
 import NotFound from "./pages/NotFound";
 import Registration from "./pages/Registration";
 import EnterPage from "./components/enterPage/EnterPage";
-import UserPage from "./components/userPage/UserPage";
+import UserPage from "./pages/UserPage";
 import { AuthProvider } from "./context/auth-context";
 
 function App() {
