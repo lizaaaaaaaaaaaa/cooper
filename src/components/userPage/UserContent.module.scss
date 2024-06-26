@@ -23,7 +23,7 @@
     align-self: flex-start;
   }
 
-  &__btn {
+  .user__btn {
     background: linear-gradient(324deg, #0b3f37 0%, #cb8d62 96.96%);
     color: #fff;
     padding: 12px;
@@ -34,6 +34,20 @@
     gap: 27px;
     font-size: 18px;
     font-weight: 600;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.4s;
+    }
+
+    &-active {
+      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+
+      &:hover {
+        transform: scale(1);
+      }
+    }
 
     &-exit {
       text-align: left;
