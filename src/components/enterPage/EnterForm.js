@@ -14,7 +14,6 @@ const EnterForm = () => {
   const [wrongSubmit, setWrongSubmit] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
-
   const [isPasswordShow, setIsPasswordShow] = useState(false);
 
   const context = useContext(AuthContext);
@@ -44,7 +43,7 @@ const EnterForm = () => {
     event.preventDefault();
 
     if (!isPasswordValid || !isEmailValid) {
-      setWrongSubmit("Ви ввели неправильний логин і/или пароль!");
+      setWrongSubmit("Ви ввели неправильний логін і/або пароль!");
       return;
     }
     setIsLoading(true);
@@ -58,22 +57,34 @@ const EnterForm = () => {
       const responseData = await response.json();
 
       let userFound = false;
+      let user = null;
+      let userKey = null;
+
       for (const key in responseData) {
         if (
           responseData[key].login === email &&
           responseData[key].password === password
         ) {
           userFound = true;
+          user = responseData[key];
+          userKey = key;
           break;
         }
       }
 
       if (userFound) {
-        context.login(email, password);
+        const authenticatedUser = {
+          key: userKey,
+          login: email,
+          name: user.name,
+          avatar: user.avatar,
+          password: password,
+        };
         setWrongSubmit("");
+        context.login(authenticatedUser);
         return <Navigate to="/user" replace />;
       } else {
-        setWrongSubmit("Ви ввели неправильний логин и/или пароль!");
+        setWrongSubmit("Ви ввели неправильний логін і/або пароль!");
       }
       setIsLoading(false);
     } catch (error) {
@@ -95,7 +106,7 @@ const EnterForm = () => {
       onSubmit={formSubmitHandler}
       className={`${styles.form} ${isLoading ? styles.form__loading : ""}`}
     >
-      <h2 className={styles.form__title}>Авторизация</h2>
+      <h2 className={styles.form__title}>Авторизація</h2>
       <div>
         <input
           type="email"
@@ -142,9 +153,9 @@ const EnterForm = () => {
         </button>
       </div>
       <p className={styles["form__input-wrong"]}>{wrongSubmit}</p>
-      <p className={styles.form__forgot}>Забыли пароль?</p>
+      <p className={styles.form__forgot}>Забули пароль?</p>
       <Button className={styles.form__btn} type="submit">
-        Войти
+        Увійти
       </Button>
       {isLoading && <Loader className={styles.loader} />}
     </form>

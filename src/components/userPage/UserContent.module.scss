@@ -10,8 +10,7 @@
 
   &__content {
     display: flex;
-    gap: 50px;
-    justify-content: space-between;
+    gap: 150px;
   }
 
   &__bar {
@@ -67,5 +66,28 @@
 
   &__main {
     height: 100vh;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 0 22px;
+  }
+
+  &__img {
+    height: 159px;
+    width: 159px;
+    border-radius: 50%;
+  }
+
+  &__greetings {
+    display: flex;
+    flex-direction: column;
+    gap: 27px 0;
+
+    h4 {
+      font-weight: 900;
+      font-size: 27px;
+    }
   }
 }
