@@ -57,6 +57,19 @@
       font-size: 18px;
       font-weight: 600;
     }
+
+    &-change {
+        display: flex;
+        gap: 0 6px;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+
+        span {
+            color: #A1A1A1;
+        }
+    }
   }
 
   &__icon {
@@ -88,6 +101,34 @@
     h4 {
       font-weight: 900;
       font-size: 27px;
+    }
+  }
+
+  &__message {
+    position: fixed;
+    right: -1000px;
+    top: 35vh;
+    padding: 19px 13px;
+    color: #ffffff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: right 1s;
+    z-index: 1000;
+  
+  &-show {
+    right: 0;
+    transition: right 1s;
+  }
+  
+    
+    &-success {
+        background: #029281;
+    }
+
+    &-failure {
+        background: #920202;
     }
   }
 }
