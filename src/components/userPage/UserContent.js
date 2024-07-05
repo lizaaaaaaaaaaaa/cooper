@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import ProfileDetails from "./userPageControl/ProfileDetails";
 
 const UserContent = () => {
-  const [userContent, setUserContent] = useState("");
+  const [userContent, setUserContent] = useState("contentOne");
   const context = useContext(AuthContext);
 
   const exitHandler = () => {

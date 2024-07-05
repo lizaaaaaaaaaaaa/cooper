@@ -14,13 +14,12 @@ import { DownloadIcon } from "../../UI/Icons";
 
 const ProfileGreetings = () => {
   const context = useContext(AuthContext);
+  const userData = JSON.parse(localStorage.getItem("userInfo"));
 
   const username = context.userDetails
-    ? context.userDetails.name || "Неизвестный пользователь"
+    ? userData.name || "Неизвестный пользователь"
     : "Неизвестный пользователь";
-  const avatar = context.userDetails
-    ? context.userDetails.avatar || noUser
-    : noUser;
+  const avatar = userData.avatar ? userData.avatar : noUser;
 
   const deleteOldAvatars = async () => {
     if (!context.userDetails || !context.userDetails.login) {
@@ -76,7 +75,10 @@ const ProfileGreetings = () => {
 
             // отримання ссилка завантаженої картинки
             const newAvatarUrl = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log("Місцезнаходженнязавантаженого аватару: ", newAvatarUrl);
+            console.log(
+              "Місцезнаходженнязавантаженого аватару: ",
+              newAvatarUrl
+            );
 
             // оновлення контексту та локального сховища
             const updatedUserDetails = {
@@ -89,7 +91,10 @@ const ProfileGreetings = () => {
               JSON.stringify(updatedUserDetails)
             );
           } catch (error) {
-            console.error("Помилка оновлення контексту або локлаьного сховища: ", error);
+            console.error(
+              "Помилка оновлення контексту або локлаьного сховища: ",
+              error
+            );
           }
         }
       );
