@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ProfileDetails from "./userPageControl/ProfileDetails";
 
-const UserContent = () => {
+const UserContent = (props) => {
   const [userContent, setUserContent] = useState("contentOne");
   const context = useContext(AuthContext);
 
@@ -16,7 +16,7 @@ const UserContent = () => {
   const UserContentOptions = () => {
     switch (userContent) {
       case "contentOne":
-        return <ProfileDetails />;
+        return <ProfileDetails/>;
       case "contentTwo":
         return "Two";
       case "contentThree":

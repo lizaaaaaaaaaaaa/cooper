@@ -179,6 +179,10 @@
       width: 148px;
       text-align: right;
     }
+
+    &[type="email"] {
+      pointer-events: none;  
+    }
   }
 
   &__date,

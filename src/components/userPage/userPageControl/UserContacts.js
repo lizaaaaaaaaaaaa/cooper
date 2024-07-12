@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "../UserContent.module.scss";
+import ChangeEmailModal from "./ChangeEmailModal";
 
 const UserContacts = () => {
   const userData = JSON.parse(localStorage.getItem("userInfo"));
@@ -19,6 +20,8 @@ const UserContacts = () => {
   const [cvvValue, setCvvValue] = useState(userData.contacts?.cvv || "");
 
   const [passwordValue, setPasswordValue] = useState(userData.password);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const changeDateHandler = (event) => {
     let value = event.target.value;
@@ -56,120 +59,137 @@ const UserContacts = () => {
     localStorage.setItem("userInfo", JSON.stringify(updatedData));
   };
 
+  const showModalHandler = () => {
+    setIsModalVisible(true);
+  };
+
+  const hideModalHandler = (changeModalVisibility) => {
+    setIsModalVisible(changeModalVisibility);
+  };
+
   return (
-    <div className={styles.user__info}>
-      <div className={styles.user__contacts}>
-        <div>
-          <input
-            value={phoneValue}
-            className={styles.user__input}
-            type="tel"
-            name="phone"
-            placeholder="Номер телефона"
-            onBlur={saveDataToLocalStorage}
-            onChange={(event) => setPhoneValue(event.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            value={userData.login || ""}
-            className={styles.user__input}
-            type="email"
-            placeholder="E-mail"
-            disabled
-          />
-        </div>
-        <div>
-          <input
-            value={contryValue}
-            className={styles.user__input}
-            type="text"
-            name="country"
-            placeholder="Страна"
-            onBlur={saveDataToLocalStorage}
-            onChange={(event) => setCountryValue(event.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            value={cityValue}
-            className={styles.user__input}
-            type="text"
-            name="city"
-            placeholder="Город"
-            onBlur={saveDataToLocalStorage}
-            onChange={(event) => setCityValue(event.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            value={streetValue}
-            className={styles.user__input}
-            type="text"
-            name="street"
-            placeholder="Улица"
-            onBlur={saveDataToLocalStorage}
-            onChange={(event) => setStreetValue(event.target.value)}
-          />
-        </div>
-      </div>
-      <div className={styles.user__password}>
-        <h4>Пароль</h4>
-        <form action="" className={styles.user__form}>
-          <input
-            value={passwordValue}
-            className={styles.user__input}
-            type="password"
-            autoComplete="new-password"
-            onChange={(event) => setPasswordValue(event.target.value)}
-            required
-          />
-          <button className={styles["user__btn-password"]}>
-            Сменить пароль
-          </button>
-        </form>
-      </div>
-      <div className={styles.user__card}>
-        <h4>Платежная система</h4>
-        <div className={styles.user__cardContainer}>
-          <div className={styles.user__paycard}>
+    <React.Fragment>
+      {isModalVisible ? (
+        <ChangeEmailModal onHideModal={hideModalHandler} />
+      ) : (
+        ""
+      )}
+      <div className={styles.user__info}>
+        <div className={styles.user__contacts}>
+          <div>
             <input
-              type="text"
-              name="payCard"
-              value={cardValue}
-              onChange={changeCardHandler}
-              maxLength={19}
-              className={`${styles.user__input} ${styles["user__input-card"]}`}
-              placeholder="1234 5678 9012 3456"
+              value={phoneValue}
+              className={styles.user__input}
+              type="tel"
+              name="phone"
+              placeholder="Номер телефона"
               onBlur={saveDataToLocalStorage}
+              onChange={(event) => setPhoneValue(event.target.value)}
             />
           </div>
-          <div className={styles.user__date}>
+          <div onClick={showModalHandler}>
             <input
-              type="text"
-              name="expirationDate"
-              value={dateValue}
-              onChange={changeDateHandler}
-              className={`${styles.user__input} ${styles["user__input-short"]} ${styles["user__input-date"]}`}
-              placeholder="xx/xx"
-              onBlur={saveDataToLocalStorage}
+              name="email&login"
+              value={userData.login || ""}
+              className={styles.user__input}
+              type="email"
+              placeholder="E-mail"
+              disabled={true}
             />
           </div>
-          <div className={styles.user__cvv}>
+          <div>
             <input
+              value={contryValue}
+              className={styles.user__input}
+              type="text"
+              name="country"
+              placeholder="Страна"
+              onBlur={saveDataToLocalStorage}
+              onChange={(event) => setCountryValue(event.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              value={cityValue}
+              className={styles.user__input}
+              type="text"
+              name="city"
+              placeholder="Город"
+              onBlur={saveDataToLocalStorage}
+              onChange={(event) => setCityValue(event.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              value={streetValue}
+              className={styles.user__input}
+              type="text"
+              name="street"
+              placeholder="Улица"
+              onBlur={saveDataToLocalStorage}
+              onChange={(event) => setStreetValue(event.target.value)}
+            />
+          </div>
+        </div>
+        <div className={styles.user__password}>
+          <h4>Пароль</h4>
+          <form className={styles.user__form}>
+            <input
+              name="password"
+              value={passwordValue}
+              className={styles.user__input}
               type="password"
-              name="cvv"
-              maxLength={3}
-              value={cvvValue}
-              onChange={changeCvvHandler}
-              className={`${styles.user__input} ${styles["user__input-short"]} ${styles["user__input-cvv"]}`}
-              placeholder="000"
-              onBlur={saveDataToLocalStorage}
+              autoComplete="new-password"
+              onChange={(event) => setPasswordValue(event.target.value)}
+              required
             />
+            <button className={styles["user__btn-password"]}>
+              Сменить пароль
+            </button>
+          </form>
+        </div>
+        <div className={styles.user__card}>
+          <h4>Платежная система</h4>
+          <div className={styles.user__cardContainer}>
+            <div className={styles.user__paycard}>
+              <input
+                type="text"
+                name="payCard"
+                value={cardValue}
+                onChange={changeCardHandler}
+                maxLength={19}
+                className={`${styles.user__input} ${styles["user__input-card"]}`}
+                placeholder="1234 5678 9012 3456"
+                onBlur={saveDataToLocalStorage}
+              />
+            </div>
+            <div className={styles.user__date}>
+              <input
+                type="text"
+                name="expirationDate"
+                value={dateValue}
+                onChange={changeDateHandler}
+                className={`${styles.user__input} ${styles["user__input-short"]} ${styles["user__input-date"]}`}
+                placeholder="xx/xx"
+                onBlur={saveDataToLocalStorage}
+              />
+            </div>
+            <div className={styles.user__cvv}>
+              <input
+                type="password"
+                name="cvv"
+                maxLength={3}
+                value={cvvValue}
+                onChange={changeCvvHandler}
+                className={`${styles.user__input} ${styles["user__input-short"]} ${styles["user__input-cvv"]}`}
+                placeholder="000"
+                onBlur={saveDataToLocalStorage}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

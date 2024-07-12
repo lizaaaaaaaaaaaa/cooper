@@ -8,7 +8,7 @@ import failure from "../../../assets/failure.svg";
 import UserContacts from "./UserContacts";
 import Button from "./../../UI/Button";
 
-const ProfileDetails = () => {
+const ProfileDetails = (props) => {
   const context = useContext(AuthContext);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");

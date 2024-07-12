@@ -1,13 +1,12 @@
-import React from "react";
 import Header from "./../components/header/Header";
 import Footer from "../components/footer/Footer";
 import UserContent from "../components/userPage/UserContent";
 
-const UserPage = () => {
+const UserPage = (props) => {
   return (
     <div className="wrapper">
       <Header />
-      <UserContent />
+      <UserContent/>
       <Footer />
     </div>
   );

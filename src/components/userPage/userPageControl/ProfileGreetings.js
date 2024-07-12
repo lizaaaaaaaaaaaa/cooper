@@ -76,7 +76,7 @@ const ProfileGreetings = () => {
             // отримання ссилка завантаженої картинки
             const newAvatarUrl = await getDownloadURL(uploadTask.snapshot.ref);
             console.log(
-              "Місцезнаходженнязавантаженого аватару: ",
+              "Місцезнаходження завантаженого аватару: ",
               newAvatarUrl
             );
 
