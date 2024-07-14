@@ -7,11 +7,7 @@ const Backdrop = (props) => {
 };
 
 const ModalWindow = (props) => {
-  return (
-    <div className={styles.modal}>
-      <div className={styles.content}>{props.children}</div>
-    </div>
-  );
+  return <div className={styles.modal}>{props.children}</div>;
 };
 
 const portalElement = document.getElementById("overlays");

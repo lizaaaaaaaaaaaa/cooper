@@ -1,0 +1,24 @@
+.modal {
+    &__title {
+        font-family: "Comfortaa", sans-serif;
+        text-align: center;
+        font-size: 50px;
+        padding-bottom: 25px;
+    } 
+
+    &__message {
+        font-size: 25px;
+        text-align: center;
+        padding-bottom: 25px;
+    }
+
+    &__text {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+
+    &__btn {
+        display: block;
+        margin: 0 auto;
+    }
+}

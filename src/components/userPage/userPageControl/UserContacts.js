@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../UserContent.module.scss";
 import ChangeEmailModal from "./ChangeEmailModal";
+import SuccessfulModal from "../../UI/SuccessfullModal";
 
 const UserContacts = () => {
   const userData = JSON.parse(localStorage.getItem("userInfo"));
@@ -22,6 +23,7 @@ const UserContacts = () => {
   const [passwordValue, setPasswordValue] = useState(userData.password);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showSuccessfulModal, setShowSuccessfulModal] = useState(false);
 
   const changeDateHandler = (event) => {
     let value = event.target.value;
@@ -67,13 +69,25 @@ const UserContacts = () => {
     setIsModalVisible(changeModalVisibility);
   };
 
+  const showSuccessfullEmailChangeModal = () => {
+    setShowSuccessfulModal(true);
+  };
+
+  const hideSuccessfullEmailChangeModal = () => {
+    setShowSuccessfulModal(false);
+  };
+
   return (
     <React.Fragment>
       {isModalVisible ? (
-        <ChangeEmailModal onHideModal={hideModalHandler} />
+        <ChangeEmailModal
+          onHideModal={hideModalHandler}
+          onShowSuccessfullEmailChangeModal={showSuccessfullEmailChangeModal}
+        />
       ) : (
         ""
       )}
+      {showSuccessfulModal ? <SuccessfulModal onHideModal={hideSuccessfullEmailChangeModal} message="Ваш новый E-mail принят!" text="Чтобы сохранить его, сохраните все данные через кнопку «Сохранить данные»." /> : ""}
       <div className={styles.user__info}>
         <div className={styles.user__contacts}>
           <div>
@@ -87,11 +101,11 @@ const UserContacts = () => {
               onChange={(event) => setPhoneValue(event.target.value)}
             />
           </div>
-          <div onClick={showModalHandler}>
+          <div onClick={showModalHandler} style={{ cursor: "pointer" }}>
             <input
-              name="email&login"
+              //   name="email&login"
               value={userData.login || ""}
-              className={styles.user__input}
+              className={`${styles.user__input} ${styles["user__input-disabled"]}`}
               type="email"
               placeholder="E-mail"
               disabled={true}

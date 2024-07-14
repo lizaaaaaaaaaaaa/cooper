@@ -79,6 +79,15 @@ const EnterForm = () => {
           name: user.name,
           avatar: user.avatar,
           password: password,
+          contacts: {
+            payCard: user.contacts.payCard,
+            expirationDate: user.contacts.expirationDate,
+            cvv: user.contacts.cvv,
+            phone: user.contacts.phone,
+            country: user.contacts.country,
+            city: user.contacts.city,
+            street: user.contacts.street,
+          },
         };
         setWrongSubmit("");
         context.login(authenticatedUser);

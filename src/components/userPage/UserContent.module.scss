@@ -180,8 +180,12 @@
       text-align: right;
     }
 
-    &[type="email"] {
-      pointer-events: none;  
+    &-disabled {
+      pointer-events: none;
+    }
+
+    &-modal {
+      background-color: transparent;
     }
   }
 
@@ -236,4 +240,40 @@
       transform: translateY(-50%);
     }
   }
+
+  &__modalTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 40px;
+
+    h5 {
+      font-family: "Comfortaa", sans-serif;
+      font-size: 50px;
+    }
+
+    & > button {
+      position: absolute;
+      font-size: 30px;
+      top: -10px;
+      right: 0;
+      transition: 0.2s;
+
+      &:hover {
+        color: #e4a16f;
+        transition: 0.3s;
+      }
+    }
+
+    & ~ form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px 0;
+    }
+  }
+}
+
+.user__btn-modal {
+  align-self: flex-end;
 }

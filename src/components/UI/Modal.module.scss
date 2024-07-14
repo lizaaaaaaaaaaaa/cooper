@@ -10,11 +10,12 @@
 
 .modal {
     position: fixed;
-    top: 7vh;
-    left: 5%;
-    width: 90%;
-    background-color: white;
-    padding: 1rem;
+    top: 30%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    width: 800px;
+    background: url("../../assets/modalBack.jpg") center / cover no-repeat;
+    padding: 35px;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 3000;
