@@ -25,6 +25,13 @@ const UserContacts = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showSuccessfulModal, setShowSuccessfulModal] = useState(false);
 
+  const changePhoneHandler = (event) => {
+    let value = event.target.value;
+    value = value.replace(/\D/g, "");
+
+    setPhoneValue(value);
+  };
+
   const changeDateHandler = (event) => {
     let value = event.target.value;
     value = value.replace(/\D/g, ""); // обмеження на нечислові символи
@@ -87,21 +94,28 @@ const UserContacts = () => {
       ) : (
         ""
       )}
-      {showSuccessfulModal ? <SuccessfulModal onHideModal={hideSuccessfullEmailChangeModal} message="Ваш новый E-mail принят!" text="Чтобы сохранить его, сохраните все данные через кнопку «Сохранить данные»." /> : ""}
+      {showSuccessfulModal ? (
+        <SuccessfulModal
+          onHideModal={hideSuccessfullEmailChangeModal}
+          message="Ваш новый E-mail принят!"
+          text="Чтобы сохранить его, сохраните все данные через кнопку «Сохранить данные»."
+        />
+      ) : (
+        ""
+      )}
       <div className={styles.user__info}>
         <div className={styles.user__contacts}>
-          <div>
-            <input
-              value={phoneValue}
-              className={styles.user__input}
-              type="tel"
-              name="phone"
-              placeholder="Номер телефона"
-              onBlur={saveDataToLocalStorage}
-              onChange={(event) => setPhoneValue(event.target.value)}
-            />
-          </div>
-          <div onClick={showModalHandler} style={{ cursor: "pointer" }}>
+          <input
+            value={phoneValue}
+            className={styles.user__input}
+            maxLength={13}
+            type="tel"
+            name="phone"
+            placeholder="Номер телефона"
+            onBlur={saveDataToLocalStorage}
+            onChange={changePhoneHandler}
+          />
+          <div onClick={showModalHandler}>
             <input
               //   name="email&login"
               value={userData.login || ""}
@@ -111,39 +125,33 @@ const UserContacts = () => {
               disabled={true}
             />
           </div>
-          <div>
-            <input
-              value={contryValue}
-              className={styles.user__input}
-              type="text"
-              name="country"
-              placeholder="Страна"
-              onBlur={saveDataToLocalStorage}
-              onChange={(event) => setCountryValue(event.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              value={cityValue}
-              className={styles.user__input}
-              type="text"
-              name="city"
-              placeholder="Город"
-              onBlur={saveDataToLocalStorage}
-              onChange={(event) => setCityValue(event.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              value={streetValue}
-              className={styles.user__input}
-              type="text"
-              name="street"
-              placeholder="Улица"
-              onBlur={saveDataToLocalStorage}
-              onChange={(event) => setStreetValue(event.target.value)}
-            />
-          </div>
+          <input
+            value={contryValue}
+            className={styles.user__input}
+            type="text"
+            name="country"
+            placeholder="Страна"
+            onBlur={saveDataToLocalStorage}
+            onChange={(event) => setCountryValue(event.target.value)}
+          />
+          <input
+            value={cityValue}
+            className={styles.user__input}
+            type="text"
+            name="city"
+            placeholder="Город"
+            onBlur={saveDataToLocalStorage}
+            onChange={(event) => setCityValue(event.target.value)}
+          />
+          <input
+            value={streetValue}
+            className={styles.user__input}
+            type="text"
+            name="street"
+            placeholder="Улица"
+            onBlur={saveDataToLocalStorage}
+            onChange={(event) => setStreetValue(event.target.value)}
+          />
         </div>
         <div className={styles.user__password}>
           <h4>Пароль</h4>

@@ -1,16 +1,57 @@
 .user {
   padding: 72px 0 80px;
 
+  @media (max-width: 768px) {
+    padding: 52px 0 60px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 34px 0 40px;
+  }
+
   &__title {
     font-size: 60px;
     font-family: "Comfortaa", sans-serif;
     padding-bottom: 51px;
     line-height: 1.06;
+
+    @media (max-width: 745px) {
+      font-size: 50px;
+      padding-bottom: 41px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 40px;
+      padding-bottom: 26px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 32px;
+      padding-bottom: 21px;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 24px;
+      padding-bottom: 16px;
+    }
   }
 
   &__content {
     display: flex;
     gap: 150px;
+
+    @media (max-width: 1260px) {
+      gap: 50px;
+    }
+
+    @media (max-width: 1150px) {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    @media (max-width: 375px) {
+      gap: 40px;
+    }
   }
 
   &__bar {
@@ -21,6 +62,25 @@
     position: sticky;
     top: 30px;
     align-self: flex-start;
+
+    @media (max-width: 1150px) {
+      align-self: center;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      position: static;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 745px) {
+      gap: 20px;
+    }
+
+    & > .user__btn {
+      @media (max-width: 500px) {
+        width: 100% !important;
+      }
+    }
   }
 
   .user__btn {
@@ -35,6 +95,15 @@
     font-size: 18px;
     font-weight: 600;
     transition: transform 0.2s;
+
+    @media (max-width: 1150px) {
+      font-size: 16px;
+      font-weight: 600;
+      gap: 13px;
+      width: 214px;
+      justify-content: center;
+      padding: 12px 19px 12px 12px;
+    }
 
     &:hover {
       transform: scale(1.05);
@@ -66,23 +135,46 @@
       font-weight: 500;
       cursor: pointer;
 
+      @media (max-width: 400px) {
+        max-width: 133px;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
       span {
         color: #a1a1a1;
+
+        @media (max-width: 400px) {
+          margin-left: 23px;
+        }
       }
     }
 
     &-password {
-      margin-left: 30px;
       background: linear-gradient(324deg, #0b3f37 0%, #cb8d62 96.96%);
       width: 326px;
       padding: 16px 0;
       font-weight: 700;
       font-size: 18px;
       color: #ffffff;
+
+      @media (max-width: 745px) {
+        width: 50%;
+        padding: 16px 21px;
+      }
+
+      @media (max-width: 480px) {
+        width: 100%;
+      }
     }
 
     &-save {
       margin-top: 40px;
+
+      @media (max-width: 480px) {
+        width: 100%;
+        margin-top: 30px;
+      }
     }
   }
 
@@ -92,19 +184,28 @@
   }
 
   &__main {
-    height: 100vh;
+    min-height: 100vh;
   }
 
   &__profile {
     display: flex;
     align-items: center;
     gap: 0 22px;
+
+    @media (max-width: 480px) {
+      gap: 0 14px;
+    }
   }
 
   &__img {
     height: 159px;
     width: 159px;
     border-radius: 50%;
+
+    @media (max-width: 450px) {
+      height: 120px;
+      width: 120px;
+    }
   }
 
   &__greetings {
@@ -112,9 +213,22 @@
     flex-direction: column;
     gap: 27px 0;
 
+    @media (max-width: 480px) {
+      gap: 13px 0;
+      font-size: 18px;
+    }
+
     h4 {
       font-weight: 900;
       font-size: 27px;
+
+      @media (max-width: 480px) {
+        font-size: 24px;
+      }
+
+      @media (max-width: 375px) {
+        font-size: 20px;
+      }
     }
   }
 
@@ -149,10 +263,27 @@
     padding-top: 41px;
     width: 684px;
 
+    & > div > div:nth-child(2) {
+      cursor: pointer;
+
+      @media (max-width: 745px) {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 745px) {
+      width: auto;
+    }
+
     h4 {
       font-weight: 700;
       font-size: 27px;
       padding-bottom: 24px;
+
+      @media (max-width: 375px) {
+        font-size: 24px;
+        padding-bottom: 23px;
+      }
     }
   }
 
@@ -163,6 +294,11 @@
     padding-bottom: 30px;
     margin-bottom: 30px;
     border-bottom: 1px solid #e6e8e7;
+    max-width: 100%;
+
+    @media (max-width: 640px) {
+      gap: 19px;
+    }
   }
 
   &__input {
@@ -171,6 +307,10 @@
     font-size: 18px;
     width: 327px;
 
+    @media (max-width: 745px) {
+      width: 100%;
+    }
+
     &::placeholder {
       color: #a1a1a1;
     }
@@ -178,6 +318,10 @@
     &-short {
       width: 148px;
       text-align: right;
+
+      @media (max-width: 745px) {
+        width: 100%;
+      }
     }
 
     &-disabled {
@@ -189,10 +333,20 @@
     }
   }
 
+  &__paycard {
+    @media (max-width: 745px) {
+      width: 100%;
+    }
+  }
+
   &__date,
   &__cvv {
     position: relative;
     font-size: 18px;
+
+    @media (max-width: 745px) {
+      width: 47%;
+    }
 
     &:before {
       position: absolute;
@@ -220,12 +374,41 @@
     padding-bottom: 30px;
     margin-bottom: 30px;
     border-bottom: 1px solid #e6e8e7;
+
+    & > form {
+      display: flex;
+      justify-content: space-between;
+      gap: 0 30px;
+
+      @media (max-width: 640px) {
+        gap: 20px;
+      }
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+      }
+
+      input[type="password"] {
+        @media (max-width: 745px) {
+          width: 50%;
+        }
+
+        @media (max-width: 480px) {
+          width: 100%;
+        }
+      }
+    }
   }
 
   &__cardContainer {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+
+    @media (max-width: 745px) {
+      gap: 10px;
+      justify-content: space-between;
+    }
   }
 
   &__paycard {
