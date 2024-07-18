@@ -455,6 +455,12 @@
       gap: 25px 0;
     }
   }
+
+  &__wrong {
+    font-size: 13px;
+    color: #f84147;
+    margin-top: 20px;
+  }
 }
 
 .user__btn-modal {

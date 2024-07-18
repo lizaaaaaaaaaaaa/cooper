@@ -8,7 +8,7 @@ import failure from "../../../assets/failure.svg";
 import UserContacts from "./UserContacts";
 import Button from "./../../UI/Button";
 
-const ProfileDetails = (props) => {
+const ProfileDetails = () => {
   const context = useContext(AuthContext);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
@@ -73,10 +73,16 @@ const ProfileDetails = (props) => {
     }
   };
 
+  const onSavePasswordHandler = (dataAboutPasswordSending) => {
+    setMessageType(dataAboutPasswordSending);
+    setMessage("Данные сохраненны");
+    setIsMessageShow(true);
+  }
+
   return (
     <React.Fragment>
       <ProfileGreetings />
-      <UserContacts />
+      <UserContacts onSavePassword={onSavePasswordHandler} />
       <Button className={styles["user__btn-save"]} onClick={saveUserData}>
         Сохранить данные
       </Button>

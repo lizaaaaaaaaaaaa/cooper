@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "../UserContent.module.scss";
 import ChangeEmailModal from "./ChangeEmailModal";
 import SuccessfulModal from "../../UI/SuccessfullModal";
+import AuthContext from "../../../context/auth-context";
+import { getDatabase, ref as dbRef, update } from "firebase/database";
 
-const UserContacts = () => {
+const UserContacts = (props) => {
   const userData = JSON.parse(localStorage.getItem("userInfo"));
+  const context = useContext(AuthContext);
 
   const [phoneValue, setPhoneValue] = useState(userData.contacts?.phone || "");
   const [contryValue, setCountryValue] = useState(
@@ -20,7 +23,9 @@ const UserContacts = () => {
   const [cardValue, setCardValue] = useState(userData.contacts?.payCard || "");
   const [cvvValue, setCvvValue] = useState(userData.contacts?.cvv || "");
 
+  const [isNewPasswordValid, setIsNewPasswordValid] = useState(false);
   const [passwordValue, setPasswordValue] = useState(userData.password);
+  const [wrongSubmit, setWrongSubmit] = useState("");
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showSuccessfulModal, setShowSuccessfulModal] = useState(false);
@@ -82,6 +87,49 @@ const UserContacts = () => {
 
   const hideSuccessfullEmailChangeModal = () => {
     setShowSuccessfulModal(false);
+  };
+
+  const checkPasswordValidityHandler = (event) => {
+    setWrongSubmit("");
+
+    if (
+      event.target.value.trim().length > 6 &&
+      event.target.value.trim().length < 21
+    ) {
+      setIsNewPasswordValid(true);
+    } else {
+      setIsNewPasswordValid(false);
+    }
+    setPasswordValue(event.target.value.trim());
+  };
+
+  const changePasswordHandler = async (event) => {
+    event.preventDefault();
+
+    if (!isNewPasswordValid) {
+      setWrongSubmit(
+        "Пароль должен содержать больше 6 символов, но меньше 21!"
+      );
+      return;
+    }
+
+    const updatePassword = {
+      ...context.userDetails,
+      password: passwordValue,
+    };
+
+    context.updateUserDetails(updatePassword);
+    localStorage.setItem("userInfo", JSON.stringify(updatePassword));
+
+    const userData = JSON.parse(localStorage.getItem("userInfo"));
+    const db = getDatabase(); // отримати базу даних
+    const userDocRef = dbRef(db, `userEnter/${context.userDetails.key}`);
+
+    await update(userDocRef, {
+      password: userData.password,
+    });
+
+    props.onSavePassword("success")
   };
 
   return (
@@ -155,20 +203,21 @@ const UserContacts = () => {
         </div>
         <div className={styles.user__password}>
           <h4>Пароль</h4>
-          <form className={styles.user__form}>
+          <form className={styles.user__form} onSubmit={changePasswordHandler}>
             <input
               name="password"
               value={passwordValue}
               className={styles.user__input}
               type="password"
               autoComplete="new-password"
-              onChange={(event) => setPasswordValue(event.target.value)}
+              onChange={checkPasswordValidityHandler}
               required
             />
             <button className={styles["user__btn-password"]}>
               Сменить пароль
             </button>
           </form>
+          <p className={styles.user__wrong}>{wrongSubmit}</p>
         </div>
         <div className={styles.user__card}>
           <h4>Платежная система</h4>
