@@ -88,6 +88,7 @@ const EnterForm = () => {
             city: user.contacts.city,
             street: user.contacts.street,
           },
+          favorites: user.favorites || {}
         };
         setWrongSubmit("");
         context.login(authenticatedUser);

@@ -244,10 +244,11 @@
     gap: 16px;
     transition: right 1s;
     z-index: 1000;
+    width: 326px;
 
     &-show {
       right: 0;
-      transition: right 1s;
+            transition: right 1s;
     }
 
     &-success {

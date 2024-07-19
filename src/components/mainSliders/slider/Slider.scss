@@ -383,3 +383,55 @@
     background: linear-gradient(124deg, #5e3928 0%, #e4a16f 91.15%);
   }
 }
+
+.slider__favorite {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  width: 50px;
+  height: 63px;
+
+  &:after {
+    background-image: url('data:image/svg+xml;utf8,%3Csvg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cg clipPath="url(%23clip0_23_420)"%3E%3Cpath d="M21.8749 2.39624C20.4674 2.41813 19.0905 2.81106 17.8834 3.53533C16.6763 4.2596 15.6816 5.28958 14.9999 6.52124C14.3182 5.28958 13.3236 4.2596 12.1165 3.53533C10.9094 2.81106 9.53251 2.41813 8.12495 2.39624C5.88112 2.49373 3.76708 3.47531 2.24468 5.12653C0.722272 6.77775 -0.0847403 8.9644 -5.21373e-05 11.2087C-5.21373e-05 16.8925 5.98245 23.1 10.9999 27.3087C12.1202 28.2502 13.5366 28.7663 14.9999 28.7663C16.4633 28.7663 17.8797 28.2502 18.9999 27.3087C24.0174 23.1 29.9999 16.8925 29.9999 11.2087C30.0846 8.9644 29.2776 6.77775 27.7552 5.12653C26.2328 3.47531 24.1188 2.49373 21.8749 2.39624ZM17.3937 25.3962C16.7237 25.9605 15.8759 26.2699 14.9999 26.2699C14.124 26.2699 13.2762 25.9605 12.6062 25.3962C6.1837 20.0075 2.49995 14.8375 2.49995 11.2087C2.4145 9.62714 2.95791 8.0759 4.01165 6.89336C5.0654 5.71083 6.54399 4.99293 8.12495 4.89624C9.7059 4.99293 11.1845 5.71083 12.2382 6.89336C13.292 8.0759 13.8354 9.62714 13.7499 11.2087C13.7499 11.5403 13.8816 11.8582 14.1161 12.0926C14.3505 12.327 14.6684 12.4587 14.9999 12.4587C15.3315 12.4587 15.6494 12.327 15.8838 12.0926C16.1182 11.8582 16.2499 11.5403 16.2499 11.2087C16.1645 9.62714 16.7079 8.0759 17.7617 6.89336C18.8154 5.71083 20.294 4.99293 21.8749 4.89624C23.4559 4.99293 24.9345 5.71083 25.9882 6.89336C27.042 8.0759 27.5854 9.62714 27.4999 11.2087C27.4999 14.8375 23.8162 20.0075 17.3937 25.3912V25.3962Z" fill="%23031412"/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id="clip0_23_420"%3E%3Crect width="30" height="30" fill="white"/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E');
+    content: "";
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    transition: 0.2s;
+  }
+
+  &:hover:after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.8834 1.53533C19.0905 0.811057 20.4674 0.418134 21.875 0.39624C24.1188 0.493729 26.2328 1.47531 27.7552 3.12653C29.2777 4.77775 30.0847 6.9644 30 9.20874C30 14.8925 24.0175 21.1 19 25.3087C17.8797 26.2502 16.4633 26.7663 15 26.7663C13.5367 26.7663 12.1202 26.2502 11 25.3087C5.98248 21.1 -2.16197e-05 14.8925 -2.16197e-05 9.20874C-0.0847098 6.9644 0.722303 4.77775 2.24471 3.12653C3.76711 1.47531 5.88115 0.493729 8.12498 0.39624C9.53254 0.418134 10.9094 0.811057 12.1165 1.53533C13.3236 2.2596 14.3183 3.28958 15 4.52124C15.6817 3.28958 16.6763 2.2596 17.8834 1.53533Z" fill="url(%23paint0_linear_35_404)"/><defs><linearGradient id="paint0_linear_35_404" x1="7.573" y1="-6.39264" x2="29.851" y2="-5.41773" gradientUnits="userSpaceOnUse"><stop stop-color="%235E3928"/><stop offset="0.911458" stop-color="%23E4A16F"/></linearGradient></defs></svg>');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.2s;
+  }
+}
+
+.slider__favorite:hover ~ .slider__image {
+  box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+
+.slider__favorite.slider__favorite-chosen:after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.8834 1.53533C19.0905 0.811057 20.4674 0.418134 21.875 0.39624C24.1188 0.493729 26.2328 1.47531 27.7552 3.12653C29.2777 4.77775 30.0847 6.9644 30 9.20874C30 14.8925 24.0175 21.1 19 25.3087C17.8797 26.2502 16.4633 26.7663 15 26.7663C13.5367 26.7663 12.1202 26.2502 11 25.3087C5.98248 21.1 -2.16197e-05 14.8925 -2.16197e-05 9.20874C-0.0847098 6.9644 0.722303 4.77775 2.24471 3.12653C3.76711 1.47531 5.88115 0.493729 8.12498 0.39624C9.53254 0.418134 10.9094 0.811057 12.1165 1.53533C13.3236 2.2596 14.3183 3.28958 15 4.52124C15.6817 3.28958 16.6763 2.2596 17.8834 1.53533Z" fill="url(%23paint0_linear_35_404)"/><defs><linearGradient id="paint0_linear_35_404" x1="7.573" y1="-6.39264" x2="29.851" y2="-5.41773" gradientUnits="userSpaceOnUse"><stop stop-color="%235E3928"/><stop offset="0.911458" stop-color="%23E4A16F"/></linearGradient></defs></svg>');
+  content: "";
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+// .slider__favorite.slider__favorite-chosen:after {
+//   opacity: 0;
+// }

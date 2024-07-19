@@ -23,7 +23,7 @@ const UserContacts = (props) => {
   const [cardValue, setCardValue] = useState(userData.contacts?.payCard || "");
   const [cvvValue, setCvvValue] = useState(userData.contacts?.cvv || "");
 
-  const [isNewPasswordValid, setIsNewPasswordValid] = useState(false);
+  const [isNewPasswordValid, setIsNewPasswordValid] = useState(true);
   const [passwordValue, setPasswordValue] = useState(userData.password);
   const [wrongSubmit, setWrongSubmit] = useState("");
 
