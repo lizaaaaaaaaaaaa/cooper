@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import styles from "../UserContent.module.scss";
+import styles from "../../UserContent.module.scss";
 import ChangeEmailModal from "./ChangeEmailModal";
-import SuccessfulModal from "../../UI/SuccessfullModal";
-import AuthContext from "../../../context/auth-context";
+import SuccessfulModal from "../../../UI/SuccessfullModal";
+import AuthContext from "../../../../context/auth-context";
 import { getDatabase, ref as dbRef, update } from "firebase/database";
 
 const UserContacts = (props) => {

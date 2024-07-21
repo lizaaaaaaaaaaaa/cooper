@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import AuthContext from "../../../context/auth-context";
+import AuthContext from "../../../../context/auth-context";
 import { getDatabase, ref as dbRef, set } from "firebase/database";
 import ProfileGreetings from "./ProfileGreetings";
-import styles from "../UserContent.module.scss";
-import success from "../../../assets/success.svg";
-import failure from "../../../assets/failure.svg";
+import styles from "../../UserContent.module.scss";
+import success from "../../../../assets/success.svg";
+import failure from "../../../../assets/failure.svg";
 import UserContacts from "./UserContacts";
-import Button from "./../../UI/Button";
+import Button from "../../../UI/Button";
 
 const ProfileDetails = () => {
   const context = useContext(AuthContext);
@@ -80,7 +80,7 @@ const ProfileDetails = () => {
   }
 
   return (
-    <React.Fragment>
+    <div className={styles["user__main-profile"]}>
       <ProfileGreetings />
       <UserContacts onSavePassword={onSavePasswordHandler} />
       <Button className={styles["user__btn-save"]} onClick={saveUserData}>
@@ -101,7 +101,7 @@ const ProfileDetails = () => {
         />
         {message}
       </p>
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -38,11 +38,7 @@
 
   &__content {
     display: flex;
-    gap: 150px;
-
-    @media (max-width: 1260px) {
-      gap: 50px;
-    }
+    gap: 30px;
 
     @media (max-width: 1150px) {
       flex-direction: column;
@@ -55,7 +51,7 @@
   }
 
   &__bar {
-    width: 326px;
+    min-width: 326px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -185,6 +181,18 @@
 
   &__main {
     min-height: 100vh;
+
+    &-profile {
+        padding-left: 120px;
+
+        @media (max-width: 1280px) {
+            padding-left: 20px;
+        }
+
+        @media (max-width: 115px) {
+            padding-left: 0;
+        }
+    }
   }
 
   &__profile {
@@ -248,7 +256,7 @@
 
     &-show {
       right: 0;
-            transition: right 1s;
+      transition: right 1s;
     }
 
     &-success {
@@ -461,6 +469,20 @@
     font-size: 13px;
     color: #f84147;
     margin-top: 20px;
+  }
+
+  &__favorites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  &__favorites li {
+    width: 327px !important;
+
+    img {
+      height: 380px !important;
+    }
   }
 }
 

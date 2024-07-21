@@ -13,7 +13,7 @@ const BestSellersContent = () => {
     const fetchBestSellers = async () => {
       try {
         const response = await fetch(
-          "https://cooper-3c826-default-rtdb.firebaseio.com/userEnter.json"
+          "https://cooper-3c826-default-rtdb.firebaseio.com/catalog.json"
         );
         if (!response.ok) {
           throw new Error("Something went wrong!");
@@ -24,24 +24,24 @@ const BestSellersContent = () => {
         const filteredKeys = ["c1", "c3", "с13", "c19", "с22", "c26"];
 
         for (const key in responseData) {
-          if (filteredKeys.includes(key)) {
-            loadedBestSellers.push({
-              id: key,
-              name: responseData[key].name,
-              price: responseData[key].price,
-              image: responseData[key].image,
-              filter: responseData[key].filter,
-              isSale: responseData[key].isSale,
-              salePrice: responseData[key].salePrice,
-            });
+            if (filteredKeys.includes(key)) {
+                loadedBestSellers.push({
+                id: key,
+                name: responseData[key].name,
+                price: responseData[key].price,
+                image: responseData[key].image,
+                filter: responseData[key].filter,
+                isSale: responseData[key].isSale,
+                salePrice: responseData[key].salePrice,
+              });
+            }
           }
+          setBestsellers(loadedBestSellers);
+          setIsLoading(false);
+        } catch (error) {
+          setHttpErrorMessage(error.message);
+          setIsLoading(false);
         }
-        setBestsellers(loadedBestSellers);
-        setIsLoading(false);
-      } catch (error) {
-        setHttpErrorMessage(error.message);
-        setIsLoading(false);
-      }
     };
     fetchBestSellers();
   }, []);

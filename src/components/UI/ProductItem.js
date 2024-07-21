@@ -1,16 +1,17 @@
 import { useState, useContext, useEffect } from "react";
-import "./Slider.scss";
-import AuthContext from "../../../context/auth-context";
+import styles from "./ProductItem.module.scss";
+import AuthContext from "../../context/auth-context";
 import { getDatabase, ref as dbRef, set } from "firebase/database";
 
-const SliderItem = (props) => {
+const ProductItem = (props) => {
   const context = useContext(AuthContext);
 
   const [isItemChosen, setIsItemChosen] = useState(
     Object.keys(context.userDetails?.favorites).includes(props.id)
   );
 
-  //   оновлення стану кнопки та контексту, якщо елемент присутній в двох місцях на сторінці для синхронізації вибору
+  console.log(props.id);
+
   useEffect(() => {
     setIsItemChosen(
       Object.keys(context.userDetails?.favorites || {}).includes(props.id)
@@ -24,7 +25,6 @@ const SliderItem = (props) => {
     let updatedFavorites;
 
     if (isItemChosen) {
-      // Видалення з обраного
       updatedFavorites = Object.keys(existingData.favorites || {}).reduce(
         (acc, key) => {
           if (key !== props.id) {
@@ -35,7 +35,6 @@ const SliderItem = (props) => {
         {}
       );
     } else {
-      // Додавання до обраного
       updatedFavorites = {
         ...existingData.favorites,
         [props.id]: props.id,
@@ -58,28 +57,32 @@ const SliderItem = (props) => {
   };
 
   const btnFavoriteClassName = isItemChosen
-    ? "slider__favorite slider__favorite-chosen"
-    : "slider__favorite";
+    ? `${styles.product__favorite} ${styles["product__favorite-chosen"]}`
+    : styles.product__favorite;
 
   return (
-    <div className="slider__item">
+    <div className={styles.product__item}>
       {context.isAuthenticated && (
         <button
           onClick={chooseFavoriteHandler}
           className={btnFavoriteClassName}
         ></button>
       )}
-      {props.isSale && <span className="slider__badge">Sale</span>}
-      <img src={props.image} className="slider__image" alt="product" />
-      <div className="slider__content">
-        <h5 className="slider__name">{props.name}</h5>
+      {props.isSale && <span className={styles.product__badge}>Sale</span>}
+      <img src={props.image} className={styles.product__image} alt="product" />
+      <div className={styles.product__content}>
+        <h5 className={styles.product__name}>{props.name}</h5>
         {!props.isSale && (
-          <span className="slider__price">{props.price} грн</span>
+          <span className={styles.product__price}>{props.price} грн</span>
         )}
         {props.isSale && (
-          <div className="slider__sale">
-            <span className="slider__sale-old">{props.price} грн</span>
-            <span className="slider__sale-new">{props.salePrice} грн</span>
+          <div className={styles.product__sale}>
+            <span className={styles["product__sale-old"]}>
+              {props.price} грн
+            </span>
+            <span className={styles["product__sale-new"]}>
+              {props.salePrice} грн
+            </span>
           </div>
         )}
       </div>
@@ -87,4 +90,4 @@ const SliderItem = (props) => {
   );
 };
 
-export default SliderItem;
+export default ProductItem;

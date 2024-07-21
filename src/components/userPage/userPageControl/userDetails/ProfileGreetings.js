@@ -1,8 +1,8 @@
-import styles from "../UserContent.module.scss";
+import styles from "../../UserContent.module.scss";
 import React, { useContext } from "react";
-import AuthContext from "../../../context/auth-context";
-import noUser from "../../../assets/userImage/noUser.jpg";
-import { storage } from "../../../firebase/firebase";
+import AuthContext from "../../../../context/auth-context";
+import noUser from "../../../../assets/userImage/noUser.jpg";
+import { storage } from "../../../../firebase/firebase";
 import {
   ref,
   uploadBytesResumable,
@@ -10,7 +10,7 @@ import {
   listAll,
   deleteObject,
 } from "firebase/storage";
-import { DownloadIcon } from "../../UI/Icons";
+import { DownloadIcon } from "../../../UI/Icons";
 
 const ProfileGreetings = () => {
   const context = useContext(AuthContext);

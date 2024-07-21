@@ -1,10 +1,10 @@
 import "./Slider.scss";
 import SlickSlider from "react-slick";
 import { PrevArrow, NextArrow } from "../../UI/PrevNextArrows";
-import SliderItem from "./SliderItem";
 import React, { useRef } from "react";
 import Button from "../../UI/Button";
 import { NavLink } from "react-router-dom";
+import ProductItem from "../../UI/ProductItem";
 
 const Slider = ({ slidersInfo }) => {
   let sliderRef = useRef(null);
@@ -59,7 +59,7 @@ const Slider = ({ slidersInfo }) => {
   };
 
   const slidersInfoList = slidersInfo.map((sliderInfo) => (
-    <SliderItem
+    <ProductItem
       key={sliderInfo.id}
       id={sliderInfo.id}
       name={sliderInfo.name}

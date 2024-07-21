@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import Modal from "./../../UI/Modal";
-import styles from "../UserContent.module.scss";
-import Button from "./../../UI/Button";
-import AuthContext from "../../../context/auth-context";
+import Modal from "../../../UI/Modal";
+import styles from "../../UserContent.module.scss";
+import Button from "../../../UI/Button";
+import AuthContext from "../../../../context/auth-context";
 
 const ChangeEmailModal = (props) => {
   const context = useContext(AuthContext);

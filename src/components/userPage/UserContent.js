@@ -3,7 +3,8 @@ import { UserIcon, CartIcon, FavoritesIcon, ExitIcon } from "../UI/Icons";
 import AuthContext from "../../context/auth-context";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import ProfileDetails from "./userPageControl/ProfileDetails";
+import ProfileDetails from "./userPageControl/userDetails/ProfileDetails";
+import FavoritesList from "./userPageControl/userFavorites/ProfileFavorites";
 
 const UserContent = (props) => {
   const [userContent, setUserContent] = useState("contentOne");
@@ -16,11 +17,11 @@ const UserContent = (props) => {
   const UserContentOptions = () => {
     switch (userContent) {
       case "contentOne":
-        return <ProfileDetails/>;
+        return <ProfileDetails />;
       case "contentTwo":
         return "Two";
       case "contentThree":
-        return "Three";
+        return <FavoritesList />;
       default:
         return <ProfileDetails />;
     }
