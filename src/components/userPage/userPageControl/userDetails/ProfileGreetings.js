@@ -1,5 +1,5 @@
 import styles from "../../UserContent.module.scss";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../../../../context/auth-context";
 import noUser from "../../../../assets/userImage/noUser.jpg";
 import { storage } from "../../../../firebase/firebase";
@@ -11,10 +11,13 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { DownloadIcon } from "../../../UI/Icons";
+import { Navigate } from "react-router";
 
 const ProfileGreetings = () => {
   const context = useContext(AuthContext);
   const userData = JSON.parse(localStorage.getItem("userInfo"));
+
+  const [httpErrorMessage, setHttpErrorMessage] = useState(false);
 
   const username = context.userDetails
     ? userData.name || "Неизвестный пользователь"
@@ -23,7 +26,9 @@ const ProfileGreetings = () => {
 
   const deleteOldAvatars = async () => {
     if (!context.userDetails || !context.userDetails.login) {
-      console.error("Не знайдено логін користувача");
+      setHttpErrorMessage(
+        "Логин неопределен. Если ви считаете, что это ошибка - обратитесь в поддержку!"
+      );
       return;
     }
 
@@ -38,9 +43,8 @@ const ProfileGreetings = () => {
         deleteObject(itemRef)
       );
       await Promise.all(deletePromises);
-      console.log("Старі аватари видалені успішно");
     } catch (error) {
-      console.error("Помилка видалення старих аватарів: ", error);
+      setHttpErrorMessage(error.message);
     }
   };
 
@@ -49,7 +53,9 @@ const ProfileGreetings = () => {
     if (!file) return;
 
     if (!context.userDetails || !context.userDetails.login) {
-      console.error("Не знайдено логін користувача.");
+      setHttpErrorMessage(
+        "Логин неопределен. Если ви считаете, что это ошибка - обратитесь в поддержку!"
+      );
       return;
     }
 
@@ -66,7 +72,7 @@ const ProfileGreetings = () => {
       uploadTask.on(
         "state_changed",
         (error) => {
-          console.error("Помилка завантаження аватара: ", error);
+          setHttpErrorMessage(error.message);
         },
         async () => {
           try {
@@ -91,17 +97,18 @@ const ProfileGreetings = () => {
               JSON.stringify(updatedUserDetails)
             );
           } catch (error) {
-            console.error(
-              "Помилка оновлення контексту або локлаьного сховища: ",
-              error
-            );
+            setHttpErrorMessage(error.message);
           }
         }
       );
     } catch (error) {
-      console.error("Помилка оновлення аватару: ", error);
+      setHttpErrorMessage(error.message);
     }
   };
+
+  if (httpErrorMessage) {
+    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
+  }
 
   return (
     <div className={styles.user__profile}>

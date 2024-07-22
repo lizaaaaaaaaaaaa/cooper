@@ -4,14 +4,16 @@ import AuthContext from "../../../../context/auth-context";
 import ProductItem from "./../../../UI/ProductItem";
 import styles from "../../UserContent.module.scss";
 import Loader from "../../../UI/Loader";
+import { Navigate } from "react-router";
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 6;
 
 const FavoritesList = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [httpErrorMessage, setHttpErrorMessage] = useState(false);
 
   const context = useContext(AuthContext);
 
@@ -45,7 +47,7 @@ const FavoritesList = () => {
                 return null;
               }
             } catch (error) {
-              console.error(`Error fetching product with ID ${id}:`, error);
+              setHttpErrorMessage(error.message);
               return null;
             }
           });
@@ -62,7 +64,7 @@ const FavoritesList = () => {
           console.log("No data available"); //якщо дані відсутні
         }
       } catch (error) {
-        console.error("Error fetching favorites:", error); //якщо помилка при отриманні обраних
+        setHttpErrorMessage(error.message); //якщо помилка при отриманні обраних
       } finally {
         setIsLoading(false);
       }
@@ -71,21 +73,25 @@ const FavoritesList = () => {
     fetchProducts();
   }, [context.userDetails.key]);
 
+  useEffect(() => {
+    console.log("Total Pages:", totalPages); // Додано лог для перевірки totalPages
+  }, [totalPages]);
+
   const currentProducts = products.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  if (httpErrorMessage) {
+    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
+  }
 
   if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <div>
+    <React.Fragment>
       <ul className={styles.user__favorites}>
         {currentProducts.map((product) => (
           <li key={product.id}>
@@ -100,16 +106,36 @@ const FavoritesList = () => {
           </li>
         ))}
       </ul>
-      {totalPages > 1 && (
-        <div>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button key={index} onClick={() => handlePageChange(index + 1)}>
-              {index + 1}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
+      <div className={styles.user__pagination}>
+        <button
+          className={styles["user__btn-pagination"]}
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          &#10094;
+        </button>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`${styles["user__btn-pagination"]} ${
+              index + 1 === currentPage
+                ? styles["user__btn-pagination-active"]
+                : ""
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          className={styles["user__btn-pagination"]}
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          &#10095;
+        </button>
+      </div>
+    </React.Fragment>
   );
 };
 

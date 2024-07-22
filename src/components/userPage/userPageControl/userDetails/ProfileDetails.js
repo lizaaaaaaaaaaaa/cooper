@@ -7,12 +7,15 @@ import success from "../../../../assets/success.svg";
 import failure from "../../../../assets/failure.svg";
 import UserContacts from "./UserContacts";
 import Button from "../../../UI/Button";
+import { Navigate } from "react-router";
 
 const ProfileDetails = () => {
   const context = useContext(AuthContext);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
   const [isMessageShow, setIsMessageShow] = useState(false);
+
+  const [httpErrorMessage, setHttpErrorMessage] = useState(false);
 
   useEffect(() => {
     if (message) {
@@ -27,7 +30,9 @@ const ProfileDetails = () => {
   const saveUserData = async () => {
     try {
       if (!context.userDetails || !context.userDetails.login) {
-        console.error("User details are not defined or missing email");
+        setHttpErrorMessage(
+          "Данные пользователя отсутствуют или логин не определен. Если ви считаете, что это ошибка - обратитесь в поддержку!"
+        );
         return;
       }
 
@@ -69,7 +74,7 @@ const ProfileDetails = () => {
       setMessageType("error");
       setMessage("Данные не сохраненны.");
       setIsMessageShow(true);
-      console.error("Помилка при оновленні даних в базі даних: ", error);
+      setHttpErrorMessage(error.message);
     }
   };
 
@@ -77,6 +82,10 @@ const ProfileDetails = () => {
     setMessageType(dataAboutPasswordSending);
     setMessage("Данные сохраненны");
     setIsMessageShow(true);
+  };
+
+  if (httpErrorMessage) {
+    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
   }
 
   return (

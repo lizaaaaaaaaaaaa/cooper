@@ -10,8 +10,6 @@ const ProductItem = (props) => {
     Object.keys(context.userDetails?.favorites).includes(props.id)
   );
 
-  console.log(props.id);
-
   useEffect(() => {
     setIsItemChosen(
       Object.keys(context.userDetails?.favorites || {}).includes(props.id)

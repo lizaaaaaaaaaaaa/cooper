@@ -172,6 +172,26 @@
         margin-top: 30px;
       }
     }
+
+    &-pagination {
+      padding: 12px 14px;
+      color: #b3b9b8;
+      border: 1px solid #b3b9b8;
+      font-weight: 600;
+      font-size: 25px;
+      line-height: 0.96;
+
+      &:disabled {
+        opacity: .6;
+        cursor: default;
+      }
+
+      &-active {
+        border: 1px solid #fff;
+        color: #fff;
+        background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+      }
+    }
   }
 
   &__icon {
@@ -181,17 +201,18 @@
 
   &__main {
     min-height: 100vh;
+    width: 100%;
 
     &-profile {
-        padding-left: 120px;
+      padding-left: 120px;
 
-        @media (max-width: 1280px) {
-            padding-left: 20px;
-        }
+      @media (max-width: 1280px) {
+        padding-left: 20px;
+      }
 
-        @media (max-width: 115px) {
-            padding-left: 0;
-        }
+      @media (max-width: 115px) {
+        padding-left: 0;
+      }
     }
   }
 
@@ -483,6 +504,13 @@
     img {
       height: 380px !important;
     }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0 9px;
+    padding-top: 44px;
   }
 }
 
