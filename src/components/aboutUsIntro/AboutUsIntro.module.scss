@@ -1,0 +1,93 @@
+.intro {
+  background-image: url("../../assets/mainSlidersBack.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 39px;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 51px;
+
+    & > img {
+      max-width: 702px;
+      height: auto;
+    }
+  }
+
+  &__path {
+    font-size: 18px;
+    line-height: 0.96;
+    color: #031412;
+    display: flex;
+    gap: 0 3px;
+
+    span {
+      font-weight: 800;
+    }
+  }
+
+  &__link:hover {
+    text-decoration: underline;
+  }
+
+  &__title {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 100px;
+    line-height: 0.75;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #031412;
+    width: 623px;
+  }
+
+  &__quote {
+    & > blockquote {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 50px;
+      max-width: 530px;
+      padding-left: 74px;
+      position: relative;
+      color: transparent;
+      line-height: 96%;
+      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+      background-clip: text;
+
+      &::before,
+      &::after {
+        content: url("../../assets/ABOUT/quote.png");
+        position: absolute;
+      }
+
+      &::before {
+        left: 0;
+        top: -15px;
+      }
+
+      &::after {
+        right: -40px;
+        bottom: -10px;
+      }
+    }
+  }
+
+  &__author {
+    display: flex;
+    gap: 0 40px;
+    align-items: center;
+    padding-top: 35px;
+
+    & > span {
+      color: transparent;
+      max-width: 165px;
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 0.96;
+      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+      background-clip: text;
+    }
+  }
+}
