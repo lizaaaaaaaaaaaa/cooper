@@ -7,23 +7,6 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(true);
-  //   const [isHeaderTransparent, setIsHeaderTransparent] = useState(true);
-
-  //   useEffect(() => {
-  //     const handleScroll = () => {
-  //       if (window.scrollY <= 200) {
-  //         setIsHeaderTransparent(true);
-  //       } else {
-  //         setIsHeaderTransparent(false);
-  //       }
-  //     };
-
-  //     window.addEventListener("scroll", handleScroll);
-
-  //     return () => {
-  //       window.removeEventListener("scroll", handleScroll);
-  //     };
-  //   }, []);
 
   const location = useLocation();
   const isMainPage = location.pathname === "/main";
@@ -45,7 +28,7 @@ const Header = () => {
         window.innerWidth >= 630 &&
         window.innerWidth <= 1000)
     ) {
-      setIsMenuActive(!isMenuActive);
+      setIsMenuActive(false);
     }
   }, []);
 
@@ -59,7 +42,7 @@ const Header = () => {
     ) {
       document.body.classList.add(styles.lock);
     } else document.body.classList.remove(styles.lock);
-  }, []);
+  }, [isMenuActive]);
 
   const changeMenuActivity = () => {
     setIsMenuActive(!isMenuActive);

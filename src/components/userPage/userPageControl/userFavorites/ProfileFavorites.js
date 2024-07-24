@@ -6,7 +6,17 @@ import styles from "../../UserContent.module.scss";
 import Loader from "../../../UI/Loader";
 import { Navigate } from "react-router";
 
-const ITEMS_PER_PAGE = 6;
+let ITEMS_PER_PAGE;
+
+if (window.innerWidth > 768) {
+  ITEMS_PER_PAGE = 6;
+}
+if (window.innerWidth <= 768 && window.innerWidth > 480) {
+  ITEMS_PER_PAGE = 4;
+}
+if (window.innerWidth <= 480) {
+  ITEMS_PER_PAGE = 6;
+}
 
 const FavoritesList = () => {
   const [products, setProducts] = useState([]);
