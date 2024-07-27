@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const AboutUsIntro = () => {
   return (
-    <div className={styles.intro}>
+    <section className={styles.intro}>
       <div className="container">
         <p className={styles.intro__path}>
           <Link to="/" className={styles.intro__link}>Главная</Link>/<span>О нас</span>
@@ -15,7 +15,7 @@ const AboutUsIntro = () => {
         <AboutUsQuote />
         <img src={distiller} alt="distillerImage" />
       </div>
-    </div>
+    </section>
   );
 };
 

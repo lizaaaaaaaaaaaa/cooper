@@ -1,0 +1,48 @@
+.customers {
+  padding: 140px 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 82px;
+  }
+
+  &__content {
+    max-width: 517px;
+
+    h3 {
+      text-align: start !important;
+      line-height: 1.06;
+      padding-bottom: 23px;
+    }
+
+    p {
+      line-height: 1.25;
+    }
+  }
+
+  &__counter {
+    h6 {
+      font-size: 50px;
+      font-weight: 600;
+      line-height: 0.96;
+      color: transparent;
+      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+      background-clip: text;
+      padding-bottom: 25px;
+    }
+
+    h3 {
+      background-image: url("../../assets/ABOUT/customersBack.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-clip: text;
+      font-size: 220px;
+      font-weight: 800;
+      line-height: 96%;
+      color: rgba(0, 0, 0, 0.3);
+      user-select: none;
+    }
+  }
+}

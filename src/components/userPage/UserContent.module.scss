@@ -10,18 +10,18 @@
   }
 
   &__title {
-    font-size: 60px;
-    font-family: "Comfortaa", sans-serif;
+    font-size: 50px;
+    font-family: Lighthaus, sans-serif;
     padding-bottom: 51px;
     line-height: 1.06;
 
     @media (max-width: 745px) {
-      font-size: 50px;
+      font-size: 60px;
       padding-bottom: 41px;
     }
 
     @media (max-width: 640px) {
-      font-size: 40px;
+      font-size: 45px;
       padding-bottom: 26px;
     }
 
@@ -77,6 +77,11 @@
         width: 100% !important;
       }
     }
+
+    @media (max-width: 375px) {
+        max-width: 100%;
+        min-width: auto;
+      }
   }
 
   .user__btn {
@@ -93,7 +98,7 @@
     transition: transform 0.2s;
 
     @media (max-width: 1150px) {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       gap: 13px;
       width: 214px;
@@ -210,7 +215,7 @@
         padding-left: 20px;
       }
 
-      @media (max-width: 115px) {
+      @media (max-width: 1150px) {
         padding-left: 0;
       }
     }
@@ -235,6 +240,11 @@
       height: 120px;
       width: 120px;
     }
+
+    @media (max-width: 345px) {
+        height: 90px;
+        width: 90px;
+      }
   }
 
   &__greetings {

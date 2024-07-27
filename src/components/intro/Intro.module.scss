@@ -31,9 +31,9 @@
   &__title {
     font-size: 100px;
     line-height: 0.75;
-    font-family: "Comfortaa", sans-serif;
+    font-family: Lighthaus, sans-serif;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 400;
     padding-top: 232px;
     position: relative;
     min-width: 676px;
@@ -69,7 +69,7 @@
     }
 
     @media (max-height: 745px) {
-      padding-top: 155px;
+      padding-top: 185px;
     }
 
     @media (max-width: 785px) {
@@ -140,12 +140,12 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    font-size: 140px;
+    font-size: 160px;
     text-transform: uppercase;
-    font-family: "Comfortaa", sans-serif;
+    font-family: Lighthaus, sans-serif;
     text-align: right;
     max-width: 686px;
-    font-weight: 300;
+    font-weight: 400;
     z-index: 1;
 
     @media (max-width: 1430px) {
