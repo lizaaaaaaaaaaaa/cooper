@@ -4,6 +4,7 @@
   &__inner {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 82px;
   }
 
@@ -38,8 +39,8 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-clip: text;
-      font-size: 220px;
-      font-weight: 800;
+      font-size: 250px;
+      font-weight: 700;
       line-height: 96%;
       color: rgba(0, 0, 0, 0.3);
       user-select: none;

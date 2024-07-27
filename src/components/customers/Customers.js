@@ -45,6 +45,10 @@ const Customers = () => {
     };
   }, []);
 
+  const formatNumber = (number) => {
+    return number.toString().replace(/(\d{2})(\d{2})/, "$1 $2"); //додання пробілу після перших двух чисел
+  };
+
   return (
     <section className={styles.customers} ref={counterRef}>
       <div className={`container ${styles.customers__inner}`}>
@@ -57,7 +61,7 @@ const Customers = () => {
         </div>
         <div className={styles.customers__counter}>
           <h6>Счетчик клиентов</h6>
-          <h3>{currentNumber}</h3>
+          <h3>{formatNumber(currentNumber)}</h3>
         </div>
       </div>
     </section>
