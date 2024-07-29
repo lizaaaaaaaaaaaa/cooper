@@ -1,0 +1,46 @@
+.story {
+  background-image: url("../../assets/ABOUT/storyBack.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 74px 0;
+  position: relative;
+
+  h2 {
+    color: #fff;
+  }
+
+  &__inner {
+    display: flex;
+    gap: 0 31px;
+    justify-content: center;
+
+    div {
+      max-width: 445px;
+    }
+
+    p {
+      font-weight: 200;
+      font-size: 16px;
+      line-height: 1.32;
+      color: #fff;
+
+      &:not(:last-child) {
+        padding-bottom: 25px;
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: Lighthaus, sans-serif;
+    font-size: 155px;
+    line-height: 0.75;
+    max-width: 769px;
+    color: #fff;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}
