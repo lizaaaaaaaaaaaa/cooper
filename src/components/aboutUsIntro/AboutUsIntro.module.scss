@@ -4,6 +4,7 @@
   background-size: 300px 300px, cover;
   background-repeat: repeat, no-repeat;
   padding-top: 39px;
+  overflow: hidden;
 
   &__inner {
     display: flex;

@@ -431,7 +431,7 @@
     }
 
     @media (max-height: 600px) and (min-width: 630px) and (max-width: 1000px) {
-      display: none;
+      display: none !important;
     }
   }
 
