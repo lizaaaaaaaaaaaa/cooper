@@ -1,31 +1,88 @@
 .geography {
   padding: 80px 0;
 
+  @media (max-width: 600px) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: 375px) {
+    padding: 40px 0;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 73px;
+    position: relative;
+
+    @media (max-width: 1100px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 769px) {
+      gap: 35px;
+    }
+
+    @media (max-width: 600px) {
+      padding-bottom: 384px;
+    }
   }
 
   &__content {
     min-width: 365px;
 
+    @media (max-width: 460px) {
+      min-width: 100%;
+    }
+
     h2 {
       text-align: left;
       line-height: 1.06;
       padding-bottom: 38px !important;
+
+      @media (max-width: 1100px) {
+        text-align: center;
+      }
+
+      @media (max-width: 769px) {
+        padding-bottom: 22px !important;
+      }
+
+      @media (max-width: 375px) {
+        padding-bottom: 10px !important;
+      }
     }
 
     p {
       font-weight: 300;
       line-height: 1.25;
+
+      @media (max-width: 1100px) {
+        max-width: 607px;
+        text-align: center;
+      }
+
+      @media (max-width: 769px) {
+        font-size: 16px;
+      }
     }
   }
 
   &__img {
-    max-width: 1070px;
+    width: 72%;
     object-fit: contain;
     object-position: center center;
+
+    @media (max-width: 1100px) {
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      object-fit: cover;
+      height: 384px;
+      position: absolute;
+      left: 0;
+    }
   }
 }

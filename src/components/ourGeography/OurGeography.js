@@ -1,5 +1,7 @@
 import styles from "./OurGeography.module.scss";
 import map from "../../assets/ABOUT/map.svg";
+import mapMid from "../../assets/ABOUT/map-mid.svg";
+import mapSmall from "../../assets/ABOUT/map-small.svg";
 
 const OurGeography = () => {
   return (
@@ -12,7 +14,16 @@ const OurGeography = () => {
             стран радуются товарам, приобретенным в нашем магазине.
           </p>
         </div>
-        <img src={map} className={styles.geography__img} alt="map with our locations in the world" />
+        <picture>
+          <source srcSet={map} media="(min-width: 769px)" />
+          <source srcSet={mapMid} media="(max-width: 600px)" />
+          <source srcSet={mapSmall} media="(max-width: 375px)" />
+          <img
+            className={styles.geography__img}
+            src={map}
+            alt="map with our locations in the world"
+          />
+        </picture>
       </div>
     </section>
   );
