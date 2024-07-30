@@ -1,0 +1,31 @@
+.geography {
+  padding: 80px 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 73px;
+  }
+
+  &__content {
+    min-width: 365px;
+
+    h2 {
+      text-align: left;
+      line-height: 1.06;
+      padding-bottom: 38px !important;
+    }
+
+    p {
+      font-weight: 300;
+      line-height: 1.25;
+    }
+  }
+
+  &__img {
+    max-width: 1070px;
+    object-fit: contain;
+    object-position: center center;
+  }
+}
