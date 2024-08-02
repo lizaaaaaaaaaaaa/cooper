@@ -7,6 +7,7 @@ import Customers from "../components/customers/Customers";
 import OurStory from "../components/ourStory/OurStory";
 import OurGeography from "../components/ourGeography/OurGeography";
 import OurValues from "../components/ourValues/OurValues";
+import WhyWe from "./../components/whyWe/WhyWe";
 
 const About = () => {
   return (
@@ -17,6 +18,7 @@ const About = () => {
       <OurStory />
       <OurGeography />
       <OurValues />
+      <WhyWe />
       <Footer />
       <ScrollToTopButton />
     </React.Fragment>
