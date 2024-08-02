@@ -1,0 +1,60 @@
+.values {
+  padding: 80px 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 31px;
+  }
+
+  &__img {
+    background-image: url("../../assets/ABOUT/values/back.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 684px;
+    height: 622px;
+    position: relative;
+
+    h2 {
+      font-family: "Lighthaus", sans-serif;
+      font-size: 145px;
+      line-height: 0.75;
+      text-align: right;
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  &__content {
+    max-width: 485px;
+
+    h2 {
+      max-width: 292px;
+      text-align: left;
+      line-height: 1.06;
+      padding-bottom: 40px !important;
+    }
+
+    p {
+      font-weight: 300;
+      line-height: 1.25;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0 30px;
+      font-weight: 600;
+      font-size: 25px;
+    }
+  }
+}
