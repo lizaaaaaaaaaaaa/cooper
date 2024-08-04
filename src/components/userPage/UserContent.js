@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import ProfileDetails from "./userPageControl/userDetails/ProfileDetails";
 import FavoritesList from "./userPageControl/userFavorites/ProfileFavorites";
 
-const UserContent = (props) => {
+const UserContent = () => {
   const [userContent, setUserContent] = useState("contentOne");
   const context = useContext(AuthContext);
 

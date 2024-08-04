@@ -25,7 +25,7 @@
   }
 
   &__title {
-    font-family: Lighthaus, sans-serif;
+    font-family: var(--lh-font);
     font-size: 140px;
     line-height: 0.75;
     position: relative;
@@ -112,7 +112,7 @@
     bottom: -20px;
     font-size: 140px;
     text-transform: uppercase;
-    font-family: Lighthaus, sans-serif;
+    font-family: var(--lh-font);
     text-align: right;
     max-width: 686px;
     font-weight: 400;

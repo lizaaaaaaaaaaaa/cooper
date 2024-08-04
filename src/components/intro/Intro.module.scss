@@ -31,7 +31,7 @@
   &__title {
     font-size: 100px;
     line-height: 0.75;
-    font-family: Lighthaus, sans-serif;
+    font-family: var(--lh-font);
     text-transform: uppercase;
     font-weight: 400;
     padding-top: 232px;
@@ -142,7 +142,7 @@
     bottom: 0;
     font-size: 160px;
     text-transform: uppercase;
-    font-family: Lighthaus, sans-serif;
+    font-family: var(--lh-font);
     text-align: right;
     max-width: 686px;
     font-weight: 400;

@@ -1,0 +1,10 @@
+.catalog {
+  padding: 40px 0 80px;
+
+  &__title {
+    font-family: var(--lh-font);
+    font-size: 50px;
+    line-height: 1.06;
+    padding: 23px 0 31px;
+  }
+}

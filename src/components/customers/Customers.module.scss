@@ -1,3 +1,5 @@
+@import "../UI/Mixins.module.scss";
+
 .customers {
   padding: 140px 0;
 
@@ -65,12 +67,10 @@
 
   &__counter {
     h6 {
+      @include gradient-back;
       font-size: 50px;
       font-weight: 600;
       line-height: 0.96;
-      color: transparent;
-      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
-      background-clip: text;
       padding-bottom: 25px;
 
       @media (max-width: 1420px) {

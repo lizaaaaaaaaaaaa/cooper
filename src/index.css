@@ -1,14 +1,18 @@
 @import url("./fonts/Mont/stylesheet.css");
 @import url("./fonts/Lighthaus/stylesheet.css");
 
+:root {
+    --main-font: Mont, sans-serif;
+    --lh-font: Lighthaus, sans-serif;
+}
+
 html,
 body {
     height: 100%;
 }
 
 body {
-    font-family: Mont, sans-serif;
-    /* font-family: Lighthaus, sans-serif; */
+    font-family: var(--main-font);
     background-color: #fff;
     color: #031412;
     font-weight: 400;
@@ -46,7 +50,7 @@ body {
 }
 
 .title {
-    font-family: Lighthaus, sans-serif;
+    font-family: var(--lh-font);
     font-size: 50px;
     line-height: 0.75;
     text-align: center;

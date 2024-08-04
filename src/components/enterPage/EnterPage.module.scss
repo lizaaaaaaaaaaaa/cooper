@@ -1,3 +1,5 @@
+@import "../UI/Mixins.module.scss";
+
 .enter {
   &__container {
     margin: 0;
@@ -154,12 +156,10 @@
   }
 
   &__forgot {
+    @include gradient-back;
     font-weight: 300;
     font-size: 18px;
     text-decoration: underline;
-    background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
-    background-clip: text;
-    color: transparent;
     position: relative;
     z-index: 2;
     transition: all 0.2s;

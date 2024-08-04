@@ -1,5 +1,8 @@
+@import "../UI/Mixins.module.scss";
+
 .intro {
-  background-image: url("../../assets/ABOUT/back.jpg"), url("../../assets//ABOUT/backCircles.png");
+  background-image: url("../../assets/ABOUT/back.jpg"),
+    url("../../assets//ABOUT/backCircles.png");
   background-position: left top, center center;
   background-size: 300px 300px, cover;
   background-repeat: repeat, no-repeat;
@@ -76,7 +79,7 @@
   }
 
   &__title {
-    font-family: Lighthaus, sans-serif;
+    font-family: var(--lh-font);
     font-size: 100px;
     line-height: 0.75;
     padding-bottom: 50px;
@@ -142,10 +145,7 @@
       max-width: 604px;
       padding-left: 74px;
       position: relative;
-      color: transparent;
       line-height: 0.96;
-      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
-      background-clip: text;
 
       &::before,
       &::after {
@@ -233,13 +233,11 @@
     padding-top: 35px;
 
     & > span {
-      color: transparent;
+      @include gradient-back;
       max-width: 165px;
       font-weight: 900;
       font-size: 30px;
       line-height: 0.96;
-      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
-      background-clip: text;
     }
 
     @media (max-width: 768px) {
