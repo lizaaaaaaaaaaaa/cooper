@@ -45,10 +45,6 @@ export const AuthProvider = (props) => {
     });
   };
 
-  useEffect(() => {
-    console.log(userDetails);
-  }, [userDetails]);
-
   return (
     <AuthContext.Provider
       value={{

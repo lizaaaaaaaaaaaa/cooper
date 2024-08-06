@@ -1,21 +1,21 @@
 import { useState } from "react";
 import styles from "./CatalogHelp.module.scss";
 
-const CatalogHelp = () => {
+const CatalogHelp = (props) => {
   const [isSortListVisible, setIsSortListVisible] = useState(false);
   const [sortName, setSortName] = useState("По цене");
 
   const sortByPriceHandler = () => {
     setSortName("По цене");
     setIsSortListVisible(false);
+    props.getSortType("По цене");
   };
 
   const sortByNameHandler = () => {
     setSortName("За названием");
     setIsSortListVisible(false);
+    props.getSortType("За названием");
   };
-
-  console.log(sortName);
 
   return (
     <div className={styles.catalog__help}>

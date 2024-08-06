@@ -19,7 +19,7 @@ if (window.innerWidth <= 480) {
   ITEMS_PER_PAGE = 6;
 }
 
-const CatalogItemsList = () => {
+const CatalogItemsList = (props) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const filterParams = queryParams.get("filter");
@@ -90,7 +90,17 @@ const CatalogItemsList = () => {
     setCurrentPage(page);
   };
 
-  const currentProducts = distillers.slice(
+  const sortedDistillers = distillers.slice().sort((product1, product2) => {
+    const actualPrice = (product) =>
+      product.isSale === true ? product.salePrice : product.price; //якщо isSale true, то використовується salePrice, інакше звичайнийprice
+    if (props.passSortType === "По цене") {
+      return actualPrice(product1) - actualPrice(product2);
+    } else {
+      return product1.name.localeCompare(product2.name); //сортування за алфавітом
+    }
+  });
+
+  const currentProducts = sortedDistillers.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
@@ -120,16 +130,16 @@ const CatalogItemsList = () => {
     return <p>К сожалению, каталог пуст.</p>;
   }
 
+  console.log(props.passSortType);
+
   return (
     <section className={styles.catalog__main}>
-      <div className={styles.catalog__products}>
-        {catalogProducts}
-      </div>
+      <div className={styles.catalog__products}>{catalogProducts}</div>
       <CatalogPagination
         pages={ITEMS_PER_PAGE}
         distillersLength={distillers.length}
         currentPage={currentPage}
-        onPageChange={pageChangeHandler} 
+        onPageChange={pageChangeHandler}
       />
     </section>
   );

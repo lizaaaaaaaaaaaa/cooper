@@ -11,6 +11,7 @@ const CatalogContent = () => {
   const location = useLocation();
 
   const [filter, setFilter] = useState();
+  const [sort, setSort] = useState("По цене");
 
   const getCurrentFilterHandler = (filter) => {
     setFilter(filter);
@@ -46,8 +47,12 @@ const CatalogContent = () => {
       <div className="container">
         <h2 className={styles.catalog__title}>Каталог</h2>
         <CatalogBtnControls onGetCurrentFilter={getCurrentFilterHandler} />
-        <CatalogHelp />
-        <CatalogItemsList />
+        <CatalogHelp
+          getSortType={(type) => {
+            setSort(type);
+          }}
+        />
+        <CatalogItemsList passSortType={sort} />
       </div>
     </section>
   );
