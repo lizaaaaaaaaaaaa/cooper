@@ -83,10 +83,6 @@ const FavoritesList = () => {
     fetchProducts();
   }, [context.userDetails.key]);
 
-  useEffect(() => {
-    console.log("Total Pages:", totalPages); // Додано лог для перевірки totalPages
-  }, [totalPages]);
-
   const currentProducts = products.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE

@@ -179,12 +179,13 @@
     }
 
     &-pagination {
-      padding: 12px 14px;
+      padding: 12px 0;
       color: #b3b9b8;
       border: 1px solid #b3b9b8;
       font-weight: 600;
       font-size: 25px;
       line-height: 0.96;
+      width: 38px;
 
       &:disabled {
         opacity: 0.6;
