@@ -4,6 +4,7 @@ import Path from "../UI/Path";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import CatalogItemsList from "./catalogPageControl/CatalogItemsList";
+import CatalogHelp from "./catalogPageControl/CatalogHelp";
 
 const CatalogContent = () => {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const CatalogContent = () => {
       <div className="container">
         <h2 className={styles.catalog__title}>Каталог</h2>
         <CatalogBtnControls onGetCurrentFilter={getCurrentFilterHandler} />
+        <CatalogHelp />
         <CatalogItemsList />
       </div>
     </section>
