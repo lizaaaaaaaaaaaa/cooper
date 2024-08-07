@@ -20,7 +20,12 @@ const CatalogHelp = (props) => {
   return (
     <div className={styles.catalog__help}>
       <div className={styles.catalog__search}>
-        <input type="text" id="search" placeholder="Поиск" />
+        <input
+          type="text"
+          id="search"
+          placeholder="Поиск"
+          onChange={(event) => props.getSearchValue(event.target.value.trim())}
+        />
         <label htmlFor="search">
           <svg
             width="15"

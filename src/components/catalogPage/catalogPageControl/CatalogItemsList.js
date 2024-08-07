@@ -105,7 +105,15 @@ const CatalogItemsList = (props) => {
     currentPage * ITEMS_PER_PAGE
   );
 
-  const catalogProducts = currentProducts.map((product) => (
+  const searchProducts = props.passSearchValue
+    ? currentProducts.filter((product) =>
+        product.name.includes(props.passSearchValue)
+      )
+    : currentProducts;
+
+  console.log(!!props.passSearchValue);
+
+  const catalogProducts = searchProducts.map((product) => (
     <ProductItem
       key={product.id}
       id={product.id}
@@ -126,15 +134,17 @@ const CatalogItemsList = (props) => {
     return <Loader />;
   }
 
-  if (distillers.length === 0) {
-    return <p>К сожалению, каталог пуст.</p>;
-  }
-
-  console.log(props.passSortType);
+  console.log(catalogProducts.length);
 
   return (
     <section className={styles.catalog__main}>
-      <div className={styles.catalog__products}>{catalogProducts}</div>
+      <div className={styles.catalog__products}>
+        {catalogProducts.length !== 0 ? (
+          catalogProducts
+        ) : (
+          <p className={styles.catalog__empty}>К сожалению, каталог пуст.</p>
+        )}
+      </div>
       <CatalogPagination
         pages={ITEMS_PER_PAGE}
         distillersLength={distillers.length}

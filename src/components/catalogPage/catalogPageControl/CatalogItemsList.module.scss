@@ -1,8 +1,22 @@
+@import "../../UI/Mixins.module.scss" ;
+
 .catalog {
   &__products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1auto);
     gap: 29px 44px;
+
+    &:has(.catalog__empty) {
+      display: block;
+    }
+  }
+
+  &__empty {
+    @include gradient-back;
+    font-family: var(--lh-family);
+    font-size: 25px;
+    text-align: center;
+    padding: 30px 0;
   }
 }

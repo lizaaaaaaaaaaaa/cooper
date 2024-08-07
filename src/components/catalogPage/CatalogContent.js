@@ -12,6 +12,7 @@ const CatalogContent = () => {
 
   const [filter, setFilter] = useState();
   const [sort, setSort] = useState("По цене");
+  const [searchValue, setSearchValue] = useState("");
 
   const getCurrentFilterHandler = (filter) => {
     setFilter(filter);
@@ -51,8 +52,9 @@ const CatalogContent = () => {
           getSortType={(type) => {
             setSort(type);
           }}
+          getSearchValue={(value) => setSearchValue(value)}
         />
-        <CatalogItemsList passSortType={sort} />
+        <CatalogItemsList passSortType={sort} passSearchValue={searchValue} />
       </div>
     </section>
   );
