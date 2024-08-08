@@ -7,11 +7,11 @@ const Path = () => {
 
   const locationSwitchCase = () => {
     switch (location.pathname) {
-      case (location.pathname = "/catalog"):
+      case "/catalog":
         return "Каталог";
-      case (location.pathname = "/about"):
+      case "/about":
         return "О нас";
-      case (location.pathname = "/news"):
+      case "/news":
         return "Новости";
     }
   };
@@ -21,7 +21,10 @@ const Path = () => {
       <Link to="/" className={styles.path__main}>
         Главная
       </Link>
-      /<Link to={location.pathname} className={styles.path__page}>{locationSwitchCase()}</Link>
+      /
+      <Link to={location.pathname} className={styles.path__page}>
+        {locationSwitchCase()}
+      </Link>
     </p>
   );
 };

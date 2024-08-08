@@ -1,7 +1,7 @@
 import styles from "./CatalogContent.module.scss";
 import CatalogBtnControls from "./catalogPageControl/CatalogBtnControls";
 import Path from "../UI/Path";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import CatalogItemsList from "./catalogPageControl/CatalogItemsList";
 import CatalogHelp from "./catalogPageControl/CatalogHelp";
@@ -10,15 +10,10 @@ const CatalogContent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [filter, setFilter] = useState();
   const [sort, setSort] = useState("По цене");
   const [searchValue, setSearchValue] = useState("");
 
-  const getCurrentFilterHandler = (filter) => {
-    setFilter(filter);
-  };
-
-  const catalogControlHandler = () => {
+  const catalogControlHandler = (filter) => {
     switch (filter) {
       case "Для эфирных масел":
         return "essentialOils";
@@ -29,16 +24,16 @@ const CatalogContent = () => {
       case "Аксессуары из меди":
         return "accessories";
       default:
-        return "all";
+        return "";
     }
   };
 
-  useEffect(() => {
+  const getCurrentFilterHandler = (filter) => {
     navigate({
       pathname: location.pathname,
-      search: `?filter=${catalogControlHandler()}`,
+      search: `?filter=${catalogControlHandler(filter)}`,
     });
-  }, [filter]);
+  };
 
   return (
     <section className={`content  ${styles.catalog}`}>
