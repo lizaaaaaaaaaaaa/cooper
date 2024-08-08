@@ -1,33 +1,44 @@
+import { useEffect, useState } from "react";
 import styles from "./CatalogItemsList.module.scss";
 import { Navigate, useLocation } from "react-router";
-import { useEffect, useState } from "react";
 import { db } from "../../../firebase/firebase";
 import { ref as dbRef, get } from "firebase/database";
 import Loader from "../../UI/Loader";
 import ProductItem from "../../UI/ProductItem";
 import CatalogPagination from "./CatalogPagination";
 
-let ITEMS_PER_PAGE;
-
-if (window.innerWidth > 768) {
-  ITEMS_PER_PAGE = 9;
-}
-if (window.innerWidth <= 768 && window.innerWidth > 480) {
-  ITEMS_PER_PAGE = 8;
-}
-if (window.innerWidth <= 480) {
-  ITEMS_PER_PAGE = 6;
-}
-
 const CatalogItemsList = (props) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const filterParams = queryParams.get("filter");
 
+  const getItemsPerPage = () => {
+    if (window.innerWidth > 768) {
+      return 9;
+    } else if (window.innerWidth <= 768 && window.innerWidth > 480) {
+      return 8;
+    } else {
+      return 6;
+    }
+  };
+
   const [distillers, setDistillers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsPerPage(getItemsPerPage());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const getFilterfromParamsHandler = () => {
     switch (filterParams) {
@@ -48,16 +59,15 @@ const CatalogItemsList = (props) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const userDocRef = dbRef(db, `catalog`); // посилання на шлях 'catalog' в базі даних
-        const dataSnapshot = await get(userDocRef); //запит для отримання даних за вказаним шляхом
+        const userDocRef = dbRef(db, `catalog`);
+        const dataSnapshot = await get(userDocRef);
 
         const loadedDistillers = [];
 
         const filter = getFilterfromParamsHandler();
-        console.log(filter);
 
         if (dataSnapshot.exists()) {
-          const data = dataSnapshot.val(); // отримання даних у вигляді об'єкта
+          const data = dataSnapshot.val();
           for (const key in data) {
             const wantedFilter = data[key];
             if (filter === wantedFilter.filter || filter === "all") {
@@ -92,17 +102,17 @@ const CatalogItemsList = (props) => {
 
   const sortedDistillers = distillers.slice().sort((product1, product2) => {
     const actualPrice = (product) =>
-      product.isSale === true ? product.salePrice : product.price; //якщо isSale true, то використовується salePrice, інакше звичайнийprice
+      product.isSale === true ? product.salePrice : product.price;
     if (props.passSortType === "По цене") {
       return actualPrice(product1) - actualPrice(product2);
     } else {
-      return product1.name.localeCompare(product2.name); //сортування за алфавітом
+      return product1.name.localeCompare(product2.name);
     }
   });
 
   const currentProducts = sortedDistillers.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
 
   const searchProducts = props.passSearchValue
@@ -110,8 +120,6 @@ const CatalogItemsList = (props) => {
         product.name.includes(props.passSearchValue)
       )
     : currentProducts;
-
-  console.log(!!props.passSearchValue);
 
   const catalogProducts = searchProducts.map((product) => (
     <ProductItem
@@ -134,8 +142,6 @@ const CatalogItemsList = (props) => {
     return <Loader />;
   }
 
-  console.log(catalogProducts.length);
-
   return (
     <section className={styles.catalog__main}>
       <div className={styles.catalog__products}>
@@ -146,7 +152,7 @@ const CatalogItemsList = (props) => {
         )}
       </div>
       <CatalogPagination
-        pages={ITEMS_PER_PAGE}
+        pages={itemsPerPage}
         distillersLength={distillers.length}
         currentPage={currentPage}
         onPageChange={pageChangeHandler}
