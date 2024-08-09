@@ -16,6 +16,7 @@ const ProductItem = (props) => {
         return "";
     }
   };
+  
   return (
     <NavLink
       to={

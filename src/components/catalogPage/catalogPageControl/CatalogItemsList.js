@@ -54,22 +54,23 @@ const CatalogItemsList = (props) => {
         return "all";
     }
   };
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const userDocRef = dbRef(db, `catalog`);
-        const dataSnapshot = await get(userDocRef);
+        const userDocRef = dbRef(db, `catalog`); //посилання на бд та шлях до папки каталогу
+        const getDatafromDatabase = await get(userDocRef); //отримання даних з бази даних асинхронно
 
         const loadedDistillers = [];
 
         const filter = getFilterfromParamsHandler();
 
-        if (dataSnapshot.exists()) {
-          const data = dataSnapshot.val();
+        if (getDatafromDatabase.exists()) { //перевірки існування даних
+          const data = getDatafromDatabase.val(); //отримання значень даних
           for (const key in data) {
             const wantedFilter = data[key];
+            // додання об'єкту у масив loadedDistillers
             if (filter === wantedFilter.filter || filter === "all") {
               loadedDistillers.push({
                 id: key,
