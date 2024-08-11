@@ -1,0 +1,6 @@
+.news__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 30px 34px;
+}
