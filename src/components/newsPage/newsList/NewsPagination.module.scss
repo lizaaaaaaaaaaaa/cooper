@@ -1,0 +1,31 @@
+.news {
+  &__pagination {
+    padding-top: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 9px;
+  }
+
+  &__button {
+    font-weight: 600;
+    font-size: 25px;
+    color: #b3b9b8;
+    padding: 12px 0;
+    border: 1px solid #b3b9b8;
+    width: 38px;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    &-active {
+      padding: 14px 0;
+      background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
+      border: none;
+      width: 39px;
+      color: #ffffff;
+    }
+  }
+}

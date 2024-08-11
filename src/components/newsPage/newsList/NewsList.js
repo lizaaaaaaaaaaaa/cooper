@@ -5,6 +5,7 @@ import { ref as dbRef, get } from "firebase/database";
 import Loader from "../../UI/Loader";
 import { Navigate } from "react-router";
 import NewsItem from "./NewsItem";
+import NewsPagination from "./NewsPagination";
 
 const NewsList = () => {
   const getNewsPerPage = () => {
@@ -19,6 +20,7 @@ const NewsList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
   const [newsPerPage, setNewsPerPage] = useState(getNewsPerPage());
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,7 +70,10 @@ const NewsList = () => {
     fetchData();
   }, []);
 
-  console.log(news);
+  const currentNews = news.slice(
+    (currentPage - 1) * newsPerPage,
+    newsPerPage * currentPage
+  );
 
   if (isLoading) {
     return <Loader />;
@@ -78,11 +83,32 @@ const NewsList = () => {
     return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
   }
 
-  return <section className={styles.news__main}>
-    <ul className={styles.news__list}>
-        {news.map((newsItem)=><NewsItem key={newsItem.id} id={newsItem.id} title={newsItem.title} date={newsItem.date} image={newsItem.image} content={newsItem.content} />)}
-    </ul>
-  </section>;
+  const pageChangeHandler = (page) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <section className={styles.news__main}>
+      <ul className={styles.news__list}>
+        {currentNews.map((newsItem) => (
+          <NewsItem
+            key={newsItem.id}
+            id={newsItem.id}
+            title={newsItem.title}
+            date={newsItem.date}
+            image={newsItem.image}
+            content={newsItem.content}
+          />
+        ))}
+      </ul>
+      <NewsPagination
+        pages={newsPerPage}
+        newsLength={news.length}
+        currentPage={currentPage}
+        onPageChange={pageChangeHandler}
+      />
+    </section>
+  );
 };
 
 export default NewsList;
