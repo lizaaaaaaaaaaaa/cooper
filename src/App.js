@@ -15,23 +15,28 @@ import Registration from "./pages/Registration";
 import EnterPage from "./components/enterPage/EnterPage";
 import UserPage from "./pages/UserPage";
 import { AuthProvider } from "./context/auth-context";
+import { NewsProvider } from "./context/news-context";
+import ArticlePage from "./pages/ArticlePage";
 
 function App() {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Navigate to="/main" />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/enter" element={<EnterPage />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/httpError" element={<HttpError />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <NewsProvider>
+          <Routes>
+            <Route path="/" element={<Navigate to="/main" />} />
+            <Route path="/main" element={<Main />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/news/:newsId" element={<ArticlePage />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/enter" element={<EnterPage />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/httpError" element={<HttpError />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </NewsProvider>
       </AuthProvider>
     </Router>
   );
