@@ -1,0 +1,29 @@
+.article {
+  &__socials {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    align-items: center;
+
+    & > span {
+      font-weight: 800;
+      line-height: 1.32;
+      text-transform: uppercase;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 0 18px;
+    align-items: center;
+  }
+
+  &__link {
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+      transition: 0.4s;
+    }
+  }
+}

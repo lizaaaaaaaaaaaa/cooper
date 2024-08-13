@@ -7,6 +7,10 @@
 
   &__page {
     font-weight: 800;
+
+    &-item {
+        font-weight: 800;
+    }
   }
 
   &__main:hover {
@@ -15,5 +19,15 @@
 
   @media (max-width: 375px) {
     font-size: 16px;
+  }
+}
+
+.path:has(.path__page-item) {
+  .path__page {
+    font-weight: inherit;
+
+    &:hover {
+        text-decoration: underline;
+    }
   }
 }

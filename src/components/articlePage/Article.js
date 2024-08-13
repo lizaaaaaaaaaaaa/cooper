@@ -1,4 +1,6 @@
-import styles from "./ArticleContent.module.scss";
+import styles from "./Article.module.scss";
+import Path from "../UI/Path";
+import ArticleContent from "./articleContent/ArticleContent";
 
 // // Компонент для відображення параграфів
 // const Paragraph = ({ text }) => <p>{text}</p>;
@@ -13,12 +15,15 @@ import styles from "./ArticleContent.module.scss";
 // );
 
 // Основний компонент для відображення контенту
-const ArticleContent = () => {
+const Article = () => {
   return (
     <div className={`content ${styles.article}`}>
-      <div className="container">контент</div>
+      <div className="container">
+        <Path />
+        <ArticleContent />
+      </div>
     </div>
   );
 };
 
-export default ArticleContent;
+export default Article;

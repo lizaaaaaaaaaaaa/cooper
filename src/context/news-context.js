@@ -50,8 +50,6 @@ export const NewsProvider = (props) => {
     fetchData();
   }, []);
 
-  console.log(news);
-
   return (
     <NewsContext.Provider
       value={{
