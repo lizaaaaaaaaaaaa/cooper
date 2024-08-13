@@ -38,7 +38,7 @@ const Path = () => {
       <Link to="/" className={styles.path__main}>
         Главная
       </Link>
-      /
+      <span>/</span>
       <Link
         to={
           location.pathname.startsWith("/news/") ? "/news" : location.pathname
@@ -51,7 +51,7 @@ const Path = () => {
       >
         {locationSwitchCase()}
       </Link>
-      {location.pathname.startsWith("/news/") ? "/" : ""}
+      {location.pathname.startsWith("/news/") ? <span>/</span> : ""}
       <Link
         to={`${location.pathname}/${newsId}`}
         className={styles["path__page-item"]}

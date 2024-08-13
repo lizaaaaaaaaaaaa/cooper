@@ -1,6 +1,10 @@
 .article {
   &__main {
     padding-top: 23px;
+
+    @media screen and (max-width: 375px) {
+      padding-top: 21px;
+    }
   }
 
   &__top {
@@ -9,6 +13,39 @@
     align-items: flex-end;
     gap: 0 50px;
     padding-bottom: 31px;
+
+    @media screen and (max-width: 950px) {
+      & > div {
+        justify-content: flex-end;
+        width: min-content;
+      }
+    }
+
+    @media screen and (max-width: 769px) {
+      padding-bottom: 18px;
+    }
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      gap: 25px;
+
+      & > div {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    @media screen and (max-width: 420px) {
+      & > div {
+        justify-content: space-between;
+        gap: 20px;
+      }
+    }
+
+    @media screen and (max-width: 375px) {
+      padding-bottom: 11px;
+      gap: 15px;
+    }
   }
 
   &__title {
@@ -16,6 +53,36 @@
     font-size: 50px;
     line-height: 1.06;
     max-width: 578px;
+
+    @media screen and (max-width: 950px) {
+      font-size: 45px;
+      max-width: 518px;
+    }
+
+    @media screen and (max-width: 769px) {
+      font-size: 40px;
+      max-width: 469px;
+    }
+
+    @media screen and (max-width: 680px) {
+      font-size: 32px;
+    }
+
+    @media screen and (max-width: 600px) {
+      max-width: 100%;
+    }
+
+    @media screen and (max-width: 420px) {
+      font-size: 28px;
+    }
+
+    @media screen and (max-width: 375px) {
+      font-size: 24px;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 20px;
+    }
   }
 
   &__img {
@@ -25,5 +92,15 @@
     object-position: center center;
     display: block;
     margin-bottom: 46px;
+
+    @media screen and (max-width: 769px) {
+      height: 209px;
+      margin-bottom: 27px;
+    }
+
+    @media screen and (max-width: 375px) {
+      height: 107px;
+      margin-bottom: 16px;
+    }
   }
 }

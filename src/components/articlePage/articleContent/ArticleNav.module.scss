@@ -7,6 +7,26 @@
     padding-top: 50px;
     margin-top: 56px;
     border-top: 1px solid #e6e8e7;
+
+    @media screen and (max-width: 1000px) {
+      flex-wrap: wrap;
+
+      & > div {
+        order: 2;
+        margin: 0 auto;
+      }
+    }
+
+    @media screen and (max-width: 769px) {
+      padding-top: 28px;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 375px) {
+      gap: 21px 5px;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
   }
 
   &__link {
@@ -17,6 +37,7 @@
     gap: 0 14px;
     align-items: center;
     transition: 0.3s;
+    width: 330px;
 
     &:hover {
       transform: scale(1.05);
@@ -26,6 +47,31 @@
     span {
       font-size: 24px;
       color: #4b7159;
+    }
+
+    @media screen and (max-width: 1000px) {
+      &:first-child {
+        order: 0;
+      }
+      &:last-child {
+        order: 1;
+      }
+    }
+
+    @media screen and (max-width: 815px) {
+      width: 224px;
+    }
+
+    @media screen and (max-width: 550px) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 375px) {
+      width: 49%;
+    }
+
+    @media screen and (max-width: 300px) {
+      width: 100%;
     }
   }
 }
