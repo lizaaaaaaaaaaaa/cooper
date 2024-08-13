@@ -5,6 +5,8 @@ import Loader from "../../UI/Loader";
 import { useContext } from "react";
 import ArticleSocials from "./ArticleSocials";
 import { useLocation } from "react-router-dom";
+import ArticleText from "./ArticleText";
+import ArticleNav from "./ArticleNav";
 
 const ArticleContent = () => {
   const location = useLocation();
@@ -44,9 +46,21 @@ const ArticleContent = () => {
     <div className={styles.article__main}>
       <div className={styles.article__top}>
         <h1 className={styles.article__title}>{articleDetails.title}</h1>
-        <ArticleSocials titleForLink={articleDetails.title} link={location.pathname} />
+        <ArticleSocials
+          titleForLink={articleDetails.title}
+          link={location.pathname}
+        />
       </div>
-      <img src={articleDetails.image} alt={articleDetails.title} className={styles.article__img} />
+      <img
+        src={articleDetails.image}
+        alt={articleDetails.title}
+        className={styles.article__img}
+      />
+      <ArticleText textContent={articleDetails.content} />
+      <ArticleNav
+        prevArticle={prevArticle ? prevArticle : null}
+        nextArticle={nextArticle ? nextArticle : null}
+      />
     </div>
   );
 };

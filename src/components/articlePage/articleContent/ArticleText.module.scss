@@ -1,0 +1,45 @@
+.article {
+  &__content {
+    line-height: 1.32;
+    max-width: 1207px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+
+    p {
+      font-size: 16px;
+    }
+
+    h3 {
+      padding-top: 31px;
+      font-weight: 800;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    h5 {
+      font-weight: 600;
+      font-size: 20px;
+      padding-top: 11px;
+    }
+
+    section {
+      max-width: 1082px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px 0;
+    }
+  }
+
+  &__list {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.8;
+    list-style-type: revert;
+    margin-left: 15px;
+
+    & > li::marker {
+      font-size: 8px;
+    }
+  }
+}

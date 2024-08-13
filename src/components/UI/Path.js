@@ -28,7 +28,9 @@ const Path = () => {
   };
 
   const getNewsTitleHandler = () => {
-    return context.news.find((news) => news.id === newsId) ? context.news.find((news) => news.id === newsId).title : "";
+    return context.news.find((news) => news.id === newsId)
+      ? context.news.find((news) => news.id === newsId).title
+      : "";
   };
 
   return (
@@ -37,7 +39,12 @@ const Path = () => {
         Главная
       </Link>
       /
-      <Link to={location.pathname} className={styles.path__page}>
+      <Link
+        to={
+          location.pathname.startsWith("/news/") ? "/news" : location.pathname
+        }
+        className={styles.path__page}
+      >
         {locationSwitchCase()}
       </Link>
       {location.pathname.startsWith("/news/") ? "/" : ""}

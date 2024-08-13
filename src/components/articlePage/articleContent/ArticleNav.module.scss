@@ -1,0 +1,31 @@
+.article {
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding-top: 50px;
+    margin-top: 56px;
+    border-top: 1px solid #e6e8e7;
+  }
+
+  &__link {
+    font-size: 16px;
+    line-height: 1.32;
+    font-weight: 300;
+    display: flex;
+    gap: 0 14px;
+    align-items: center;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.4s;
+    }
+
+    span {
+      font-size: 24px;
+      color: #4b7159;
+    }
+  }
+}
