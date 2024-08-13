@@ -51,11 +51,14 @@ const ArticleContent = () => {
           link={location.pathname}
         />
       </div>
-      <img
-        src={articleDetails.image}
-        alt={articleDetails.title}
-        className={styles.article__img}
-      />
+      <div className={styles.article__imageContainer}>
+        <img
+          src={articleDetails.image}
+          alt={articleDetails.title}
+          className={styles.article__img}
+        />
+        <span>{articleDetails.date}</span>
+      </div>
       <ArticleText textContent={articleDetails.content} />
       <ArticleNav
         prevArticle={prevArticle ? prevArticle : null}
