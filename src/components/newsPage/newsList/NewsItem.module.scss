@@ -8,6 +8,10 @@
       margin-bottom: 20px;
       max-width: 617px;
       min-height: 57px;
+
+      @media screen and (max-width: 375px) {
+        margin-bottom: 14px;
+      }
     }
   }
 
@@ -24,9 +28,28 @@
     padding: 26px 28px;
     position: relative;
 
+    @media screen and (max-width: 500px) {
+      padding: 16px 18px;
+    }
+
+    @media screen and (max-width: 375px) {
+      height: 107px;
+      margin-bottom: 17px;
+      padding: 12px 10px;
+    }
+
     h3 {
       font-size: 20px;
       color: #fff;
+
+      @media screen and (max-width: 500px) {
+        font-size: 17px;
+      }
+
+      @media screen and (max-width: 375px) {
+        font-size: 14px;
+        font-weight: 600;
+      }
     }
 
     span {
@@ -38,6 +61,11 @@
       right: 0;
       top: 0;
       color: #fff;
+
+      @media screen and (max-width: 375px) {
+        font-size: 16px;
+        font-weight: 600;
+      }
     }
   }
 
@@ -46,7 +74,7 @@
     font-weight: 800;
     font-size: 14px;
     line-height: 1.34;
-    
+
     span {
       margin-left: 5px;
     }

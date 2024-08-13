@@ -4,7 +4,6 @@
   &__products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
     gap: 29px 44px;
     overflow: hidden;
 
@@ -18,13 +17,11 @@
 
     @media screen and (max-width: 769px) {
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, auto);
       gap: 26px 20px;
     }
 
     @media screen and (max-width: 475px) {
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(1, auto);
       gap: 16px;
     }
   }

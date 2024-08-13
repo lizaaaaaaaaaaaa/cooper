@@ -20,7 +20,7 @@ const renderArticleText = (item, index, level = 1) => {
           {item.title && <HeadingTag>{item.title}</HeadingTag>}
           {item.content &&
             item.content.map((nestedItem, nestedIndex) =>
-                renderArticleText(nestedItem, nestedIndex, level + 1) // чим більше разів рендериться компонент, тим більшим стає вложеність, якщо рівень вложеності не перший, то наступні title завжди будуть мати вложеність h5
+                renderArticleText(nestedItem, nestedIndex, level + 1) // чим більше разів викликається знову компонент, тим більшим стає вложеність, якщо рівень вложеності не перший, то наступні title завжди будуть мати вложеність h5
             )}
         </section>
       );

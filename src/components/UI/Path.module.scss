@@ -8,9 +8,17 @@
   &__page {
     font-weight: 800;
 
+    &-active {
+      font-weight: 400 !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     &-item {
-        font-weight: 800;
-        pointer-events: none;
+      font-weight: 800;
+      pointer-events: none;
     }
   }
 
@@ -20,15 +28,5 @@
 
   @media (max-width: 375px) {
     font-size: 16px;
-  }
-}
-
-.path:has(.path__page-item) {
-  .path__page {
-    font-weight: inherit;
-
-    &:hover {
-        text-decoration: underline;
-    }
   }
 }

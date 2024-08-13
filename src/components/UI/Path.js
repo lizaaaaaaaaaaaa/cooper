@@ -43,7 +43,11 @@ const Path = () => {
         to={
           location.pathname.startsWith("/news/") ? "/news" : location.pathname
         }
-        className={styles.path__page}
+        className={`${styles.path__page} ${
+          location.pathname.startsWith("/news/")
+            ? styles["path__page-active"]
+            : ""
+        }`}
       >
         {locationSwitchCase()}
       </Link>

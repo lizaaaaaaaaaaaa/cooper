@@ -79,9 +79,9 @@
     }
 
     @media (max-width: 375px) {
-        max-width: 100%;
-        min-width: auto;
-      }
+      max-width: 100%;
+      min-width: auto;
+    }
   }
 
   .user__btn {
@@ -243,9 +243,9 @@
     }
 
     @media (max-width: 345px) {
-        height: 90px;
-        width: 90px;
-      }
+      height: 90px;
+      width: 90px;
+    }
   }
 
   &__greetings {
@@ -506,7 +506,6 @@
   &__favorites {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
     gap: 30px;
 
     @media (max-width: 1000px) {
@@ -519,7 +518,6 @@
 
     @media screen and (max-width: 475px) {
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(6, auto);
     }
   }
 
