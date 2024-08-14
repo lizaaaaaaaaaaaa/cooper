@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./CatalogItemsList.module.scss";
 import { Navigate, useLocation } from "react-router";
-import { db } from "../../../firebase/firebase";
-import { ref as dbRef, get } from "firebase/database";
 import Loader from "../../UI/Loader";
 import ProductItem from "../../UI/ProductItem";
 import CatalogPagination from "./CatalogPagination";
+import ProductsContext from "../../../context/products-context";
 
 const CatalogItemsList = (props) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const filterParams = queryParams.get("filter");
+
+  const context = useContext(ProductsContext);
 
   const getItemsPerPage = () => {
     if (window.innerWidth > 768) {
@@ -23,8 +24,6 @@ const CatalogItemsList = (props) => {
   };
 
   const [distillers, setDistillers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [httpErrorMessage, setHttpErrorMessage] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage());
 
@@ -54,47 +53,18 @@ const CatalogItemsList = (props) => {
         return "all";
     }
   };
-  
+
+  const filter = getFilterfromParamsHandler();
+  console.log(filter);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const userDocRef = dbRef(db, `catalog`); //посилання на бд та шлях до папки каталогу
-        const getDatafromDatabase = await get(userDocRef); //отримання даних з бази даних асинхронно
-
-        const loadedDistillers = [];
-
-        const filter = getFilterfromParamsHandler();
-
-        if (getDatafromDatabase.exists()) { //перевірки існування даних
-          const data = getDatafromDatabase.val(); //отримання значень даних
-          for (const key in data) {
-            const wantedFilter = data[key];
-            // додання об'єкту у масив loadedDistillers
-            if (filter === wantedFilter.filter || filter === "all") {
-              loadedDistillers.push({
-                id: key,
-                name: data[key].name,
-                price: data[key].price,
-                image: data[key].image,
-                filter: data[key].filter,
-                isSale: data[key].isSale,
-                salePrice: data[key].salePrice,
-              });
-            }
-          }
-          setDistillers(loadedDistillers);
-        } else {
-          setDistillers([]);
-        }
-        setIsLoading(false);
-      } catch (error) {
-        setHttpErrorMessage(error.message);
-        setIsLoading(false);
+    const wantedDistillers = [];
+    for (const element of context.products) {
+      console.log(element);
+      if (filter === element.filter || filter === "all") {
+        wantedDistillers.push(element);
       }
-    };
-
-    fetchData();
+    }
+    setDistillers(wantedDistillers);
   }, [filterParams]);
 
   const pageChangeHandler = (page) => {
@@ -135,11 +105,17 @@ const CatalogItemsList = (props) => {
     />
   ));
 
-  if (httpErrorMessage) {
-    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
+  if (context.httpErrorMessage) {
+    return (
+      <Navigate
+        to="/httpError"
+        errorMessage={context.httpErrorMessage}
+        replace
+      />
+    );
   }
 
-  if (isLoading) {
+  if (context.isLoading) {
     return <Loader />;
   }
 

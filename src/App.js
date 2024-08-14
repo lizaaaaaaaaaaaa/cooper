@@ -16,27 +16,30 @@ import EnterPage from "./components/enterPage/EnterPage";
 import UserPage from "./pages/UserPage";
 import { AuthProvider } from "./context/auth-context";
 import { NewsProvider } from "./context/news-context";
+import { ProductsProvider } from "./context/products-context";
 import ArticlePage from "./pages/ArticlePage";
 
 function App() {
   return (
     <Router>
       <AuthProvider>
-        <NewsProvider>
-          <Routes>
-            <Route path="/" element={<Navigate to="/main" />} />
-            <Route path="/main" element={<Main />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/news/:newsId" element={<ArticlePage />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/enter" element={<EnterPage />} />
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/httpError" element={<HttpError />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </NewsProvider>
+        <ProductsProvider>
+          <NewsProvider>
+            <Routes>
+              <Route path="/" element={<Navigate to="/main" />} />
+              <Route path="/main" element={<Main />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/news/:newsId" element={<ArticlePage />} />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/enter" element={<EnterPage />} />
+              <Route path="/user" element={<UserPage />} />
+              <Route path="/httpError" element={<HttpError />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </NewsProvider>
+        </ProductsProvider>
       </AuthProvider>
     </Router>
   );

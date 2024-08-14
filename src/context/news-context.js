@@ -24,8 +24,6 @@ export const NewsProvider = (props) => {
 
         if (getDataFromDatabase.exists()) {
           const data = getDataFromDatabase.val();
-          console.log(data);
-
           for (const key in data) {
             loadedNews.push({
               id: key,
