@@ -12,6 +12,7 @@ const ProductSlider = (props) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     vertical: true,
+    swipe: false,
   };
 
   const changeModalActivityHandler = (image) => {
