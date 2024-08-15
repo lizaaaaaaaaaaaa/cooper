@@ -7,7 +7,9 @@ const Backdrop = (props) => {
 };
 
 const ModalWindow = (props) => {
-  return <div className={styles.modal}>{props.children}</div>;
+  return (
+    <div className={`${styles.modal} ${props.className}`}>{props.children}</div>
+  );
 };
 
 const portalElement = document.getElementById("overlays");
@@ -27,7 +29,7 @@ const Modal = (props) => {
         portalElement
       )}
       {ReactDom.createPortal(
-        <ModalWindow>{props.children}</ModalWindow>,
+        <ModalWindow className={props.className}>{props.children}</ModalWindow>,
         portalElement
       )}
     </React.Fragment>

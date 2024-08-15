@@ -3,16 +3,23 @@ import styles from "./Path.module.scss";
 import { Link } from "react-router-dom";
 import NewsContext from "../../context/news-context";
 import { useContext } from "react";
+import ProductContext from "../../context/products-context";
 
 const Path = () => {
   const location = useLocation();
   const params = useParams();
   const { newsId } = params;
-  const context = useContext(NewsContext);
+  const { productId } = params;
+
+  const newsContext = useContext(NewsContext);
+  const productContext = useContext(ProductContext);
 
   const locationSwitchCase = () => {
     if (location.pathname.startsWith("/news/")) {
       return "Новости";
+    }
+    if (location.pathname.startsWith("/catalog/")) {
+      return "Каталог";
     }
 
     switch (location.pathname) {
@@ -28,10 +35,31 @@ const Path = () => {
   };
 
   const getNewsTitleHandler = () => {
-    return context.news.find((news) => news.id === newsId)
-      ? context.news.find((news) => news.id === newsId).title
+    return newsContext.news.find((news) => news.id === newsId)
+      ? newsContext.news.find((news) => news.id === newsId).title
       : "";
   };
+
+  const getProductTitleHandler = () => {
+    return productContext.products.find((product) => product.id === productId)
+      ? productContext.products.find((product) => product.id === productId)
+          .name
+      : "";
+  };
+
+  let locationPage;
+  let locationDetails;
+
+  if (location.pathname.startsWith("/news/")) {
+    locationPage = "/news";
+    locationDetails = getNewsTitleHandler();
+  } else if (location.pathname.startsWith("/catalog/")) {
+    locationPage = "/catalog";
+    locationDetails = getProductTitleHandler();
+  } else {
+    locationPage = location.pathname;
+    locationDetails = "";
+  }
 
   return (
     <p className={styles.path}>
@@ -40,23 +68,27 @@ const Path = () => {
       </Link>
       <span>/</span>
       <Link
-        to={
-          location.pathname.startsWith("/news/") ? "/news" : location.pathname
-        }
+        to={locationPage}
         className={`${styles.path__page} ${
-          location.pathname.startsWith("/news/")
+          location.pathname.startsWith("/news/") ||
+          location.pathname.startsWith("/catalog/")
             ? styles["path__page-active"]
             : ""
         }`}
       >
         {locationSwitchCase()}
       </Link>
-      {location.pathname.startsWith("/news/") ? <span>/</span> : ""}
+      {location.pathname.startsWith("/news/") ||
+      location.pathname.startsWith("/catalog/") ? (
+        <span>/</span>
+      ) : (
+        ""
+      )}
       <Link
-        to={`${location.pathname}/${newsId}`}
+        to={`${location.pathname}/${newsId ? newsId : productId}`}
         className={styles["path__page-item"]}
       >
-        {location.pathname.startsWith("/news/") ? getNewsTitleHandler() : ""}
+        {locationDetails}
       </Link>
     </p>
   );

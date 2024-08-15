@@ -55,17 +55,16 @@ const CatalogItemsList = (props) => {
   };
 
   const filter = getFilterfromParamsHandler();
-  console.log(filter);
   useEffect(() => {
     const wantedDistillers = [];
     for (const element of context.products) {
       console.log(element);
       if (filter === element.filter || filter === "all") {
         wantedDistillers.push(element);
-      }
+      } else wantedDistillers.push(element);
     }
     setDistillers(wantedDistillers);
-  }, [filterParams]);
+  }, [filterParams, filter, context.products]);
 
   const pageChangeHandler = (page) => {
     setCurrentPage(page);

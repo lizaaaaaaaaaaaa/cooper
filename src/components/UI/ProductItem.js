@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import AuthContext from "../../context/auth-context";
 import { getDatabase, ref as dbRef, set } from "firebase/database";
+import { NavLink } from "react-router-dom";
 
 const ProductItem = (props) => {
   const context = useContext(AuthContext);
@@ -59,32 +60,38 @@ const ProductItem = (props) => {
     : styles.product__favorite;
 
   return (
-    <div className={styles.product__item}>
-      {context.isAuthenticated && (
-        <button
-          onClick={chooseFavoriteHandler}
-          className={btnFavoriteClassName}
-        ></button>
-      )}
-      {props.isSale && <span className={styles.product__badge}>Sale</span>}
-      <img src={props.image} className={styles.product__image} alt="product" />
-      <div className={styles.product__content}>
-        <h5 className={styles.product__name}>{props.name}</h5>
-        {!props.isSale && (
-          <span className={styles.product__price}>{props.price} грн</span>
+    <NavLink to={`/catalog/${props.id}`}>
+      <div className={styles.product__item}>
+        {context.isAuthenticated && (
+          <button
+            onClick={chooseFavoriteHandler}
+            className={btnFavoriteClassName}
+          ></button>
         )}
-        {props.isSale && (
-          <div className={styles.product__sale}>
-            <span className={styles["product__sale-old"]}>
-              {props.price} грн
-            </span>
-            <span className={styles["product__sale-new"]}>
-              {props.salePrice} грн
-            </span>
-          </div>
-        )}
+        {props.isSale && <span className={styles.product__badge}>Sale</span>}
+        <img
+          src={props.image}
+          className={styles.product__image}
+          alt="product"
+        />
+        <div className={styles.product__content}>
+          <h5 className={styles.product__name}>{props.name}</h5>
+          {!props.isSale && (
+            <span className={styles.product__price}>{props.price} грн</span>
+          )}
+          {props.isSale && (
+            <div className={styles.product__sale}>
+              <span className={styles["product__sale-old"]}>
+                {props.price} грн
+              </span>
+              <span className={styles["product__sale-new"]}>
+                {props.salePrice} грн
+              </span>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 

@@ -1,0 +1,19 @@
+.product {
+  &__slider {
+    height: 621px;
+
+    & > div {
+      width: 89px;
+      overflow: hidden;
+    }
+
+    & > div > div {
+      flex-direction: column;
+    }
+
+    img {
+      height: 98px;
+      width: 100%;
+    }
+  }
+}

@@ -17,15 +17,14 @@ export const ProductsProvider = (props) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const userDocRef = dbRef(db, `catalog`); //посилання на бд та шлях до папки каталогу
-        const getDatafromDatabase = await get(userDocRef); //отримання даних з бази даних асинхронно
+        const docRef = dbRef(db, "catalog"); //посилання на бд та шлях до папки каталогу
+        const getDatafromDatabase = await get(docRef); //отримання даних з бази даних асинхронно
 
         const loadedDistillers = [];
 
         if (getDatafromDatabase.exists()) {
           //перевірки існування даних
           const data = getDatafromDatabase.val(); //отримання значень даних
-          console.log(data);
           for (const key in data) {
             loadedDistillers.push({
               id: key,
@@ -37,7 +36,6 @@ export const ProductsProvider = (props) => {
               salePrice: data[key].salePrice,
             });
           }
-          console.log(loadedDistillers);
           setProducts(loadedDistillers);
           setIsLoading(false);
         } else setProducts([]);
@@ -49,8 +47,6 @@ export const ProductsProvider = (props) => {
 
     fetchData();
   }, []);
-
-  console.log(products);
 
   return (
     <ProductsContext.Provider value={{ products, isLoading, httpErrorMessage }}>

@@ -36,8 +36,6 @@ const ArticleContent = () => {
       ? context.news[currentArticleIndex + 1]
       : "";
 
-  console.log(prevArticle, nextArticle);
-
   if (context.isLoading || !context.news.length) {
     return <Loader />;
   }

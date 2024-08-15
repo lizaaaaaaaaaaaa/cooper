@@ -17,8 +17,8 @@ export const NewsProvider = (props) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const userDocRef = dbRef(db, "news");
-        const getDataFromDatabase = await get(userDocRef);
+        const docRef = dbRef(db, "news");
+        const getDataFromDatabase = await get(docRef);
 
         const loadedNews = [];
 
