@@ -6,6 +6,8 @@ import { ref as dbRef, get } from "firebase/database";
 import { db } from "../../../firebase/firebase";
 import styles from "./ProductMain.module.scss";
 import ProductSlider from "./productTop/ProductSlider";
+import ProductItem from "../../UI/ProductItem";
+import ProductAbout from "./productTop/ProductAbout";
 
 const ProductMain = () => {
   const params = useParams();
@@ -67,19 +69,37 @@ const ProductMain = () => {
     );
   }
 
-  if (context.isLoading || isLoading) {
+  if (context.isLoading || isLoading || !details || !product) {
     return <Loader />;
   }
+
+  console.log(product);
 
   return (
     <div className={styles.product__main}>
       <div className={styles.product__top}>
         <ProductSlider
-          imagesArray={details ? details.descrImages : ""}
-          imagesAlt={product ? product.name : ""}
+          imagesArray={details.descrImages}
+          imagesAlt={product.name}
         />
-        {product ? <img src={product.image} alt="" /> : ""}
-        <p>{details ? details.articleName : ""}</p>
+        <ProductItem
+          key={product.id}
+          id={product.id}
+          isSale={product.isSale}
+          image={product.image}
+          className={styles.product__container}
+        />
+        <ProductAbout
+          key={`${product.id}-about`}
+          id={product.id}
+          name={product.name}
+          inStock={details.inStock}
+          articleName={details.articleName}
+          description={details.description}
+          price={product.price}
+          isSale={product.isSale}
+          salePrice={product.salePrice}
+        />
       </div>
     </div>
   );

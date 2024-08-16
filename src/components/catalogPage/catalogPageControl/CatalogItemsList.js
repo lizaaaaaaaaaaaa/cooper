@@ -58,7 +58,6 @@ const CatalogItemsList = (props) => {
   useEffect(() => {
     const wantedDistillers = [];
     for (const element of context.products) {
-      console.log(element);
       if (filter === element.filter || filter === "all") {
         wantedDistillers.push(element);
       } else wantedDistillers.push(element);

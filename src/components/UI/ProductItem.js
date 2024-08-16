@@ -1,21 +1,22 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import AuthContext from "../../context/auth-context";
 import { getDatabase, ref as dbRef, set } from "firebase/database";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const ProductItem = (props) => {
   const context = useContext(AuthContext);
+  const location = useLocation();
 
   const [isItemChosen, setIsItemChosen] = useState(
-    Object.keys(context.userDetails?.favorites).includes(props.id)
+    Object.keys(context.userDetails?.favorites || {}).includes(props.id)
   );
 
   useEffect(() => {
     setIsItemChosen(
       Object.keys(context.userDetails?.favorites || {}).includes(props.id)
     );
-  }, [context.userDetails.favorites, props.id]);
+  }, [context.userDetails?.favorites, props.id]);
 
   const chooseFavoriteHandler = async () => {
     setIsItemChosen(!isItemChosen);
@@ -59,9 +60,13 @@ const ProductItem = (props) => {
     ? `${styles.product__favorite} ${styles["product__favorite-chosen"]}`
     : styles.product__favorite;
 
+  const MainTag = !location.pathname.startsWith("/catalog/")
+    ? NavLink
+    : React.Fragment;
+
   return (
-    <NavLink to={`/catalog/${props.id}`}>
-      <div className={styles.product__item}>
+    <MainTag {...(MainTag === NavLink && { to: `/catalog/${props.id}` })}>
+      <div className={`${styles.product__item} ${props.className}`}>
         {context.isAuthenticated && (
           <button
             onClick={chooseFavoriteHandler}
@@ -75,10 +80,13 @@ const ProductItem = (props) => {
           alt="product"
         />
         <div className={styles.product__content}>
-          <h5 className={styles.product__name}>{props.name}</h5>
-          {!props.isSale && (
-            <span className={styles.product__price}>{props.price} грн</span>
-          )}
+          {props.name && <h5 className={styles.product__name}>{props.name}</h5>}
+          {!props.isSale &&
+            (props.price ? (
+              <span className={styles.product__price}>{props.price} грн</span>
+            ) : (
+              ""
+            ))}
           {props.isSale && (
             <div className={styles.product__sale}>
               <span className={styles["product__sale-old"]}>
@@ -91,7 +99,7 @@ const ProductItem = (props) => {
           )}
         </div>
       </div>
-    </NavLink>
+    </MainTag>
   );
 };
 
