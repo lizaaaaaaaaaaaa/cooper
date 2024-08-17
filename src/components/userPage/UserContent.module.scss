@@ -371,6 +371,11 @@
 
     &-modal {
       background-color: transparent;
+
+      @media screen and (max-width: 550px) {
+        padding: 12px 16px;
+        font-size: 16px;
+      }
     }
   }
 
@@ -495,6 +500,26 @@
       flex-direction: column;
       gap: 25px 0;
     }
+
+    @media screen and (max-width: 768px) {
+      padding-bottom: 25px;
+
+      h5 {
+        font-size: 40px;
+      }
+    }
+
+    @media screen and (max-width: 550px) {
+      padding-bottom: 15px;
+
+      h5 {
+        font-size: 30px;
+      }
+
+      & ~ form {
+        gap: 15px 0;
+      }
+    }
   }
 
   &__wrong {
@@ -566,4 +591,8 @@
 
 .user__btn-modal {
   align-self: flex-end;
+
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
 }

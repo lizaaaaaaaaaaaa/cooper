@@ -7,7 +7,6 @@ import { NavLink, useLocation } from "react-router-dom";
 const ProductItem = (props) => {
   const context = useContext(AuthContext);
   const location = useLocation();
-
   const [isItemChosen, setIsItemChosen] = useState(
     Object.keys(context.userDetails?.favorites || {}).includes(props.id)
   );
