@@ -8,6 +8,7 @@ import styles from "./ProductMain.module.scss";
 import ProductSlider from "./productTop/ProductSlider";
 import ProductItem from "../../UI/ProductItem";
 import ProductAbout from "./productTop/ProductAbout";
+import ProductDescr from "./productDescr/ProductDescr";
 
 const ProductMain = () => {
   const params = useParams();
@@ -82,11 +83,13 @@ const ProductMain = () => {
     setCurrentImage(image);
   };
 
+  console.log(details);
+
   return (
     <div className={styles.product__main}>
       <div className={styles.product__top}>
         <ProductSlider
-          imagesArray={[...details.descrImages, product.image]}
+          imagesArray={[...details.descrImages, product.image]} //+ основна картинка в кінець
           imagesAlt={product.name}
           getNewProductImage={getNewProductImageHandler}
         />
@@ -109,6 +112,7 @@ const ProductMain = () => {
           salePrice={product.salePrice}
         />
       </div>
+      <ProductDescr howToUse={details.howToUse} />
     </div>
   );
 };

@@ -1,0 +1,27 @@
+.product {
+  &__descr {
+    padding-top: 80px;
+    margin-top: 74px;
+    border-top: 1px solid #e6e8e7;
+    padding-bottom: 80px;
+    margin-bottom: 74px;
+    border-bottom: 1px solid #e6e8e7;
+  }
+
+  &__title {
+    font-family: var(--lh-font);
+    font-size: 40px;
+    padding-bottom: 33px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.32;
+    padding-bottom: 20px;
+    max-width: 1207px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
