@@ -6,6 +6,16 @@
       font-family: var(--lh-font);
       font-size: 40px;
       padding-bottom: 37px;
+
+      @media screen and (max-width: 600px) {
+        font-size: 30px;
+        padding-bottom: 25px;
+      }
+
+      @media screen and (max-width: 320px) {
+        font-size: 24px;
+        padding-bottom: 14px;
+      }
     }
   }
 
@@ -17,6 +27,15 @@
     padding-bottom: 37px;
     margin-bottom: 37px;
     border-bottom: 1px solid #e6e8e7;
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 17px;
+    }
+
+    @media screen and (max-width: 320px) {
+      padding-bottom: 20px;
+      margin-bottom: 16px;
+    }
   }
 
   &__stock {
@@ -48,15 +67,27 @@
     margin-bottom: 37px;
     border-bottom: 1px solid #e6e8e7;
 
+    @media screen and (max-width: 768px) {
+      padding-bottom: 20px;
+      margin-bottom: 15px;
+    }
+
+    @media screen and (max-width: 320px) {
+      padding-bottom: 16px;
+      margin-bottom: 27px;
+    }
+
     p:first-child {
       font-weight: 800;
       text-transform: uppercase;
       padding-bottom: 15px;
+      font-size: 16px;
     }
 
     p:last-child {
       max-width: 529px;
       font-weight: 300;
+      font-size: 16px;
     }
   }
 }

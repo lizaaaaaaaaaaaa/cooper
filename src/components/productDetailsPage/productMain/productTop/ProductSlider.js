@@ -1,7 +1,6 @@
 import Slider from "react-slick";
 import styles from "./ProductSlider.module.scss";
 import React, { useState } from "react";
-import ImageModal from "./ImageModal";
 
 const ProductSlider = (props) => {
   const [isImageModalVisible, setIsImageModalVisible] = useState(false);
@@ -26,29 +25,18 @@ const ProductSlider = (props) => {
   };
 
   return (
-    <React.Fragment>
-      {isImageModalVisible ? (
-        <ImageModal
-          onHideImageModal={removeModalActivityHandler}
-          image={modalImage}
-          alt={props.imagesAlt}
-        />
-      ) : (
-        ""
-      )}
-      <Slider {...settings} className={styles.product__slider}>
-        {props.imagesArray
-          ? props.imagesArray.map((image, index) => (
-              <img
-                src={image}
-                alt={props.imagesAlt}
-                onClick={() => changeModalActivityHandler(image)}
-                key={index}
-              />
-            ))
-          : ""}
-      </Slider>
-    </React.Fragment>
+    <Slider {...settings} className={styles.product__slider}>
+      {props.imagesArray
+        ? props.imagesArray.map((image, index) => (
+            <img
+              src={image}
+              alt={props.imagesAlt}
+              onClick={() => changeModalActivityHandler(image)}
+              key={index}
+            />
+          ))
+        : ""}
+    </Slider>
   );
 };
 

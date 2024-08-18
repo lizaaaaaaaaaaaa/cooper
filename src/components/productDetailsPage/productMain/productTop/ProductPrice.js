@@ -1,7 +1,21 @@
 import styles from "./ProductPrice.module.scss";
 import Button from "../../../UI/Button";
+import { useState } from "react";
 
 const ProductPrice = (props) => {
+  const [productAmount, setProductAmount] = useState(1);
+
+  const addProductAmountHandler = () => {
+    if (productAmount < 10) {
+      setProductAmount(productAmount + 1);
+    }
+  };
+
+  const removeProductAmountHandler = () => {
+    if (productAmount > 1) {
+      setProductAmount(productAmount - 1);
+    }
+  };
   return (
     <div className={styles.product__price}>
       <div className={styles.product__priceTop}>
@@ -22,9 +36,9 @@ const ProductPrice = (props) => {
       </div>
       <div className={styles.product__priceBottom}>
         <div className={styles.product__amount}>
-          <button>+</button>
-          <input type="text" value="1" readOnly />
-          <button>-</button>
+          <button onClick={addProductAmountHandler}>+</button>
+          <input type="text" value={productAmount} readOnly />
+          <button onClick={removeProductAmountHandler}>-</button>
         </div>
         <Button className={styles.product__buy}>Купить</Button>
       </div>
