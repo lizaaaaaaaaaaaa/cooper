@@ -6,12 +6,43 @@
     padding-bottom: 80px;
     margin-bottom: 74px;
     border-bottom: 1px solid #e6e8e7;
+
+    @media screen and (max-width: 768px) {
+      padding-top: 31px;
+      margin-top: 31px;
+      padding-bottom: 31px;
+      margin-bottom: 72px;
+    }
+
+    @media screen and (max-width: 320px) {
+      padding-top: 37px;
+      margin-top: 24px;
+      border-bottom: none;
+      padding-bottom: 37px;
+      margin-bottom: 0;
+    }
   }
 
   &__title {
     font-family: var(--lh-font);
     font-size: 40px;
     padding-bottom: 33px;
+
+    @media screen and (max-width: 768px) {
+      padding-bottom: 17px;
+    }
+
+    @media screen and (max-width: 640px) {
+      font-size: 32px;
+    }
+
+    @media screen and (max-width: 480px) {
+      font-size: 28px;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 24px;
+    }
   }
 
   &__text {
