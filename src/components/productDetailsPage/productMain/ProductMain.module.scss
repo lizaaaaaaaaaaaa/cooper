@@ -45,10 +45,11 @@
   &__container {
     height: 622px !important;
     max-width: 565px !important;
-    min-width: 465px;
+    min-width: 565px;
 
     img {
       height: 100%;
+      object-fit: cover;
     }
 
     @media screen and (max-width: 640px) {

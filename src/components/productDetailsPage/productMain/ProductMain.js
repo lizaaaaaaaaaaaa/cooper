@@ -14,11 +14,16 @@ const ProductMain = () => {
   const { productId } = params;
   const context = useContext(ProductsContext);
 
+  const product = context.products.find((item) => item.id === productId);
+
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState("");
+  const [currentImage, setCurrentImage] = useState(null);
 
-  const product = context.products.find((item) => item.id === productId);
+//   useEffect(() => {
+//     setCurrentImage(product?.image);
+//   }, [product]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,20 +78,23 @@ const ProductMain = () => {
     return <Loader />;
   }
 
-  console.log(product);
+  const getNewProductImageHandler = (image) => {
+    setCurrentImage(image);
+  };
 
   return (
     <div className={styles.product__main}>
       <div className={styles.product__top}>
         <ProductSlider
-          imagesArray={details.descrImages}
+          imagesArray={[...details.descrImages, product.image]}
           imagesAlt={product.name}
+          getNewProductImage={getNewProductImageHandler}
         />
         <ProductItem
           key={product.id}
           id={product.id}
           isSale={product.isSale}
-          image={product.image}
+          image={currentImage ? currentImage : product.image}
           className={styles.product__container}
         />
         <ProductAbout

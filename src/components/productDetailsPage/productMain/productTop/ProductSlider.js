@@ -1,10 +1,7 @@
 import Slider from "react-slick";
 import styles from "./ProductSlider.module.scss";
-import React, { useState } from "react";
 
 const ProductSlider = (props) => {
-  const [isImageModalVisible, setIsImageModalVisible] = useState(false);
-  const [modalImage, setModalImage] = useState(null);
   const settings = {
     dots: false,
     infinite: false,
@@ -14,14 +11,8 @@ const ProductSlider = (props) => {
     swipe: false,
   };
 
-  const changeModalActivityHandler = (image) => {
-    setIsImageModalVisible(true);
-    setModalImage(image);
-  };
-
-  const removeModalActivityHandler = (image) => {
-    setIsImageModalVisible(false);
-    setModalImage(null);
+  const changeImageHandler = (image) => {
+    props.getNewProductImage(image);
   };
 
   return (
@@ -31,7 +22,7 @@ const ProductSlider = (props) => {
             <img
               src={image}
               alt={props.imagesAlt}
-              onClick={() => changeModalActivityHandler(image)}
+              onClick={() => changeImageHandler(image)}
               key={index}
             />
           ))
