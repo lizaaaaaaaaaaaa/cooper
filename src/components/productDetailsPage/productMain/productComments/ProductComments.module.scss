@@ -1,0 +1,14 @@
+.comments {
+  &__top {
+    padding-bottom: 40px;
+    display: flex;
+    gap: 0 30px;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+        font-family: var(--lh-font);
+        font-size: 40px;
+    }
+  }
+}

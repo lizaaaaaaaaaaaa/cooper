@@ -1,0 +1,14 @@
+.comments {
+  &__slider {
+    & > div > div {
+      gap: 20px;
+    }
+    & > div > div > div  {
+        width: 446px !important;
+
+        & > div {
+            width: 446px;
+        }
+    }
+  }
+}

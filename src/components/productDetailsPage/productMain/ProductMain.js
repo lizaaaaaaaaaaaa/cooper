@@ -9,6 +9,7 @@ import ProductSlider from "./productTop/ProductSlider";
 import ProductItem from "../../UI/ProductItem";
 import ProductAbout from "./productTop/ProductAbout";
 import ProductDescr from "./productDescr/ProductDescr";
+import ProductComments from "./productComments/ProductComments";
 
 const ProductMain = () => {
   const params = useParams();
@@ -22,9 +23,9 @@ const ProductMain = () => {
   const [httpErrorMessage, setHttpErrorMessage] = useState("");
   const [currentImage, setCurrentImage] = useState(null);
 
-//   useEffect(() => {
-//     setCurrentImage(product?.image);
-//   }, [product]);
+  //   useEffect(() => {
+  //     setCurrentImage(product?.image);
+  //   }, [product]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +56,6 @@ const ProductMain = () => {
         }
       } catch (error) {
         setIsLoading(false);
-        console.log(error);
         setHttpErrorMessage(error.message);
       }
     };
@@ -113,6 +113,7 @@ const ProductMain = () => {
         />
       </div>
       <ProductDescr howToUse={details.howToUse} />
+      <ProductComments id={product.id} />
     </div>
   );
 };
