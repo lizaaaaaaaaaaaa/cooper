@@ -20,7 +20,6 @@ const CommentItem = (props) => {
         const getDataFromDatabase = await get(docRef);
 
         if (getDataFromDatabase.exists()) {
-            console.log(getDataFromDatabase);
           const data = getDataFromDatabase.val();
           if (data[props.userId]) {
             setUser({

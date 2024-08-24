@@ -83,8 +83,6 @@ const ProductMain = () => {
     setCurrentImage(image);
   };
 
-  console.log(details);
-
   return (
     <div className={styles.product__main}>
       <div className={styles.product__top}>
