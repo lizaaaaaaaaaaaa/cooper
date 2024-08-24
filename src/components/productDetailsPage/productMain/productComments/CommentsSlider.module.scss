@@ -3,12 +3,9 @@
     & > div > div {
       gap: 20px;
     }
-    & > div > div > div  {
-        width: 446px !important;
-
-        & > div {
-            width: 446px;
-        }
+    & > div > div > div {
+      display: grid;
+      grid-template-rows: 1fr; // в будь-якому випадку займає всю висоту батьківського контейнера
     }
   }
 }

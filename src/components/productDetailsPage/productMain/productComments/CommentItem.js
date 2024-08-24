@@ -20,6 +20,7 @@ const CommentItem = (props) => {
         const getDataFromDatabase = await get(docRef);
 
         if (getDataFromDatabase.exists()) {
+            console.log(getDataFromDatabase);
           const data = getDataFromDatabase.val();
           if (data[props.userId]) {
             setUser({
@@ -54,8 +55,6 @@ const CommentItem = (props) => {
   }
 
   const userImageSrc = user.image ? user.image : noUser;
-
-  console.log(props.text.length);
 
   return (
     <div className={styles.comment}>

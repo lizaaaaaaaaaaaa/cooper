@@ -6,18 +6,20 @@ import Loader from "../../../UI/Loader";
 import { ref as dbRef, get } from "firebase/database";
 import { db } from "../../../../firebase/firebase";
 import CommentItem from "./CommentItem";
-import styles from "./CommentsSlider.module.scss"
+import styles from "./CommentsSlider.module.scss";
 
 const CommentsSlider = (props) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
   const settings = {
-    dots: false,
+    dots: comments.length > 3 ? true : false,
     infinite: false,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: comments.length > 3 ? true : false,
+    swipe: comments.length > 3 ? true : false,
+    variableHeight: false
   };
 
   useEffect(() => {
