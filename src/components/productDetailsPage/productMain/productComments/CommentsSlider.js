@@ -19,7 +19,7 @@ const CommentsSlider = (props) => {
     slidesToScroll: 1,
     arrows: comments.length > 3 ? true : false,
     swipe: comments.length > 3 ? true : false,
-    variableHeight: false
+    variableHeight: false,
   };
 
   useEffect(() => {
@@ -62,6 +62,10 @@ const CommentsSlider = (props) => {
 
     fetchData();
   }, [props.id]);
+
+  useEffect(() => {
+    props.getCommentsArrayLength(comments.length);
+  }, [comments]);
 
   if (httpErrorMessage) {
     return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;

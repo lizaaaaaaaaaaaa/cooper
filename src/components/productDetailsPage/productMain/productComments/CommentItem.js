@@ -26,7 +26,7 @@ const CommentItem = (props) => {
               name: data[props.userId].name
                 ? data[props.userId].name
                 : "Unkhown User",
-              image: data[props.userId].image,
+              image: data[props.userId].avatar,
             });
           } else {
             setUser(null);
