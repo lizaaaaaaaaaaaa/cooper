@@ -10,6 +10,7 @@ import ProductItem from "../../UI/ProductItem";
 import ProductAbout from "./productTop/ProductAbout";
 import ProductDescr from "./productDescr/ProductDescr";
 import ProductComments from "./productComments/ProductComments";
+import MightBeInteresting from "../../mainSliders/mightBeInteresting/MightBeInteresting";
 
 const ProductMain = () => {
   const params = useParams();
@@ -112,6 +113,7 @@ const ProductMain = () => {
       </div>
       <ProductDescr howToUse={details.howToUse} />
       <ProductComments id={product.id} />
+      <MightBeInteresting />
     </div>
   );
 };
