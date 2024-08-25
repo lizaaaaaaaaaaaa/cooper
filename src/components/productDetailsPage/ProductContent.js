@@ -10,10 +10,8 @@ const ProductContent = () => {
   
   return (
     <div className={`content ${styles.product}`}>
-      <div className="container">
-        <Path />
-        <ProductMain />
-      </div>
+      <Path />
+      <ProductMain />
     </div>
   );
 };

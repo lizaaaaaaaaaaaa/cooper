@@ -52,7 +52,6 @@ const Slider = ({ slidersInfo }) => {
         breakpoint: 475,
         settings: {
           slidesToShow: 1,
-        //   variableWidth: false,
         },
       },
     ],

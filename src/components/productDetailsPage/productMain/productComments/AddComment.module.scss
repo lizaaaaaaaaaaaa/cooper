@@ -5,6 +5,18 @@
       font-size: 25px;
       padding-bottom: 20px;
       display: block;
+
+      @media screen and (max-width: 769px) {
+        padding-top: 20px;
+      }
+
+      @media screen and (max-width: 480px) {
+        font-size: 20px;
+      }
+
+      @media screen and (max-width: 320px) {
+        font-size: 16px;
+      }
     }
 
     textarea {
@@ -27,5 +39,9 @@
 
   &__btn {
     margin-bottom: 35px;
+
+    @media screen and (max-width: 480px) {
+      margin-bottom: 15px;
+    }
   }
 }

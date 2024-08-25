@@ -85,7 +85,7 @@ const ProductMain = () => {
 
   return (
     <div className={styles.product__main}>
-      <div className={styles.product__top}>
+      <div className={`container ${styles.product__top}`}>
         <ProductSlider
           imagesArray={[...details.descrImages, product.image]} //+ основна картинка в кінець
           imagesAlt={product.name}

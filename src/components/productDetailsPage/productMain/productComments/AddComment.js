@@ -50,7 +50,7 @@ const AddComment = (props) => {
   };
 
   return (
-    <form className={styles.comment__form} onSubmit={addCommentHandler}>
+    <form className={`container ${styles.comment__form}`} onSubmit={addCommentHandler}>
       <label htmlFor="comment">Введите ваш отзыв:</label>
       <textarea
         name="commentContent"

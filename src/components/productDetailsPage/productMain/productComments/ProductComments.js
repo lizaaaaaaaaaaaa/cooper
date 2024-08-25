@@ -9,10 +9,11 @@ const ProductComments = (props) => {
   const [commentsArrayLength, setCommentsArrayLength] = useState(0);
   return (
     <section className={styles.comments}>
-      <div className={styles.comments__top}>
+      <div className={`container ${styles.comments__top}`}>
         <div>Отзывы</div>
         <Button
           onClick={() => setIsAddCommentBtnActive(!isAddCommentBtnActive)}
+          className={styles.comments__btn}
         >
           {!isAddCommentBtnActive ? "Оставить отзыв" : "Отмена"}
         </Button>
@@ -24,10 +25,12 @@ const ProductComments = (props) => {
           closeAddCommentComponent={(state) => setIsAddCommentBtnActive(state)}
         />
       )}
-      <CommentsSlider
-        id={props.id}
-        getCommentsArrayLength={(length) => setCommentsArrayLength(length)}
-      />
+      <div className="container">
+        <CommentsSlider
+          id={props.id}
+          getCommentsArrayLength={(length) => setCommentsArrayLength(length)}
+        />
+      </div>
     </section>
   );
 };

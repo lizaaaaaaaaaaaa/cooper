@@ -1,4 +1,7 @@
 .comments {
+  overflow: hidden;
+  position: relative;
+
   &__top {
     padding-bottom: 40px;
     display: flex;
@@ -6,9 +9,48 @@
     align-items: center;
     justify-content: space-between;
 
+    @media screen and (max-width: 768px) {
+      padding-bottom: 16px;
+    }
+
+    @media screen and (max-width: 600px) {
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 480px) {
+      gap: 25px;
+    }
+
+    @media screen and (max-width: 320px) {
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+
     div {
-        font-family: var(--lh-font);
-        font-size: 40px;
+      font-family: var(--lh-font);
+      font-size: 40px;
+
+      @media screen and (max-width: 550px) {
+        font-size: 32px;
+      }
+
+      @media screen and (max-width: 375px) {
+        font-size: 28px;
+      }
+
+      @media screen and (max-width: 320px) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__btn {
+    width: 327px !important;
+
+    @media screen and (max-width: 600px) {
+      width: 100% !important;
     }
   }
 }

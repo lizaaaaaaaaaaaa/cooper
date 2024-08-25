@@ -1,0 +1,126 @@
+.comments {
+  &__slider {
+    overflow: hidden;
+    padding: 40px 40px 53px;
+    margin: -40px -50px -53px;
+
+    @media (max-width: 1050px) {
+      margin: -40px -47.5px -53px;
+    }
+
+    @media (max-width: 940px) {
+      margin: -40px -45px -53px;
+    }
+
+    @media (max-width: 769px) {
+      padding: 0 0 53px;
+      margin: 0 -10px -53px;
+      overflow: visible;
+    }
+
+    // @media (max-width: 475px) {
+    //   padding: 0 0 53px;
+    //   margin: 0 -3px -53px;
+    // }
+
+    & > .slick-dots {
+      display: flex !important;
+      justify-content: center;
+      padding-top: 45px;
+      gap: 0 10px;
+
+      @media (max-width: 880px) {
+        padding-top: 35px;
+      }
+
+      @media (max-width: 545px) {
+        padding-top: 25px;
+      }
+
+      @media (max-width: 475px) {
+        padding-top: 20px;
+      }
+
+      li button {
+        font-size: 0;
+        width: 11px;
+        height: 12px;
+        background: #031412;
+      }
+
+      li.slick-active button {
+        background: linear-gradient(124deg, #5e3928 0%, #e4a16f 91.15%);
+      }
+    }
+  }
+
+  &__arrow-prev,
+  &__arrow-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #031412;
+    transition: all 0.3s;
+
+    svg > path {
+      fill: #031412;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      border: none;
+      background: linear-gradient(210deg, #5e3928 0%, #e4a16f 91.15%);
+      transition: all 0.3s;
+
+      svg > path {
+        fill: #fff;
+        transition: all 0.3s;
+      }
+    }
+
+    @media (max-width: 1575px) {
+      display: none;
+    }
+  }
+
+  &__arrow-prev {
+    left: -1px;
+    padding: 10px 25px 10px 34px;
+    transition: all 0.3s;
+
+    &:hover {
+      padding: 11px 26px 11px 35px;
+      transition: all 0.3s;
+    }
+  }
+
+  &__arrow-next {
+    right: -1px;
+    padding: 10px 34px 10px 25px;
+    transition: all 0.3s;
+
+    &:hover {
+      padding: 11px 35px 11px 26px;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.comments__slider .slick-slide {
+  display: grid;
+  grid-template-rows: 1fr; // в будь-якому випадку займає всю висоту батьківського контейнера
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  padding: 0 10px;
+
+  @media (max-width: 475px) {
+    padding: 0 3px;
+  }
+}
+
+.comments__slider .slick-slide.slick-active {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s;
+}
