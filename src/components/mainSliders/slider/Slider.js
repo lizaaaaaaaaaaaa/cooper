@@ -6,7 +6,7 @@ import Button from "../../UI/Button";
 import { NavLink } from "react-router-dom";
 import ProductItem from "../../UI/ProductItem";
 
-const Slider = ({ slidersInfo }) => {
+const Slider = ({ slidersInfo, hideBtn }) => {
   let sliderRef = useRef(null);
 
   const nextSlide = () => {
@@ -70,6 +70,8 @@ const Slider = ({ slidersInfo }) => {
     />
   ));
 
+  console.log(hideBtn);
+
   return (
     <React.Fragment>
       <SlickSlider
@@ -88,9 +90,13 @@ const Slider = ({ slidersInfo }) => {
         <CustomNextArrow />
       </div>
 
-      <NavLink to="/catalog" replace>
-        <Button className="slider__button">Перейти в каталог</Button>
-      </NavLink>
+      {!hideBtn ? (
+        <NavLink to="/catalog" replace>
+          <Button className="slider__button">Перейти в каталог</Button>
+        </NavLink>
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 };

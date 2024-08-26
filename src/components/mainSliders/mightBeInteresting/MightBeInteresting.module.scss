@@ -3,4 +3,8 @@
   background: url("../../../assets/mainSlidersBack.png") center/cover no-repeat;
   position: relative;
   overflow: hidden;
+
+  & > div > button:last-child {
+    display: none;
+  }
 }

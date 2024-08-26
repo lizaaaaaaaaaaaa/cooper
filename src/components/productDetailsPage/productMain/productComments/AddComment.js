@@ -4,6 +4,8 @@ import Button from "../../../UI/Button";
 import styles from "./AddComment.module.scss";
 import { useContext, useState } from "react";
 import AuthContext from "../../../../context/auth-context";
+import Loader from "../../../UI/Loader";
+import { Navigate } from "react-router";
 
 const AddComment = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,18 +51,40 @@ const AddComment = (props) => {
       }
   };
 
+  if (httpErrorMessage) {
+    return (
+      <Navigate
+        to="/httpError"
+        errorMessage={
+          context.httpErrorMessage ? context.httpErrorMessage : httpErrorMessage
+        }
+        replace
+      />
+    );
+  }
+
   return (
-    <form className={`container ${styles.comment__form}`} onSubmit={addCommentHandler}>
-      <label htmlFor="comment">Введите ваш отзыв:</label>
+    <form
+      className={`container ${styles.comment__form}`}
+      onSubmit={addCommentHandler}
+    >
+      {isLoading && <Loader className={styles.loader} />}
+      <label htmlFor="comment" className={isLoading ? styles.disabled : ""}>
+        Введите ваш отзыв:
+      </label>
       <textarea
         name="commentContent"
         id="comment"
         placeholder="Для нас очень ценен любой ваш отзыв!"
         maxLength={300}
-        // value={commentText}
         onMouseLeave={(event) => setCommentText(event.target.value)}
+        disabled={isLoading}
       ></textarea>
-      <Button type="submit" className={styles.comment__btn}>
+      <Button
+        type="submit"
+        className={styles.comment__btn}
+        disabled={isLoading}
+      >
         Отправить
       </Button>
     </form>

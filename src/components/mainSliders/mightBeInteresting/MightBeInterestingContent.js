@@ -37,8 +37,7 @@ const MightBeInterestingContent = () => {
     );
   }
 
-  console.log(elements);
-  return <Slider slidersInfo={elements} />;
+  return <Slider slidersInfo={elements} hideBtn={true} />;
 };
 
 export default MightBeInterestingContent;
