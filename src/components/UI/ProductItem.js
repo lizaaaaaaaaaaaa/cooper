@@ -2,12 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import AuthContext from "../../context/auth-context";
 import { getDatabase, ref as dbRef, set } from "firebase/database";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Button from "./Button";
 
 const ProductItem = (props) => {
   const context = useContext(AuthContext);
-  const location = useLocation();
   const [isItemChosen, setIsItemChosen] = useState(
     Object.keys(context.userDetails?.favorites || {}).includes(props.id)
   );
@@ -61,10 +60,6 @@ const ProductItem = (props) => {
     ? `${styles.product__favorite} ${styles["product__favorite-chosen"]}`
     : styles.product__favorite;
 
-  const MainTag = !location.pathname.startsWith("/catalog/")
-    ? NavLink
-    : React.Fragment;
-
   return (
     <div
       className={`${styles.product__item} ${props.className}`}
@@ -84,14 +79,16 @@ const ProductItem = (props) => {
           className={styles.product__image}
           alt="product"
         />
-        <NavLink
-          to={`/catalog/${props.id}`}
-          className={`${styles.product__navlink} ${
-            isBtnVisible ? styles["product__navlink-active"] : ""
-          }`}
-        >
-          <Button className={styles.product__navBtn}>Перейти</Button>
-        </NavLink>
+        {!props.isVisible && (
+          <NavLink
+            to={`/catalog/${props.id}`}
+            className={`${styles.product__navlink} ${
+              isBtnVisible ? styles["product__navlink-active"] : ""
+            }`}
+          >
+            <Button className={styles.product__navBtn}>Перейти</Button>
+          </NavLink>
+        )}
       </div>
       <div className={styles.product__content}>
         {props.name && <h5 className={styles.product__name}>{props.name}</h5>}

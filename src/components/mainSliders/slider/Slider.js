@@ -70,8 +70,6 @@ const Slider = ({ slidersInfo, hideBtn }) => {
     />
   ));
 
-  console.log(hideBtn);
-
   return (
     <React.Fragment>
       <SlickSlider

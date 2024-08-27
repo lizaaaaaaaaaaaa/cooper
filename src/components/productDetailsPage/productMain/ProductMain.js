@@ -96,6 +96,7 @@ const ProductMain = () => {
           key={product.id}
           id={product.id}
           isSale={product.isSale}
+          isVisible={true}
           image={currentImage ? currentImage : product.image}
           className={styles.product__container}
         />
@@ -112,7 +113,7 @@ const ProductMain = () => {
         />
       </div>
       <ProductDescr howToUse={details.howToUse} />
-      <ProductComments id={product.id} /> 
+      <ProductComments id={product.id} />
       {/* ДОБАВИТЬ КОЛИ ЛОАДІНГ І ПОМИЛКА ПРИ ДОДАВАННІ КОМЕНТАРЯ*/}
       <MightBeInteresting />
     </div>
