@@ -15,7 +15,7 @@
     & > div:last-of-type {
       grid-area: productImaginary;
 
-      & > div {
+      & > div:last-of-type {
         display: none;
       }
     }
@@ -46,6 +46,8 @@
     height: 622px !important;
     max-width: 565px !important;
     min-width: 565px;
+
+    
 
     img {
       height: 100%;
