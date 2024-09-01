@@ -7,7 +7,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/auth-context";
 
 const HeaderInfo = ({ activeMenu }) => {
-    const context = useContext(AuthContext);
+  const context = useContext(AuthContext);
   return (
     <ul
       className={
@@ -25,7 +25,9 @@ const HeaderInfo = ({ activeMenu }) => {
         </NavLink>
       </li>
       <li>
-        <img className={styles["info__img"]} src={cart} alt="cart" />
+        <NavLink to="/cart" replace>
+          <img className={styles["info__img"]} src={cart} alt="cart" />
+        </NavLink>
       </li>
     </ul>
   );

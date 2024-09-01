@@ -1,17 +1,17 @@
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import ScrollToTopButton from "../components/footer/ScrollToTopButton";
-import CatalogContent from "../components/catalogPage/CatalogContent";
+import CartContent from "../components/cartPage/CartContent";
 
-const Catalog = () => {
+const Cart = () => {
   return (
     <div className="wrapper">
       <Header />
-      <CatalogContent />
+      <CartContent />
       <Footer />
       <ScrollToTopButton />
     </div>
   );
 };
 
-export default Catalog;
+export default Cart;

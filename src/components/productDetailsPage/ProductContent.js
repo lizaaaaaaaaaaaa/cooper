@@ -7,10 +7,12 @@ const ProductContent = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-  
+
   return (
     <div className={`content ${styles.product}`}>
-      <Path />
+      <div className="container">
+        <Path />
+      </div>
       <ProductMain />
     </div>
   );

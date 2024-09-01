@@ -29,6 +29,8 @@ const Path = () => {
         return "О нас";
       case "/news":
         return "Новости";
+      case "/cart":
+        return "Корзина";
       default:
         return "";
     }
@@ -42,8 +44,7 @@ const Path = () => {
 
   const getProductTitleHandler = () => {
     return productContext.products.find((product) => product.id === productId)
-      ? productContext.products.find((product) => product.id === productId)
-          .name
+      ? productContext.products.find((product) => product.id === productId).name
       : "";
   };
 

@@ -5,6 +5,7 @@ import { ref as dbRef, get } from "firebase/database";
 import { db } from "../../../../firebase/firebase";
 import Loader from "../../../UI/Loader";
 import noUser from "../../../../assets/userImage/noUser.jpg";
+import quotes from "../../../../assets/union.svg";
 
 const CommentItem = (props) => {
   const [user, setUser] = useState(null);
@@ -61,6 +62,7 @@ const CommentItem = (props) => {
       <div className={styles.comment__name}>{user.name}</div>
       <p className={styles.comment__content}>{props.text}</p>
       <span className={styles.comment__date}>{props.date}</span>
+      <img src={quotes} className={styles.comment__img} alt="quotes" />
     </div>
   );
 };

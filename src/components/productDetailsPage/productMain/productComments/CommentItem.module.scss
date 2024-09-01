@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px 0;
+  position: relative;
 
   @media screen and (max-width: 320px) {
     gap: 15px;
@@ -41,5 +42,16 @@
     font-size: 14px;
     line-height: 1.34;
     margin-top: auto;
+  }
+
+  &__img {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @media screen and (max-width: 768px) {
+      width: 111px;
+      height: 90px;
+    }
   }
 }

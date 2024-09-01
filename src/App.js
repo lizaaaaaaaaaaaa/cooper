@@ -19,6 +19,7 @@ import { NewsProvider } from "./context/news-context";
 import { ProductsProvider } from "./context/products-context";
 import ArticlePage from "./pages/ArticlePage";
 import ProductPage from './pages/ProductPage';
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
               <Route path="/enter" element={<EnterPage />} />
               <Route path="/user" element={<UserPage />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/httpError" element={<HttpError />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
