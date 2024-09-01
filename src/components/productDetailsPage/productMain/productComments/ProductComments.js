@@ -7,6 +7,7 @@ import AddComment from "./AddComment";
 const ProductComments = (props) => {
   const [isAddCommentBtnActive, setIsAddCommentBtnActive] = useState(false);
   const [commentsArrayLength, setCommentsArrayLength] = useState(0);
+  const [isCommentAdd, setIsCommentAdd] = useState(false);
   return (
     <section className={styles.comments}>
       <div className={`container ${styles.comments__top}`}>
@@ -23,11 +24,13 @@ const ProductComments = (props) => {
           id={props.id}
           commentsArrayLength={commentsArrayLength}
           closeAddCommentComponent={(state) => setIsAddCommentBtnActive(state)}
+          isCommentAdd={(state) => setIsCommentAdd(state)}
         />
       )}
       <div className="container">
         <CommentsSlider
           id={props.id}
+          isCommentAdd={isCommentAdd}
           getCommentsArrayLength={(length) => setCommentsArrayLength(length)}
         />
       </div>

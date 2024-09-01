@@ -2,7 +2,7 @@ import { ref as dbRef, set, get } from "firebase/database";
 import { db } from "../../../../firebase/firebase";
 import Button from "../../../UI/Button";
 import styles from "./AddComment.module.scss";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../../../context/auth-context";
 import Loader from "../../../UI/Loader";
 import { Navigate } from "react-router";
@@ -33,7 +33,7 @@ const AddComment = (props) => {
     if (commentText)
       try {
         const getDataFromDatabase = await get(docRef);
-        const commentsArray = getDataFromDatabase.val();
+        const commentsArray = getDataFromDatabase.val() || [];
 
         const newComment = {
           date: date,
@@ -49,7 +49,16 @@ const AddComment = (props) => {
         setIsLoading(false);
         setHttpErrorMessage(error.message);
       }
+    props.isCommentAdd(true);
   };
+
+  useEffect(() => {
+    const timeoutForChangeState = setTimeout(() => {
+      props.isCommentAdd(false);
+    }, 5000);
+
+    return () => clearTimeout(timeoutForChangeState);
+  }, [props.isCommentAdd]);
 
   if (httpErrorMessage) {
     return (

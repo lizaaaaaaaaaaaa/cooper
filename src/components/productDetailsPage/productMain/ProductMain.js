@@ -114,7 +114,6 @@ const ProductMain = () => {
       </div>
       <ProductDescr howToUse={details.howToUse} />
       <ProductComments id={product.id} />
-      {/* ДОБАВИТЬ КОЛИ ЛОАДІНГ І ПОМИЛКА ПРИ ДОДАВАННІ КОМЕНТАРЯ*/}
       <MightBeInteresting />
     </div>
   );

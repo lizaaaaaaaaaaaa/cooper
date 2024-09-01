@@ -133,5 +133,9 @@
 
   &__buy {
     width: 60%;
+
+    &:disabled {
+      opacity: 0.6;
+    }
   }
 }

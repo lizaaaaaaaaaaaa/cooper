@@ -40,7 +40,7 @@ const ProductPrice = (props) => {
           <input type="text" value={productAmount} readOnly />
           <button onClick={removeProductAmountHandler}>-</button>
         </div>
-        <Button className={styles.product__buy}>Купить</Button>
+        <Button className={styles.product__buy} disabled={!props.inStock}>Купить</Button>
       </div>
       <div></div>
     </div>

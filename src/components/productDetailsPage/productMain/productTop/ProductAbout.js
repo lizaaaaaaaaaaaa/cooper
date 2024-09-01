@@ -28,6 +28,7 @@ const ProductAbout = (props) => {
         price={props.price}
         isSale={props.isSale}
         salePrice={props.salePrice}
+        inStock={props.inStock}
       />
     </section>
   );

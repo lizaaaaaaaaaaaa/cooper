@@ -69,27 +69,21 @@ const CommentsSlider = (props) => {
       try {
         setIsLoading(true);
 
-        const docRef = dbRef(db, "comments");
+        const docRef = dbRef(db, `comments/${props.id}`);
         const getDataFromDatabase = await get(docRef);
 
         if (getDataFromDatabase.exists()) {
           const data = getDataFromDatabase.val();
           const loadedProductComments = [];
-          for (const key in data) {
-            if (props.id === key) {
-              for (const index of data[key]) {
-                loadedProductComments.push({
-                  date: index.date,
-                  text: index.text,
-                  userId: index.userId,
-                });
-              }
-              setComments(loadedProductComments);
-              setIsLoading(false);
-            } else {
-              setIsLoading(false);
-              setComments([]);
-            }
+          console.log(data);
+          for (const key of data) {
+            loadedProductComments.push({
+                date: key.date,
+                text: key.text,
+                userId: key.userId,
+              });
+            setComments(loadedProductComments);
+            setIsLoading(false);
           }
         } else {
           setComments([]);
@@ -103,7 +97,7 @@ const CommentsSlider = (props) => {
     };
 
     fetchData();
-  }, [props.id]);
+  }, [props.id, props.isCommentAdd]);
 
   useEffect(() => {
     props.getCommentsArrayLength(comments.length);
