@@ -18,33 +18,36 @@ import { AuthProvider } from "./context/auth-context";
 import { NewsProvider } from "./context/news-context";
 import { ProductsProvider } from "./context/products-context";
 import ArticlePage from "./pages/ArticlePage";
-import ProductPage from './pages/ProductPage';
+import ProductPage from "./pages/ProductPage";
 import Cart from "./pages/Cart";
+import { CartProvider } from "./context/cart-context";
 
 function App() {
   return (
     <Router>
-      <AuthProvider>
-        <ProductsProvider>
+      <ProductsProvider>
+        <CartProvider>
           <NewsProvider>
-            <Routes>
-              <Route path="/" element={<Navigate to="/main" />} />
-              <Route path="/main" element={<Main />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/news/:newsId" element={<ArticlePage />} />
-              <Route path="/catalog" element={<Catalog />} />
-              <Route path="/catalog/:productId" element={<ProductPage />} />
-              <Route path="/registration" element={<Registration />} />
-              <Route path="/enter" element={<EnterPage />} />
-              <Route path="/user" element={<UserPage />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/httpError" element={<HttpError />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AuthProvider>
+              <Routes>
+                <Route path="/" element={<Navigate to="/main" />} />
+                <Route path="/main" element={<Main />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/news" element={<News />} />
+                <Route path="/news/:newsId" element={<ArticlePage />} />
+                <Route path="/catalog" element={<Catalog />} />
+                <Route path="/catalog/:productId" element={<ProductPage />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/enter" element={<EnterPage />} />
+                <Route path="/user" element={<UserPage />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/httpError" element={<HttpError />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </AuthProvider>
           </NewsProvider>
-        </ProductsProvider>
-      </AuthProvider>
+        </CartProvider>
+      </ProductsProvider>
     </Router>
   );
 }

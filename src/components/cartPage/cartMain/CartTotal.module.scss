@@ -1,0 +1,48 @@
+.cart {
+  &__total {
+    width: 34%;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__price {
+    padding: 23px 30px 31px;
+    border-bottom: 1px solid #e6e8e7;
+
+    & > p:first-child {
+      font-weight: 300;
+      font-size: 35px;
+      padding-bottom: 20px;
+    }
+
+    & > p:last-child {
+      font-weight: 800;
+      font-size: 40px;
+    }
+  }
+
+  &__bottom {
+    padding: 27px 30px 41px;
+  }
+
+  &__delivery {
+    display: flex;
+    gap: 0 19px;
+    padding-bottom: 29px;
+
+    p {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.16;
+      color: #a1a1a1;
+      max-width: 194px;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+}

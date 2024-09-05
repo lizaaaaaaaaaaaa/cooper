@@ -13,6 +13,10 @@ import ProductComments from "./productComments/ProductComments";
 import MightBeInteresting from "../../mainSliders/mightBeInteresting/MightBeInteresting";
 
 const ProductMain = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   const params = useParams();
   const { productId } = params;
   const context = useContext(ProductsContext);

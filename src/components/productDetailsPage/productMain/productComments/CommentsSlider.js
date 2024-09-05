@@ -75,7 +75,6 @@ const CommentsSlider = (props) => {
         if (getDataFromDatabase.exists()) {
           const data = getDataFromDatabase.val();
           const loadedProductComments = [];
-          console.log(data);
           for (const key of data) {
             loadedProductComments.push({
                 date: key.date,

@@ -6,7 +6,6 @@ import NewItems from "./../components/mainSliders/newItems/NewItems";
 import Benefit from "../components/benefit/Benefit";
 import WeRecomended from "./../components/mainSliders/weRecommend/WeReccomend";
 import Sales from "../components/mainSliders/sales/Sales";
-import Opinions from "./../components/opinions/Opinions";
 import WhyWe from "./../components/whyWe/WhyWe";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
@@ -21,9 +20,8 @@ const Main = () => {
       <BestSellers />
       <NewItems />
       <Benefit />
-      <WeRecomended />
       <Sales />
-      <Opinions />
+      <WeRecomended />
       <WhyWe />
       <Footer />
       <ScrollToTopButton />

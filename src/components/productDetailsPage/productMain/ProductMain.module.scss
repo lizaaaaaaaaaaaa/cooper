@@ -14,6 +14,24 @@
 
     & > div:last-of-type {
       grid-area: productImaginary;
+      padding-bottom: 0;
+      margin-bottom: 0;
+
+      img {
+        height: 621px;
+
+        @media screen and (max-width: 640px) {
+          height: 502px;
+        }
+
+        @media screen and (max-width: 420px) {
+          height: 402px;
+        }
+
+        @media screen and (max-width: 320px) {
+          height: 302px;
+        }
+      }
 
       & > div:last-of-type {
         display: none;
@@ -46,8 +64,6 @@
     height: 622px !important;
     max-width: 565px !important;
     min-width: 565px;
-
-    
 
     img {
       height: 100%;

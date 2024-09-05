@@ -1,0 +1,45 @@
+.cart {
+  &__product {
+    display: flex;
+    gap: 0 10px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    & > div:first-child {
+      display: flex;
+      gap: 0 33px;
+      align-items: center;
+      width: 58.4%;
+
+      img {
+        width: 90px;
+        height: 99px;
+        object-fit: cover;
+        display: block;
+      }
+
+      h4 {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.32;
+        text-transform: uppercase;
+        max-width: 268px;
+      }
+    }
+
+    & > span:first-of-type {
+      width: 20.5%;
+    }
+
+    & > span:last-of-type {
+      width: 24.1%;
+    }
+  }
+
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

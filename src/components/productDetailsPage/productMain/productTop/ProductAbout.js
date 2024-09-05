@@ -25,6 +25,7 @@ const ProductAbout = (props) => {
         <p>{props.description}</p>
       </div>
       <ProductPrice
+        id={props.id}
         price={props.price}
         isSale={props.isSale}
         salePrice={props.salePrice}

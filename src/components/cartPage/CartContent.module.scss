@@ -1,9 +1,28 @@
 .cart {
-    padding: 32px 0 80px;
+  padding: 32px 0 80px;
 
-    &__title {
-        font-family: var(--lh-font);
-        font-size: 50px;
-        padding: 24px 0 27px;
+  &__title {
+    font-family: var(--lh-font);
+    font-size: 50px;
+    padding: 24px 0 27px;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 31px;
+    padding: 16px;
+    font-weight: 800;
+    font-size: 18px;
+    text-align: center;
+    color: #a1a1a1;
+    border: 1px solid #a1a1a1;
+    width: 327px;
+    transition: 0.4s;
+
+    &:hover {
+      color: #6f6f6f;
+      border: 1px solid #6f6f6f;
+      transition: 0.4s;
     }
+  }
 }

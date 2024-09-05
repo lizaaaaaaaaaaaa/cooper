@@ -1,9 +1,12 @@
 import styles from "./ProductPrice.module.scss";
 import Button from "../../../UI/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "../../../../context/cart-context";
 
 const ProductPrice = (props) => {
   const [productAmount, setProductAmount] = useState(1);
+
+  const context = useContext(CartContext);
 
   const addProductAmountHandler = () => {
     if (productAmount < 10) {
@@ -40,7 +43,13 @@ const ProductPrice = (props) => {
           <input type="text" value={productAmount} readOnly />
           <button onClick={removeProductAmountHandler}>-</button>
         </div>
-        <Button className={styles.product__buy} disabled={!props.inStock}>Купить</Button>
+        <Button
+          className={styles.product__buy}
+          disabled={!props.inStock}
+          onClick={() => context.addProduct(props.id, productAmount)}
+        >
+          Купить
+        </Button>
       </div>
       <div></div>
     </div>
