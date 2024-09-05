@@ -1,5 +1,5 @@
 .header {
-    position: relative;
+  position: relative;
   width: 100%;
   background: url("../../assets/navBack.jpg") center/cover no-repeat;
   z-index: 1000;
@@ -174,6 +174,10 @@
     cursor: pointer;
     transition: transform 0.3s;
 
+    &:last-child {
+      position: relative;
+    }
+
     &:hover {
       transform: scale(1.1);
       transition: transform 0.3s;
@@ -236,9 +240,14 @@
 .info__img {
   width: 30px;
   height: 30px;
+
   @media (max-width: 450px) {
     width: 20px;
     height: 20px;
+  }
+
+  &-animated {
+    animation: cart 0.5s linear 1;
   }
 }
 
@@ -324,6 +333,36 @@
   }
 }
 
+.info__amount {
+  position: absolute;
+  font-weight: 900;
+  font-size: 25px;
+  color: #e4a16f;
+  top: 15px;
+  left: 18px;
+}
+
 .lock {
   overflow: hidden;
+}
+
+@keyframes cart {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.3);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

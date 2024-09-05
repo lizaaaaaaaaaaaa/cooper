@@ -3,6 +3,7 @@ import ProductsContext from "./products-context";
 
 const CartContext = React.createContext({
   products: [],
+  totalProducts: 0,
   totalPrice: 0,
   addProduct: (id, userAmount) => {},
   removeProduct: (id) => {},
@@ -14,6 +15,7 @@ export const CartProvider = (props) => {
 
   const [products, setProducts] = useState(startProducts ? startProducts : []);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   useEffect(() => {
     const newTotalPrice = products.reduce((accumulator, product) => {
@@ -21,6 +23,12 @@ export const CartProvider = (props) => {
     }, 0);
 
     setTotalPrice(newTotalPrice);
+
+    const newTotalProducts = products.reduce((accumulator, product) => {
+      return accumulator + product.amount;
+    }, 0);
+
+    setTotalProducts(newTotalProducts);
   }, [products]);
 
   const addProductHandler = (id, userAmount) => {
@@ -69,6 +77,7 @@ export const CartProvider = (props) => {
     <CartContext.Provider
       value={{
         products,
+        totalProducts,
         totalPrice,
         addProduct: addProductHandler,
         removeProduct: removeProductHandler,

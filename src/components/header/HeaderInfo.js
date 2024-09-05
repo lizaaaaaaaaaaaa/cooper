@@ -3,11 +3,26 @@ import user from "../../assets/user.svg";
 import cart from "../../assets/cart.svg";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/auth-context";
+import CartContext from "../../context/cart-context";
 
 const HeaderInfo = ({ activeMenu }) => {
-  const context = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const cartContext = useContext(CartContext);
+
+  const [isCartAnimated, setIsCartAnimated] = useState(false);
+
+  useEffect(() => {
+    setIsCartAnimated(true);
+
+    const timeout = setTimeout(() => {
+      setIsCartAnimated(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [cartContext.products]);
+
   return (
     <ul
       className={
@@ -20,13 +35,22 @@ const HeaderInfo = ({ activeMenu }) => {
         <img className={styles["info__img"]} src={favorites} alt="favorites" />
       </li>
       <li>
-        <NavLink to={context.isAuthenticated ? "/user" : "/enter"} replace>
+        <NavLink to={authContext.isAuthenticated ? "/user" : "/enter"} replace>
           <img className={styles["info__img"]} src={user} alt="user" />
         </NavLink>
       </li>
       <li>
         <NavLink to="/cart" replace>
-          <img className={styles["info__img"]} src={cart} alt="cart" />
+          <span className={styles.info__amount}>
+            {cartContext.totalProducts}
+          </span>
+          <img
+            className={`${styles.info__img} ${
+              isCartAnimated ? styles["info__img-animated"] : ""
+            } `}
+            src={cart}
+            alt="cart"
+          />
         </NavLink>
       </li>
     </ul>
