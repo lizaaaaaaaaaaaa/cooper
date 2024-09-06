@@ -31,6 +31,10 @@
     & > div:last-child {
       width: 24.1%;
     }
+
+    @media screen and (max-width: 550px) {
+      display: none;
+    }
   }
 
   &__body {
@@ -46,6 +50,15 @@
       padding-bottom: 0;
       margin-bottom: 0;
       border: none;
+    }
+
+    @media screen and (max-width: 550px) {
+      padding-top: 0;
+
+      & > div:last-child {
+        padding-bottom: 21px;
+        border-bottom: 1px solid #e6e8e7;
+      }
     }
   }
 }

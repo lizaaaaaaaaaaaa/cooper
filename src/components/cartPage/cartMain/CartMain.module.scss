@@ -10,4 +10,8 @@
   @media screen and (max-width: 769px) {
     gap: 40px;
   }
+
+  @media screen and (max-width: 375px) {
+    gap: 26px;
+  }
 }
