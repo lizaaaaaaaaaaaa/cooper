@@ -1,6 +1,10 @@
 .cart {
   &__products {
     width: 66%;
+
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
   }
 
   &__headings {
@@ -33,15 +37,15 @@
     padding-top: 20px;
 
     & > div {
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #e6e8e7;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #e6e8e7;
     }
 
     & > div:last-child {
-        padding-bottom: 0;
-        margin-bottom: 0;
-        border: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border: none;
     }
   }
 }

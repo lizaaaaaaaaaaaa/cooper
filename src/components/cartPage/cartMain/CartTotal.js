@@ -3,6 +3,7 @@ import styles from "./CartTotal.module.scss";
 import CartContext from "../../../context/cart-context";
 import deliveryCar from "../../../assets/deliveryCar.svg";
 import Button from "./../../UI/Button";
+import cartBig from "../../../assets/cartBig.svg";
 
 const CartTotal = () => {
   const { products, totalPrice } = useContext(CartContext);
@@ -32,9 +33,8 @@ const CartTotal = () => {
             ? totalPrice >= 10000
               ? totalPrice
               : totalPrice + 90
-            : "0"}
-            {" "}
-           грн.
+            : "0"}{" "}
+          грн.
         </p>
       </div>
       <div className={styles.cart__bottom}>
@@ -43,6 +43,7 @@ const CartTotal = () => {
           Оформить заказ
         </Button>
       </div>
+      <img src={cartBig} alt="cart" className={styles.cart__img} />
     </div>
   );
 };

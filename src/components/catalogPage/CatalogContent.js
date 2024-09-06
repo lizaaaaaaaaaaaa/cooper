@@ -1,12 +1,16 @@
 import styles from "./CatalogContent.module.scss";
 import CatalogBtnControls from "./catalogPageControl/CatalogBtnControls";
 import Path from "../UI/Path";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import CatalogItemsList from "./catalogPageControl/CatalogItemsList";
 import CatalogHelp from "./catalogPageControl/CatalogHelp";
 
 const CatalogContent = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
 
