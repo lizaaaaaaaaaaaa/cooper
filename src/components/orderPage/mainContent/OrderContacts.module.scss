@@ -1,0 +1,27 @@
+.order {
+  &__title {
+    font-weight: 600;
+    font-size: 27px;
+  }
+
+  &__inputs {
+    padding: 34px 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e6e8e7;
+
+    input {
+      font-weight: 500;
+      font-size: 18px;
+      width: calc(50% - 15px);
+      border: 1px solid #a1a1a1;
+      padding: 16px 21px;
+
+      &::placeholder {
+        color: #a1a1a1;
+      }
+    }
+  }
+}

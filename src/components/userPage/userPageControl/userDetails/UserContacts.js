@@ -59,12 +59,6 @@ const UserContacts = (props) => {
     setCardValue(value);
   };
 
-  const changeCvvHandler = (event) => {
-    let value = event.target.value;
-    value = value.replace(/\D/g, "");
-    setCvvValue(value);
-  };
-
   const saveDataToLocalStorage = (event) => {
     const { name, value } = event.target;
     const existingData = JSON.parse(localStorage.getItem("userInfo"));
@@ -129,7 +123,7 @@ const UserContacts = (props) => {
       password: userData.password,
     });
 
-    props.onSavePassword("success")
+    props.onSavePassword("success");
   };
 
   return (
@@ -251,7 +245,9 @@ const UserContacts = (props) => {
                 name="cvv"
                 maxLength={3}
                 value={cvvValue}
-                onChange={changeCvvHandler}
+                onChange={(event) =>
+                  setCvvValue(event.target.value.replace(/\D/g, ""))
+                }
                 className={`${styles.user__input} ${styles["user__input-short"]} ${styles["user__input-cvv"]}`}
                 placeholder="000"
                 onBlur={saveDataToLocalStorage}
