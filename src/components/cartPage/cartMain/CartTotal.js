@@ -4,6 +4,7 @@ import CartContext from "../../../context/cart-context";
 import deliveryCar from "../../../assets/deliveryCar.svg";
 import Button from "./../../UI/Button";
 import cartBig from "../../../assets/cartBig.svg";
+import { NavLink } from 'react-router-dom';
 
 const CartTotal = () => {
   const { products, totalPrice } = useContext(CartContext);
@@ -17,12 +18,7 @@ const CartTotal = () => {
         <p>У вас бесплатная доставка!</p>
       </div>
     ) : (
-      <div
-        className={`${styles.cart__delivery} ${styles["cart__delivery-paid"]}`}
-      >
-        <span>Доставка:</span>
-        <span>{products.length > 0 ? "90 грн." : "0 грн."}</span>
-      </div>
+      ""
     );
   return (
     <div className={styles.cart__total}>
@@ -40,7 +36,7 @@ const CartTotal = () => {
       <div className={styles.cart__bottom}>
         {deliveryBlock}
         <Button className={styles.cart__btn} disabled={!products.length > 0}>
-          Оформить заказ
+          <NavLink to="/order">Оформить заказ</NavLink>
         </Button>
       </div>
       <img src={cartBig} alt="cart" className={styles.cart__img} />
