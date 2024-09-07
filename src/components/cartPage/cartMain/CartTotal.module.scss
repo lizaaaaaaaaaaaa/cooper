@@ -92,8 +92,13 @@
 
   &__btn {
     width: 100%;
+  }
 
-    &:disabled {
+  &__link {
+    width: 100%;
+    display: block;
+
+    &-disabled {
       opacity: 0.6;
     }
   }

@@ -1,0 +1,33 @@
+.order {
+  padding: 68px 0 77px;
+
+  &__top {
+    display: flex;
+    gap: 0 140px;
+    align-items: center;
+    padding-bottom: 39px;
+  }
+
+  &__link {
+    border: 1px solid #a1a1a1;
+    font-weight: 800;
+    font-size: 18px;
+    text-align: center;
+    color: #a1a1a1;
+    width: 327px;
+    padding: 16px 0;
+    display: block;
+    transition: 0.4s;
+
+    &:hover {
+      color: #6f6f6f;
+      border: 1px solid #6f6f6f;
+      transition: 0.4s;
+    }
+  }
+
+  &__title {
+    font-family: var(--lh-font);
+    font-size: 50px;
+  }
+}

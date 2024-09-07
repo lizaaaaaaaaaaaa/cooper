@@ -4,7 +4,7 @@ import CartContext from "../../../context/cart-context";
 import deliveryCar from "../../../assets/deliveryCar.svg";
 import Button from "./../../UI/Button";
 import cartBig from "../../../assets/cartBig.svg";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const CartTotal = () => {
   const { products, totalPrice } = useContext(CartContext);
@@ -20,6 +20,14 @@ const CartTotal = () => {
     ) : (
       ""
     );
+
+  const orderButtonActivity = (event) => {
+    if (products.length <= 0) {
+      event.preventDefault();
+    } else {
+      return;
+    }
+  };
   return (
     <div className={styles.cart__total}>
       <div className={styles.cart__price}>
@@ -35,9 +43,15 @@ const CartTotal = () => {
       </div>
       <div className={styles.cart__bottom}>
         {deliveryBlock}
-        <Button className={styles.cart__btn} disabled={!products.length > 0}>
-          <NavLink to="/order">Оформить заказ</NavLink>
-        </Button>
+        <NavLink
+          to="/order"
+          className={`${styles.cart__link} ${
+            products.length <= 0 && styles["cart__link-disabled"]
+          }`}
+          onClick={orderButtonActivity}
+        >
+          <Button className={styles.cart__btn}>Оформить заказ</Button>
+        </NavLink>
       </div>
       <img src={cartBig} alt="cart" className={styles.cart__img} />
     </div>
