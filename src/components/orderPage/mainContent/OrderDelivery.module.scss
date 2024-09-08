@@ -1,0 +1,62 @@
+@import "../../UI/Mixins.module.scss";
+
+.order {
+  &__delivery {
+    padding: 30px 0 34px;
+    border-bottom: 1px solid #e6e8e7;
+  }
+
+  &__btns {
+    padding-top: 33px;
+    display: flex;
+    flex-direction: column;
+    gap: 33px 0;
+  }
+
+  &__btn {
+    display: block;
+
+    & > input {
+      appearance: none;
+      background-image: url("../../../assets/radioUnactive.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 21px;
+      height: 21px;
+      vertical-align: middle;
+    }
+
+    & > span:first-of-type {
+      @include gradient-back;
+      font-weight: 800;
+      font-size: 20px;
+      margin-left: 15px;
+      position: relative;
+      top: 2px;
+    }
+
+    & > span:last-of-type {
+      display: block;
+      padding-top: 18px;
+      font-size: 14px;
+      line-height: 1.32;
+      max-width: 398px;
+    }
+
+    &.order__btn-active input {
+      background-image: url("../../../assets/radioActive.svg");
+      animation: activateRadio .5s linear 1;
+    }
+  }
+}
+
+@keyframes activateRadio {
+  0% {
+    transform: scale(2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

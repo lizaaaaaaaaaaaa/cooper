@@ -14,7 +14,10 @@ const OrderData = (props) => {
         <OrderContacts
           onGetData={(contacts) => props.onGetOrderContactsData(contacts)}
         />
-        <OrderDelivery />
+        <OrderDelivery
+          onGetData={(delivery) => props.onGetOrderDeliveryData(delivery)}
+          deliveryType={props.deliveryType}
+        />
       </ol>
     </div>
   );

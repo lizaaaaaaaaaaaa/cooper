@@ -27,7 +27,7 @@ const OrderContacts = (props) => {
 
   return (
     <li className={styles.order__contacts}>
-      <div className={styles.order__title}>Личные данные</div>
+      <div>Личные данные</div>
       <div className={styles.order__inputs}>
         <input
           type="text"
