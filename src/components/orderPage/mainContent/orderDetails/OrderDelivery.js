@@ -1,13 +1,13 @@
-import styles from "./OrderDelivery.module.scss";
+import styles from "./OrderDetails.module.scss";
 
 const OrderDelivery = (props) => {
   return (
     <li className={styles.order__delivery}>
       <div className={styles.order__title}>Доставка</div>
-      <div className={styles.order__btns}>
+      <div className={styles['order__btns-delivery']}>
         <label
           htmlFor="selfPickup"
-          className={`${styles.order__btn} ${
+          className={`${styles.order__btn} ${styles['order__btn-delivery']} ${
             props.deliveryType === "selfPickup"
               ? styles["order__btn-active"]
               : ""
@@ -28,7 +28,7 @@ const OrderDelivery = (props) => {
         </label>
         <label
           htmlFor="NovaPoshta"
-          className={`${styles.order__btn} ${
+          className={`${styles.order__btn} ${styles['order__btn-delivery']} ${
             props.deliveryType === "NovaPoshta"
               ? styles["order__btn-active"]
               : ""
@@ -46,7 +46,7 @@ const OrderDelivery = (props) => {
         </label>
         <label
           htmlFor="courierNovaPoshta"
-          className={`${styles.order__btn} ${
+          className={`${styles.order__btn} ${styles['order__btn-delivery']} ${
             props.deliveryType === "courierNovaPoshta"
               ? styles["order__btn-active"]
               : ""
