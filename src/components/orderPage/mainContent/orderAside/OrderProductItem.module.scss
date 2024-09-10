@@ -1,0 +1,29 @@
+.order {
+  &__product {
+    display: grid;
+    gap: 20px 30px;
+    grid-template-columns: 90px auto;
+    grid-template-areas:
+      "product-img product-name"
+      "product-img product-details";
+    padding-bottom: 25px;
+    width: 428px;
+
+    & > img {
+      grid-area: product-img;
+      width: 90px;
+      height: 99px;
+    }
+
+    &Name {
+      grid-area: product-name;
+    }
+
+    &Details {
+      grid-area: product-details;
+      display: flex;
+      gap: 0 15px;
+      justify-content: space-between;
+    }
+  }
+}

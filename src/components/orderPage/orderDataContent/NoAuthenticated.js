@@ -1,7 +1,7 @@
 import styles from "./NoAuthenticated.module.scss";
 import userBig from "../../../assets/userBig.svg";
 import { NavLink } from "react-router-dom";
-import Button from "./../../UI/Button";
+import Button from "../../UI/Button";
 
 const NoAuthenticated = () => {
   return (

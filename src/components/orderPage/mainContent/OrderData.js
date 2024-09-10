@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import styles from "./OrderData.module.scss";
 import AuthContext from "../../../context/auth-context";
-import NoAuthenticated from "./NoAuthenticated";
-import OrderContacts from "./OrderContacts";
-import OrderDelivery from "./orderDetails/OrderDelivery";
-import OrderPayment from "./orderDetails/OrderPayment";
+import NoAuthenticated from "../orderDataContent/NoAuthenticated";
+import OrderContacts from "../orderDataContent/OrderContacts";
+import OrderDelivery from "../orderDataContent/orderDetails/OrderDelivery";
+import OrderPayment from "../orderDataContent/orderDetails/OrderPayment";
 
 const OrderData = (props) => {
   const context = useContext(AuthContext);
   return (
-    <div className={styles.order__data}>
+    <section className={styles.order__data}>
       {!context.isAuthenticated && <NoAuthenticated />}
       <ol className={styles.order__list}>
         <OrderContacts
@@ -21,7 +21,7 @@ const OrderData = (props) => {
         />
         <OrderPayment onGetData={(payment) => props.onGetOrderPaymentData(payment)} paymentType={props.paymentType} />
       </ol>
-    </div>
+    </section>
   );
 };
 
