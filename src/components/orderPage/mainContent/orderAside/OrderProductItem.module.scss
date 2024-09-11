@@ -9,14 +9,18 @@
     padding-bottom: 25px;
     width: 428px;
 
-    & > img {
-      grid-area: product-img;
+    img {
       width: 90px;
       height: 99px;
     }
 
-    &Name {
+    &Element:nth-child(1) {
+      grid-area: product-img;
+    }
+
+    &Element:nth-child(2) {
       grid-area: product-name;
+      height: fit-content;
     }
 
     &Details {

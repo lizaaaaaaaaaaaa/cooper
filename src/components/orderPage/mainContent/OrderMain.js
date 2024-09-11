@@ -7,8 +7,7 @@ const OrderMain = () => {
   const [contacts, setContacts] = useState(null);
   const [delivery, setDelivery] = useState("selfPickup");
   const [payment, setPayment] = useState("uponReceipt");
-
-  console.log(contacts);
+  
   return (
     <div className={styles.order__main}>
       <OrderData
@@ -18,7 +17,7 @@ const OrderMain = () => {
         deliveryType={delivery}
         paymentType={payment}
       />
-      <OrderAside />
+      <OrderAside contacts={contacts} delivery={delivery} payment={payment} />
     </div>
   );
 };

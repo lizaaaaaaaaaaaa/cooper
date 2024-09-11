@@ -1,0 +1,143 @@
+.order {
+  &__total {
+    height: fit-content;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
+  }
+
+  &__price {
+    padding: 23px 30px 31px;
+    border-bottom: 1px solid #e6e8e7;
+
+    & > p:first-child {
+      font-weight: 300;
+      font-size: 35px;
+      padding-bottom: 20px;
+
+      @media screen and (max-width: 375px) {
+        font-size: 24px;
+        padding-bottom: 12px;
+      }
+    }
+
+    & > p:last-child {
+      font-weight: 800;
+      font-size: 40px;
+
+      @media screen and (max-width: 375px) {
+        font-size: 30px;
+      }
+    }
+
+    @media screen and (max-width: 769px) {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 375px) {
+      padding: 19px 20px 24px;
+      text-align: left;
+    }
+  }
+
+  &__bottom {
+    padding: 27px 30px 41px;
+
+    @media screen and (max-width: 769px) {
+      padding: 33px 30px 41px;
+    }
+
+    @media screen and (max-width: 375px) {
+      padding: 27px 30px 0;
+    }
+  }
+
+  &__delivery {
+    display: flex;
+    gap: 0 19px;
+    padding-bottom: 29px;
+
+    p {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.16;
+      color: #a1a1a1;
+      max-width: 194px;
+    }
+
+    span:last-child {
+      font-weight: 800;
+    }
+
+    @media screen and (max-width: 769px) {
+      padding-bottom: 35px;
+      margin: 0 auto;
+      width: fit-content;
+
+      p {
+        max-width: 100%;
+      }
+
+      @media screen and (max-width: 375px) {
+        width: 100%;
+        margin: 0;
+        padding-bottom: 29px;
+      }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+  }
+
+  &__link {
+    width: 100%;
+    display: block;
+
+    &-disabled {
+      opacity: 0.6;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    z-index: -1;
+  }
+
+  &__promo {
+    margin: 40px 30px 0;
+    display: flex;
+    max-width: 382px;
+
+    label {
+      width: 100%;
+      min-width: max-content;
+    }
+
+    input {
+      width: 100%;
+      padding: 18px 19px;
+      border-left: 1px solid #e6e8e7;
+      border-top: 1px solid #e6e8e7;
+      border-bottom: 1px solid #e6e8e7;
+      font-size: 14px;
+
+      &::placeholder {
+        font-size: 14px;
+        color: #a1a1a1;
+      }
+    }
+
+    &Btn {
+      padding: 18px 22px !important;
+      font-size: 14px !important;
+      width: fit-content !important;
+    }
+  }
+}

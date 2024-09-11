@@ -33,11 +33,7 @@ const CartTotal = () => {
       <div className={styles.cart__price}>
         <p>Итого</p>
         <p>
-          {products.length > 0
-            ? totalPrice >= 10000
-              ? totalPrice
-              : totalPrice + 90
-            : "0"}{" "}
+          {products.length > 0 ? totalPrice : "0"}
           грн.
         </p>
       </div>
