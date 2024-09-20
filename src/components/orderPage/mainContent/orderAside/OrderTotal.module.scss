@@ -5,6 +5,10 @@
     position: relative;
     overflow: hidden;
 
+    &-disabled {
+      opacity: 0.6;
+    }
+
     @media screen and (max-width: 900px) {
       width: 100%;
     }
@@ -108,36 +112,5 @@
     top: -25px;
     right: 0;
     z-index: -1;
-  }
-
-  &__promo {
-    margin: 40px 30px 0;
-    display: flex;
-    max-width: 382px;
-
-    label {
-      width: 100%;
-      min-width: max-content;
-    }
-
-    input {
-      width: 100%;
-      padding: 18px 19px;
-      border-left: 1px solid #e6e8e7;
-      border-top: 1px solid #e6e8e7;
-      border-bottom: 1px solid #e6e8e7;
-      font-size: 14px;
-
-      &::placeholder {
-        font-size: 14px;
-        color: #a1a1a1;
-      }
-    }
-
-    &Btn {
-      padding: 18px 22px !important;
-      font-size: 14px !important;
-      width: fit-content !important;
-    }
   }
 }

@@ -1,15 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./OrderTotal.module.scss";
 import CartContext from "../../../../context/cart-context";
 import cartBig from "../../../../assets/cartBig.svg";
 import deliveryCar from "../../../../assets/deliveryCar.svg";
-import { NavLink } from "react-router-dom";
 import Button from "./../../../UI/Button";
+import OrderPromocode from "./OrderPromocode";
 
 const OrderTotal = (props) => {
-  const { products, totalPrice } = useContext(CartContext);
+  const [promocode, setPromocode] = useState(null);
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
 
-  console.log(props);
+  const { products, totalPrice } = useContext(CartContext);
 
   const deliveryBlock =
     totalPrice >= 10000 ? (
@@ -30,26 +31,19 @@ const OrderTotal = (props) => {
       </div>
     );
 
-  const orderButtonActivity = (event) => {
-    if (products.length <= 0) {
-      event.preventDefault();
-    } else {
-      return;
-    }
+  const sendOrder = () => {
+    console.log(props, products, totalPrice, promocode);
   };
   return (
-    <div className={styles.order__total}>
-      <form className={styles.order__promo}>
-        <label htmlFor="promocode">
-          <input
-            type="text"
-            id="promocode"
-            placeholder="Введите промокод"
-            name="promocode"
-          />
-        </label>
-        <Button type="submit" className={styles.order__promoBtn}>Применить</Button>
-      </form>
+    <div
+      className={`${styles.order__total} ${
+        isFormDisabled ? styles["order__total-disabled"] : ""
+      }`}
+    >
+      <OrderPromocode
+        onGetPromocodeData={(code) => setPromocode(code)}
+        onGetLoadingStatus={(status) => setIsFormDisabled(status)}
+      />
       <div className={styles.order__price}>
         <p>Итого</p>
         <p>
@@ -59,15 +53,13 @@ const OrderTotal = (props) => {
       </div>
       <div className={styles.order__bottom}>
         {deliveryBlock}
-        <NavLink
-          to="/order"
-          className={`${styles.order__link} ${
-            products.length <= 0 && styles["order__link-disabled"]
-          }`}
-          onClick={orderButtonActivity}
+        <Button
+          className={styles.order__btn}
+          onClick={sendOrder}
+          disabled={isFormDisabled}
         >
-          <Button className={styles.order__btn}>Оформить заказ</Button>
-        </NavLink>
+          Оформить заказ
+        </Button>
       </div>
       <img src={cartBig} alt="cart" className={styles.order__img} />
     </div>
