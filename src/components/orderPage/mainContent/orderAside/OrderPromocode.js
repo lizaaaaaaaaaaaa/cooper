@@ -34,7 +34,6 @@ const OrderPromocode = (props) => {
 
         if (getDatafromDatabase) {
           const data = getDatafromDatabase.val();
-          console.log(data);
           for (const promocode of data) {
             if (promocode.name === promo) {
               props.onGetPromocodeData(promocode);
