@@ -53,7 +53,7 @@ const FavoritesList = () => {
               if (product.exists()) {
                 return { ...product.val(), id }; // якщо дані про продукт існують, то повертаємо об'єкт з даними та айді продукту
               } else {
-                console.log(`Product with ID ${id} does not exist`); // Якщо дані про продукт не знайдено, виводимо повідомлення в консоль
+                console.log(`Не знайдено id ${id}`);
                 return null;
               }
             } catch (error) {

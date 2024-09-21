@@ -37,7 +37,7 @@ const OrderContacts = (props) => {
     }
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [name, phone, email, country, city]);
 
   return (
     <React.Fragment>

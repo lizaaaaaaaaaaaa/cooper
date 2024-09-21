@@ -45,6 +45,7 @@ const ProfileDetails = () => {
         password: userData.password,
         login: userData.login,
         avatar: userData.avatar,
+        favorites: userData.favorites
       });
 
       const contactsData = JSON.parse(
