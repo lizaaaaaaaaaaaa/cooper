@@ -10,6 +10,7 @@ import OrderPromocode from "./OrderPromocode";
 const OrderTotal = (props) => {
   const [promocode, setPromocode] = useState(null);
   const [isFormDisabled, setIsFormDisabled] = useState(false);
+  const [isContactsFieldsValid, setIsContactsFieldValid] = useState(false);
 
   const promoPriceRef = useRef(null);
 
@@ -23,6 +24,16 @@ const OrderTotal = (props) => {
       );
     } else promoPriceRef.current = totalPrice;
   }, [promocode, totalPrice]);
+
+  useEffect(() => {
+    for (const contact in props.contacts) {
+      console.log(contact);
+      if (props.contacts[contact] === "") {
+        setIsContactsFieldValid(false);
+        return;
+      } else setIsContactsFieldValid(true);
+    }
+  }, [props.contacts]);
 
   const deliveryBlock =
     totalPrice >= 10000 ? (
@@ -51,9 +62,8 @@ const OrderTotal = (props) => {
       payment: props.payment,
       orderProducts: products,
       promocode,
-      status: 'Обрабатывается'
+      status: "Обрабатывается",
     };
-    console.log(props, products, totalPrice, promocode, user.userDetails.key);
     console.log(order);
   };
 
@@ -87,9 +97,11 @@ const OrderTotal = (props) => {
       <div className={styles.order__bottom}>
         {deliveryBlock}
         <Button
-          className={styles.order__btn}
+          className={`${styles.order__btn} ${
+            !isContactsFieldsValid ? styles["order__btn-disabled"] : ""
+          }`}
           onClick={sendOrder}
-          disabled={isFormDisabled}
+          disabled={isFormDisabled || !isContactsFieldsValid}
         >
           Оформить заказ
         </Button>
