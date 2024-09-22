@@ -1,5 +1,4 @@
 .order {
-
   &__inputs {
     padding: 34px 0 32px;
     display: flex;
@@ -18,6 +17,14 @@
       &::placeholder {
         color: #a1a1a1;
       }
+
+      @media screen and (max-width: 550px) {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      gap: 20px;
     }
   }
 }
