@@ -1,5 +1,13 @@
 .order {
   &__products {
+    width: 100%;
+
+    & > li:last-child {
+      margin: 0;
+      padding: 0;
+      border-bottom: 0;
+    }
+
     &Container {
       position: relative;
       width: 446px;
@@ -21,6 +29,14 @@
         transform: rotate(180deg);
         z-index: 1;
         pointer-events: none;
+
+        @media screen and (max-width: 1030px) {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 1030px) {
+        width: 100%;
       }
     }
 

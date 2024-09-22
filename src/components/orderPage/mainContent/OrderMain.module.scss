@@ -2,5 +2,14 @@
   &__main {
     display: flex;
     gap: 30px;
+
+    @media screen and (max-width: 1030px) {
+      flex-direction: column;
+      gap: 81px;
+    }
+
+    @media screen and (max-width: 769px) {
+      gap: 61px;
+    }
   }
 }

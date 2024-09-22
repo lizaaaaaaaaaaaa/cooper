@@ -1,6 +1,10 @@
 .order {
   &__data {
     width: 66%;
+
+    @media screen and (max-width: 1030px) {
+      width: 100%;
+    }
   }
 
   &__list {

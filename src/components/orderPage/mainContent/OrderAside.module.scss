@@ -1,4 +1,7 @@
 .order {
   &__aside {
+    @media screen and (max-width: 769px) {
+      padding: 0 60px;
+    }
   }
 }
