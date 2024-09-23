@@ -9,9 +9,30 @@
       position: relative;
       padding-bottom: 40px;
 
+      @media screen and (max-width: 600px) {
+        padding-bottom: 25px;
+      }
+
+      @media screen and (max-width: 400px) {
+        padding-bottom: 15px;
+      }
+
       h5 {
         font-family: var(--lh-font);
         font-size: 50px;
+        padding-right: 20px;
+
+        @media screen and (max-width: 600px) {
+          font-size: 32px;
+        }
+
+        @media screen and (max-width: 460px) {
+          font-size: 24px;
+        }
+
+        @media screen and (max-width: 320px) {
+          font-size: 20px;
+        }
       }
 
       & > button {
@@ -31,11 +52,27 @@
     & > p {
       padding-bottom: 25px;
       max-width: 650px;
+
+      @media screen and (max-width: 500px) {
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 375px) {
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 320px) {
+        font-size: 15px;
+      }
     }
   }
 
   &__btn {
     margin: 0 auto;
     display: block;
+
+    @media screen and (max-width: 460px) {
+      width: 100% !important;
+    }
   }
 }

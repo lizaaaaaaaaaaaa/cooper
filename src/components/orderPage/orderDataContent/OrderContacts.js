@@ -33,7 +33,7 @@ const OrderContacts = (props) => {
     if (!name && !phone && !email && !country && !city) {
       timer = setTimeout(() => {
         setIsContactsModalShow(true);
-      }, 1000);
+      }, 3000);
     }
 
     return () => clearTimeout(timer);
