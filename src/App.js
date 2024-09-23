@@ -22,6 +22,7 @@ import ProductPage from "./pages/ProductPage";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./context/cart-context";
 import Order from "./pages/Order";
+import SuccessOrderPage from "./pages/SuccessOrderPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/enter" element={<EnterPage />} />
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/successful" element={<SuccessOrderPage />} />
                 <Route path="/order" element={<Order />} />
                 <Route path="/httpError" element={<HttpError />} />
                 <Route path="*" element={<NotFound />} />

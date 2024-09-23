@@ -6,11 +6,18 @@ import cartBig from "../../../../assets/cartBig.svg";
 import deliveryCar from "../../../../assets/deliveryCar.svg";
 import Button from "./../../../UI/Button";
 import OrderPromocode from "./OrderPromocode";
+import { db } from "../../../../firebase/firebase";
+import { ref as dbRef, set, get } from "firebase/database";
+import { Navigate } from "react-router";
+import Loader from "../../../UI/Loader";
 
 const OrderTotal = (props) => {
   const [promocode, setPromocode] = useState(null);
   const [isFormDisabled, setIsFormDisabled] = useState(false);
   const [isContactsFieldsValid, setIsContactsFieldValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
+  const [isOrderSent, setIsOrderSent] = useState(false);
 
   const promoPriceRef = useRef(null);
 
@@ -27,7 +34,6 @@ const OrderTotal = (props) => {
 
   useEffect(() => {
     for (const contact in props.contacts) {
-      console.log(contact);
       if (props.contacts[contact] === "") {
         setIsContactsFieldValid(false);
         return;
@@ -64,15 +70,44 @@ const OrderTotal = (props) => {
       promocode,
       status: "Обрабатывается",
     };
-    console.log(order);
+
+    const setOrder = async () => {
+      setIsLoading(true);
+      try {
+        const docRef = dbRef(db, "orders");
+        const getExistingOrdersFromDatabase = await get(docRef);
+
+        if (getExistingOrdersFromDatabase.exists()) {
+          const data = getExistingOrdersFromDatabase.val();
+          await set(docRef, [order, ...data]);
+        }
+        setIsOrderSent(true);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setHttpErrorMessage(error.message);
+      }
+    };
+
+    setOrder();
   };
+
+  if (httpErrorMessage) {
+    return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
+  }
+
+  if (isOrderSent) {
+    //ТУТ ЩЕ ТРЕБА ДОДАТИ ОНУЛЕННЯКОНТЕКСТУ КОРЗИНИ И ЛОКАЛЬНОГО СХОВИЩА
+    return <Navigate to="/successful" replace />;
+  }
 
   return (
     <div
       className={`${styles.order__total} ${
-        isFormDisabled ? styles["order__total-disabled"] : ""
+        isFormDisabled || isLoading ? styles["order__total-disabled"] : ""
       }`}
     >
+      {isLoading ? <Loader className={styles.loader} /> : ""}
       <OrderPromocode
         onGetPromocodeData={(code) => setPromocode(code)}
         onGetLoadingStatus={(status) => setIsFormDisabled(status)}
@@ -98,10 +133,12 @@ const OrderTotal = (props) => {
         {deliveryBlock}
         <Button
           className={`${styles.order__btn} ${
-            !isContactsFieldsValid ? styles["order__btn-disabled"] : ""
+            !isContactsFieldsValid || isFormDisabled
+              ? styles["order__btn-disabled"]
+              : ""
           }`}
           onClick={sendOrder}
-          disabled={isFormDisabled || !isContactsFieldsValid}
+          disabled={isFormDisabled || !isContactsFieldsValid || isLoading}
         >
           Оформить заказ
         </Button>

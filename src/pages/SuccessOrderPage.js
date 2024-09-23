@@ -1,15 +1,15 @@
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import UserContent from "../components/userPage/UserContent";
+import SuccessOrderPageContent from "../components/successOrderPage/SuccessOrderPageContent";
 
-const UserPage = () => {
+const SuccessOrderPage = () => {
   return (
     <div className="wrapper">
       <Header />
-      <UserContent />
+      <SuccessOrderPageContent />
       <Footer />
     </div>
   );
 };
 
-export default UserPage;
+export default SuccessOrderPage;
