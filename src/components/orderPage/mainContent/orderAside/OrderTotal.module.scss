@@ -12,6 +12,11 @@
     @media screen and (max-width: 900px) {
       width: 100%;
     }
+
+    @media screen and (max-width: 460px) {
+      width: calc(100% + 36px);
+      margin: 0 -18px;
+    }
   }
 
   &__price {
@@ -42,8 +47,8 @@
       text-align: center;
     }
 
-    @media screen and (max-width: 375px) {
-      padding: 19px 20px 24px;
+    @media screen and (max-width: 460px) {
+      padding: 18px 18px 23px;
       text-align: left;
     }
   }
@@ -55,8 +60,8 @@
       padding: 33px 30px 41px;
     }
 
-    @media screen and (max-width: 375px) {
-      padding: 27px 30px 0;
+    @media screen and (max-width: 460px) {
+      padding: 18px 18px 20px;
     }
   }
 
@@ -116,5 +121,9 @@
     top: -25px;
     right: 0;
     z-index: -1;
+
+    @media screen and (max-width: 460px) {
+      display: none;
+    }
   }
 }

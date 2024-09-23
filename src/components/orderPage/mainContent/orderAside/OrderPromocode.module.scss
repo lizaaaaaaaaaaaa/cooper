@@ -8,10 +8,26 @@
       margin: 40px auto 0;
     }
 
+    &Container {
+      @media screen and (max-width: 460px) {
+        padding: 0 18px;
+      }
+    }
+
+    @media screen and (max-width: 460px) {
+      max-width: 100%;
+      width: 100%;
+    }
+
     label {
       width: 100%;
       min-width: max-content;
       position: relative;
+
+      @media screen and (max-width: 460px) {
+        min-width: min-content;
+        width: 55%;
+      }
     }
 
     input {
@@ -26,12 +42,22 @@
         font-size: 14px;
         color: #a1a1a1;
       }
+
+      @media screen and (max-width: 460px) {
+        padding: 18px 11px;
+      }
     }
 
     &Btn {
       padding: 18px 22px !important;
       font-size: 14px !important;
       width: fit-content !important;
+
+      @media screen and (max-width: 460px) {
+        max-width: 45% !important;
+        width: min-content !important;
+        padding: 18px 22px !important;
+      }
     }
   }
 

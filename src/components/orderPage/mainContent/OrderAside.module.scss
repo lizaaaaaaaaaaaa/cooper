@@ -3,5 +3,9 @@
     @media screen and (max-width: 769px) {
       padding: 0 60px;
     }
+
+    @media screen and (max-width: 460px) {
+        padding: 0;
+      }
   }
 }

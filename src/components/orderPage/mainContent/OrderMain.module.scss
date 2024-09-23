@@ -11,5 +11,9 @@
     @media screen and (max-width: 769px) {
       gap: 61px;
     }
+
+    @media screen and (max-width: 460px) {
+      gap: 40px;
+    }
   }
 }

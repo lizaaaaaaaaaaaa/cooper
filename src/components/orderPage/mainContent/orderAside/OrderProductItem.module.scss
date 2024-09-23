@@ -30,6 +30,10 @@
         line-height: 1.32;
         text-transform: uppercase;
       }
+
+      @media screen and (max-width: 460px) {
+        align-self: center;
+      }
     }
 
     &Details {
@@ -52,6 +56,13 @@
 
     @media screen and (max-width: 1030px) {
       width: calc(100% - 18px);
+    }
+
+    @media screen and (max-width: 460px) {
+      grid-template-areas:
+        "product-img product-name"
+        "product-details product-details";
+      gap: 21px 15px;
     }
   }
 }
