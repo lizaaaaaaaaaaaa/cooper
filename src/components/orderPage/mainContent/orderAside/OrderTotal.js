@@ -21,7 +21,7 @@ const OrderTotal = (props) => {
 
   const promoPriceRef = useRef(null);
 
-  const { products, totalPrice } = useContext(CartContext);
+  const { products, totalPrice, clearCart } = useContext(CartContext);
   const user = useContext(AuthContext);
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const OrderTotal = (props) => {
   }
 
   if (isOrderSent) {
-    //ТУТ ЩЕ ТРЕБА ДОДАТИ ОНУЛЕННЯКОНТЕКСТУ КОРЗИНИ И ЛОКАЛЬНОГО СХОВИЩА
+    clearCart();
     return <Navigate to="/successful" replace />;
   }
 

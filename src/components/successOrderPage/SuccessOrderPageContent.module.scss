@@ -2,6 +2,16 @@
   padding-top: 105px;
   padding-bottom: 208px;
 
+  @media screen and (max-width: 769px) {
+    padding-top: 54px;
+    padding-bottom: 80px;
+  }
+
+  @media screen and (max-width: 320px) {
+    padding-top: 36px;
+    padding-bottom: 40px;
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -12,6 +22,17 @@
     & > img {
       display: block;
       padding-bottom: 17px;
+
+      @media screen and (max-width: 769px) {
+        height: 315px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      @media screen and (max-width: 375px) {
+        height: 198px;
+        padding-bottom: 14px;
+      }
     }
   }
 
@@ -20,6 +41,16 @@
     font-size: 50px;
     font-weight: 300;
     padding-bottom: 37px;
+
+    @media screen and (max-width: 550px) {
+      font-size: 40px;
+      padding-bottom: 22px;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 30px;
+      padding-bottom: 14px;
+    }
   }
 
   &__text {
@@ -27,10 +58,25 @@
     font-weight: 500;
     max-width: 346px;
     padding-bottom: 37px;
+
+    @media screen and (max-width: 375px) {
+      font-size: 20px;
+      padding-bottom: 14px;
+      font-weight: 400;
+    }
+  }
+
+  &__link {
+    width: 100%;
   }
 
   &__btn {
     display: block;
     margin: 0 auto;
+    width: 446px !important;
+
+    @media screen and (max-width: 500px) {
+      width: 100% !important;
+    }
   }
 }

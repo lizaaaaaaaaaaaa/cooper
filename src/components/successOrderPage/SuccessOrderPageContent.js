@@ -12,10 +12,10 @@ const SuccessOrderPageContent = () => {
         <p className={styles.order__text}>
           Мы свяжемся с вами в ближайшее время
         </p>
+        <NavLink to="/main" className={styles.order__link}>
+          <Button className={styles.order__btn}>Главная</Button>
+        </NavLink>
       </div>
-      <NavLink to="/main">
-        <Button className={styles.order__btn}>Главная</Button>
-      </NavLink>
     </section>
   );
 };

@@ -7,6 +7,7 @@ const CartContext = React.createContext({
   totalPrice: 0,
   addProduct: (id, userAmount) => {},
   removeProduct: (id) => {},
+  clearCart: () => {},
 });
 
 export const CartProvider = (props) => {
@@ -73,6 +74,13 @@ export const CartProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(newProducts));
   };
 
+  const clearAfterSuccessfulOrder = () => {
+    setProducts([]);
+    setTotalPrice(0);
+    setTotalProducts(0);
+    localStorage.removeItem("cart");
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -81,6 +89,7 @@ export const CartProvider = (props) => {
         totalPrice,
         addProduct: addProductHandler,
         removeProduct: removeProductHandler,
+        clearCart: clearAfterSuccessfulOrder,
       }}
     >
       {props.children}
