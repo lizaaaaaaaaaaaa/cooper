@@ -4,6 +4,7 @@ import AuthContext from "../../context/auth-context";
 import { getDatabase, ref as dbRef, set } from "firebase/database";
 import { NavLink } from "react-router-dom";
 import Button from "./Button";
+import SlicePrice from "./SlicePrice";
 
 const ProductItem = (props) => {
   const context = useContext(AuthContext);
@@ -94,17 +95,34 @@ const ProductItem = (props) => {
         {props.name && <h5 className={styles.product__name}>{props.name}</h5>}
         {!props.isSale &&
           (props.price ? (
-            <span className={styles.product__price}>{props.price} грн</span>
+            <span className={styles.product__price}>
+              {props.price ? (
+                <SlicePrice priceToSlice={props.price.toString()} />
+              ) : (
+                ""
+              )}{" "}
+              грн.
+            </span>
           ) : (
             ""
           ))}
         {props.isSale && (
           <div className={styles.product__sale}>
             <span className={styles["product__sale-old"]}>
-              {props.price} грн
+              {props.price ? (
+                <SlicePrice priceToSlice={props.price.toString()} />
+              ) : (
+                ""
+              )}{" "}
+              грн.
             </span>
             <span className={styles["product__sale-new"]}>
-              {props.salePrice} грн
+              {props.salePrice ? (
+                <SlicePrice priceToSlice={props.salePrice.toString()} />
+              ) : (
+                ""
+              )}{" "}
+              грн.
             </span>
           </div>
         )}

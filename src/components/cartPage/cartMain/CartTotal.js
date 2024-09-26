@@ -5,6 +5,7 @@ import deliveryCar from "../../../assets/deliveryCar.svg";
 import Button from "./../../UI/Button";
 import cartBig from "../../../assets/cartBig.svg";
 import { NavLink } from "react-router-dom";
+import SlicePrice from "../../UI/SlicePrice";
 
 const CartTotal = () => {
   const { products, totalPrice } = useContext(CartContext);
@@ -33,7 +34,11 @@ const CartTotal = () => {
       <div className={styles.cart__price}>
         <p>Итого</p>
         <p>
-          {products.length > 0 ? totalPrice : "0"}
+          {products.length > 0 ? (
+            <SlicePrice priceToSlice={totalPrice.toString()} />
+          ) : (
+            "0"
+          )}{" "}
           грн.
         </p>
       </div>

@@ -23,7 +23,13 @@ const CartProducts = () => {
         <div>Количество</div>
         <div>Цена</div>
       </div>
-      <div className={styles.cart__body}>{tableItems}</div>
+      <div className={styles.cart__body}>
+        {products.length === 0 ? (
+          <p className={styles.cart__empty}>Ваша корзина пуста!</p>
+        ) : (
+          tableItems
+        )}
+      </div>
     </div>
   );
 };

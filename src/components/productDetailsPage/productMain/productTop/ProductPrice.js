@@ -2,6 +2,7 @@ import styles from "./ProductPrice.module.scss";
 import Button from "../../../UI/Button";
 import { useContext, useState } from "react";
 import CartContext from "../../../../context/cart-context";
+import SlicePrice from "./../../../UI/SlicePrice";
 
 const ProductPrice = (props) => {
   const [productAmount, setProductAmount] = useState(1);
@@ -24,15 +25,17 @@ const ProductPrice = (props) => {
       <div className={styles.product__priceTop}>
         <span>Цена</span>
         {!props.isSale && (
-          <span className={styles.product__currency}>{props.price} грн</span>
+          <span className={styles.product__currency}>
+            {<SlicePrice priceToSlice={props.price.toString()} />} грн.
+          </span>
         )}
         {props.isSale && (
           <div className={styles.product__sale}>
             <span className={styles["product__sale-new"]}>
-              {props.salePrice} грн
+              {<SlicePrice priceToSlice={props.salePrice.toString()} />} грн.
             </span>
             <span className={styles["product__sale-old"]}>
-              {props.price} грн
+              {<SlicePrice priceToSlice={props.price.toString()} />} грн.
             </span>
           </div>
         )}

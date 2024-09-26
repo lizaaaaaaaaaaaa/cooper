@@ -10,6 +10,7 @@ import { db } from "../../../../firebase/firebase";
 import { ref as dbRef, set, get } from "firebase/database";
 import { Navigate } from "react-router";
 import Loader from "../../../UI/Loader";
+import SlicePrice from "../../../UI/SlicePrice";
 
 const OrderTotal = (props) => {
   const [promocode, setPromocode] = useState(null);
@@ -101,6 +102,19 @@ const OrderTotal = (props) => {
     return <Navigate to="/successful" replace />;
   }
 
+  const finishPrice =
+    promoPriceRef.current != null
+      ? promoPriceRef.current >= 10000
+        ? promoPriceRef.current
+        : props.delivery === "selfPickup"
+        ? promoPriceRef.current
+        : promoPriceRef.current + 90
+      : totalPrice >= 10000
+      ? totalPrice
+      : props.delivery === "selfPickup"
+      ? totalPrice
+      : totalPrice + 90;
+
   return (
     <div
       className={`${styles.order__total} ${
@@ -115,18 +129,7 @@ const OrderTotal = (props) => {
       <div className={styles.order__price}>
         <p>Итого</p>
         <p>
-          {promoPriceRef.current != null
-            ? promoPriceRef.current >= 10000
-              ? promoPriceRef.current
-              : props.delivery === "selfPickup"
-              ? promoPriceRef.current
-              : promoPriceRef.current + 90
-            : totalPrice >= 10000
-            ? totalPrice
-            : props.delivery === "selfPickup"
-            ? totalPrice
-            : totalPrice + 90}{" "}
-          грн.
+          <SlicePrice priceToSlice={finishPrice.toString()} /> грн.
         </p>
       </div>
       <div className={styles.order__bottom}>

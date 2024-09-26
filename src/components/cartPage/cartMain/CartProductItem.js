@@ -2,6 +2,7 @@ import styles from "./CartProductItem.module.scss";
 import trash from "../../../assets/trash.svg";
 import { useContext } from "react";
 import CartContext from "../../../context/cart-context";
+import SlicePrice from "../../UI/SlicePrice";
 
 const CartProductItem = (props) => {
   const { removeProduct } = useContext(CartContext);
@@ -16,7 +17,7 @@ const CartProductItem = (props) => {
         <h4>{props.name}</h4>
       </div>
       <span>{props.amount} шт.</span>
-      <span>{props.price} грн.</span>
+      <span>{<SlicePrice priceToSlice={props.price.toString()} />} грн.</span>
       <button
         className={styles.cart__delete}
         onClick={() => removeProduct(props.id)}

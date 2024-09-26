@@ -11,6 +11,25 @@
     &Container {
       position: relative;
       width: 446px;
+      padding-bottom: 20px;
+
+      @media screen and (max-width: 1030px) {
+        width: 100%;
+      }
+    }
+
+    &-scroll {
+      height: 235px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      @media screen and (max-width: 375px) {
+        height: 393px;
+      }
+    }
+
+    &-haze {
+      padding-bottom: 0;
 
       &:after {
         content: "";
@@ -33,20 +52,6 @@
         @media screen and (max-width: 1030px) {
           width: 100%;
         }
-      }
-
-      @media screen and (max-width: 1030px) {
-        width: 100%;
-      }
-    }
-
-    &-scroll {
-      height: 235px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-
-      @media screen and (max-width: 375px) {
-        height: 393px;
       }
     }
   }

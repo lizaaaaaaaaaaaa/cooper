@@ -23,7 +23,7 @@ const OrderProducts = () => {
       <ul
         className={`${styles.order__products} ${
           products.length > 1 ? styles["order__products-scroll"] : ""
-        }`}
+        } ${products.length > 1 ? styles["order__products-haze"] : ""}`}
       >
         {orderListProducts}
       </ul>
