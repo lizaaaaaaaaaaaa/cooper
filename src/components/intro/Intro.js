@@ -26,6 +26,7 @@ const Intro = () => {
         <div className={styles["intro__content"]}>
           <h1 className={styles["intro__title"]}>Хит продаж</h1>
           <ItemInfo
+            id={info?.id}
             name={info?.name}
             price={info?.price}
             distillersCount={receivingLength}

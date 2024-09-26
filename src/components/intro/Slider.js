@@ -4,6 +4,8 @@ import SliderItem from "./itemInfo/SliderItem";
 import styles from "./Intro.module.scss";
 import { PrevArrow, NextArrow } from "../UI/PrevNextArrows";
 import { Navigate } from "react-router-dom";
+import { db } from "../../firebase/firebase";
+import { ref as dbRef, get } from "firebase/database";
 
 const Slider = ({
   onData,
@@ -54,31 +56,32 @@ const Slider = ({
   }, [activeDot]);
 
   useEffect(() => {
-    const fetchDestillers = async () => {
-      const response = await fetch(
-        "https://cooper-3c826-default-rtdb.firebaseio.com/introSlider.json"
-      );
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
-      const responseData = await response.json();
+    const fetchDistillers = async () => {
+      try {
+        const docRef = dbRef(db, "introSlider");
+        const getDataFromDatabase = await get(docRef);
 
-      const loadedDistillers = [];
-      for (const key in responseData) {
-        loadedDistillers.push({
-          id: key,
-          name: responseData[key].name,
-          price: responseData[key].price,
-          image: responseData[key].image,
-        });
+        if (getDataFromDatabase.exists()) {
+          const data = getDataFromDatabase.val();
+
+          const loadedDistillers = [];
+          for (const key in data) {
+            loadedDistillers.push({
+              id: key,
+              name: data[key].name,
+              price: data[key].price,
+              image: data[key].image,
+            });
+          }
+          setDistillers(loadedDistillers);
+          onTakeDistillersCount(loadedDistillers.length);
+        }
+      } catch (error) {
+        setHttpErrorMessage(error.message);
       }
-      setDistillers(loadedDistillers);
-      onTakeDistillersCount(loadedDistillers.length);
     };
 
-    fetchDestillers().catch((err) => {
-      setHttpErrorMessage(err.message);
-    });
+    fetchDistillers();
   }, []);
 
   const distillersSlider = distillers.map((distiller) => (
