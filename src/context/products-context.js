@@ -36,7 +36,11 @@ export const ProductsProvider = (props) => {
               salePrice: data[key].salePrice,
             });
           }
-          setProducts(loadedDistillers);
+          const sortedDistillers = loadedDistillers.sort(
+            (product1, product2) =>
+              product1.id.slice(1, 3) - product2.id.slice(1, 3)
+          );
+          setProducts(sortedDistillers);
           setIsLoading(false);
         } else setProducts([]);
       } catch (error) {
