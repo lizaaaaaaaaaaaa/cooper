@@ -98,49 +98,57 @@ const FavoritesList = () => {
 
   return (
     <React.Fragment>
-      <ul className={styles.user__favorites}>
-        {currentProducts.map((product) => (
-          <li key={product.id}>
-            <ProductItem
-              id={product.id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              isSale={product.isSale}
-              salePrice={product.salePrice}
-            />
-          </li>
-        ))}
-      </ul>
-      <div className={styles.user__pagination}>
-        <button
-          className={styles["user__btn-pagination"]}
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          &#10094;
-        </button>
-        {Array.from({ length: totalPages }, (_, index) => (
+      {products.length ? (
+        <ul className={styles.user__favorites}>
+          {currentProducts.map((product) => (
+            <li key={product.id}>
+              <ProductItem
+                id={product.id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                isSale={product.isSale}
+                salePrice={product.salePrice}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={styles.user__empty}>У вас нету избранных!</p>
+      )}
+      {products.length ? (
+        <div className={styles.user__pagination}>
           <button
-            key={index}
-            onClick={() => setCurrentPage(index + 1)}
-            className={`${styles["user__btn-pagination"]} ${
-              index + 1 === currentPage
-                ? styles["user__btn-pagination-active"]
-                : ""
-            }`}
+            className={styles["user__btn-pagination"]}
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
           >
-            {index + 1}
+            &#10094;
           </button>
-        ))}
-        <button
-          className={styles["user__btn-pagination"]}
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          &#10095;
-        </button>
-      </div>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(index + 1)}
+              className={`${styles["user__btn-pagination"]} ${
+                index + 1 === currentPage
+                  ? styles["user__btn-pagination-active"]
+                  : ""
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className={styles["user__btn-pagination"]}
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            &#10095;
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 };

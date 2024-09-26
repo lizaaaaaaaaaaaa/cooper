@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "../../UserContent.module.scss";
 import ChangeEmailModal from "./ChangeEmailModal";
 import SuccessfulModal from "../../../UI/SuccessfullModal";
@@ -6,29 +6,36 @@ import AuthContext from "../../../../context/auth-context";
 import { getDatabase, ref as dbRef, update } from "firebase/database";
 
 const UserContacts = (props) => {
-  const userData = JSON.parse(localStorage.getItem("userInfo"));
   const context = useContext(AuthContext);
+  const userData = context.userDetails || {};
 
-  const [phoneValue, setPhoneValue] = useState(userData.contacts?.phone || "");
-  const [contryValue, setCountryValue] = useState(
-    userData.contacts?.country || ""
-  );
-  const [cityValue, setCityValue] = useState(userData.contacts?.city || "");
-  const [streetValue, setStreetValue] = useState(
-    userData.contacts?.street || ""
-  );
-  const [dateValue, setDateValue] = useState(
-    userData.contacts?.expirationDate || ""
-  );
-  const [cardValue, setCardValue] = useState(userData.contacts?.payCard || "");
-  const [cvvValue, setCvvValue] = useState(userData.contacts?.cvv || "");
+  const [phoneValue, setPhoneValue] = useState("");
+  const [contryValue, setCountryValue] = useState("");
+  const [cityValue, setCityValue] = useState("");
+  const [streetValue, setStreetValue] = useState("");
+  const [dateValue, setDateValue] = useState("");
+  const [cardValue, setCardValue] = useState("");
+  const [cvvValue, setCvvValue] = useState("");
 
   const [isNewPasswordValid, setIsNewPasswordValid] = useState(true);
-  const [passwordValue, setPasswordValue] = useState(userData.password);
+  const [passwordValue, setPasswordValue] = useState("");
   const [wrongSubmit, setWrongSubmit] = useState("");
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showSuccessfulModal, setShowSuccessfulModal] = useState(false);
+
+  useEffect(() => {
+    if (context.userDetails) {
+      setPhoneValue(userData.contacts?.phone || "");
+      setCountryValue(userData.contacts?.country || "");
+      setCityValue(userData.contacts?.city || "");
+      setStreetValue(setStreetValue || "");
+      setDateValue(userData.contacts?.expirationDate || "");
+      setCardValue(userData.contacts?.payCard || "");
+      setCvvValue(userData.contacts?.cvv || "");
+      setPasswordValue(userData.password || "");
+    }
+  }, [context.userDetails]);
 
   const changePhoneHandler = (event) => {
     let value = event.target.value;

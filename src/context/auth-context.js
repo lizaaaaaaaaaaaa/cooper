@@ -19,6 +19,8 @@ export const AuthProvider = (props) => {
     if (storageLoginInfo === "auth" && storageUserInfo) {
       setIsAuthenticated(true);
       setUserDetails(JSON.parse(storageUserInfo));
+    } else if (!storageUserInfo) {
+      setUserDetails({});
     }
   }, []);
 

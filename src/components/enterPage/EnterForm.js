@@ -61,6 +61,12 @@ const EnterForm = () => {
       let userKey = null;
 
       for (const key in responseData) {
+        console.log(
+          responseData[key].login,
+          responseData[key].password,
+          responseData[key].login === email,
+          responseData[key].password === password
+        );
         if (
           responseData[key].login === email &&
           responseData[key].password === password
@@ -73,31 +79,15 @@ const EnterForm = () => {
       }
 
       if (userFound) {
-        const authenticatedUser = {
-          key: userKey,
-          login: email,
-          name: user.name,
-          avatar: user.avatar,
-          password: password,
-          contacts: {
-            payCard: user.contacts.payCard,
-            expirationDate: user.contacts.expirationDate,
-            cvv: user.contacts.cvv,
-            phone: user.contacts.phone,
-            country: user.contacts.country,
-            city: user.contacts.city,
-            street: user.contacts.street,
-          },
-          favorites: user.favorites || {}
-        };
         setWrongSubmit("");
-        context.login(authenticatedUser);
+        context.login({ key: userKey, ...user });
         return <Navigate to="/user" replace />;
       } else {
         setWrongSubmit("Ви ввели неправильний логін і/або пароль!");
       }
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       setHttpErrorMessage(error.message);
       setIsLoading(false);
     }

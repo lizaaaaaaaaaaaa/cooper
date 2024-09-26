@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ProfileDetails from "./userPageControl/userDetails/ProfileDetails";
 import FavoritesList from "./userPageControl/userFavorites/ProfileFavorites";
+import UserOrders from "./userPageControl/userOrders/UserOrders";
 
 const UserContent = () => {
   const [userContent, setUserContent] = useState("contentOne");
@@ -19,7 +20,7 @@ const UserContent = () => {
       case "contentOne":
         return <ProfileDetails />;
       case "contentTwo":
-        return "Two";
+        return <UserOrders />;
       case "contentThree":
         return <FavoritesList />;
       default:

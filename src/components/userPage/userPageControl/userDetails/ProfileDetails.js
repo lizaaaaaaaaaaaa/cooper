@@ -41,11 +41,11 @@ const ProfileDetails = () => {
       const userDocRef = dbRef(db, `userEnter/${context.userDetails.key}`);
 
       await set(userDocRef, {
-        name: userData.name,
+        name: userData.name || "",
         password: userData.password,
         login: userData.login,
-        avatar: userData.avatar,
-        favorites: userData.favorites
+        avatar: userData.avatar ? userData.avatar : "",
+        favorites: userData.favorites || "",
       });
 
       const contactsData = JSON.parse(
@@ -56,17 +56,7 @@ const ProfileDetails = () => {
         `userEnter/${context.userDetails.key}/contacts`
       );
 
-      await set(userContactsDocRef, {
-        phone: contactsData.phone ? contactsData.phone : "",
-        country: contactsData.country ? contactsData.country : "",
-        city: contactsData.city ? contactsData.city : "",
-        street: contactsData.street ? contactsData.street : "",
-        payCard: contactsData.payCard ? contactsData.payCard : "",
-        expirationDate: contactsData.expirationDate
-          ? contactsData.expirationDate
-          : "",
-        cvv: contactsData.cvv ? contactsData.cvv : "",
-      });
+      contactsData && (await set(userContactsDocRef, contactsData));
 
       setMessageType("success");
       setMessage("Данные сохраненны");
@@ -76,6 +66,7 @@ const ProfileDetails = () => {
       setMessage("Данные не сохраненны.");
       setIsMessageShow(true);
       setHttpErrorMessage(error.message);
+      console.log(error.message);
     }
   };
 

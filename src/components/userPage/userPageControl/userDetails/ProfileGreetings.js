@@ -15,14 +15,14 @@ import { Navigate } from "react-router";
 
 const ProfileGreetings = () => {
   const context = useContext(AuthContext);
-  const userData = JSON.parse(localStorage.getItem("userInfo"));
+  const userData = context.userDetails;
 
   const [httpErrorMessage, setHttpErrorMessage] = useState(false);
 
   const username = context.userDetails
     ? userData.name || "Неизвестный пользователь"
     : "Неизвестный пользователь";
-  const avatar = userData.avatar ? userData.avatar : noUser;
+  const avatar = userData?.avatar ? userData.avatar : noUser;
 
   const deleteOldAvatars = async () => {
     if (!context.userDetails || !context.userDetails.login) {
@@ -44,6 +44,7 @@ const ProfileGreetings = () => {
       );
       await Promise.all(deletePromises);
     } catch (error) {
+        console.log(error.message);
       setHttpErrorMessage(error.message);
     }
   };

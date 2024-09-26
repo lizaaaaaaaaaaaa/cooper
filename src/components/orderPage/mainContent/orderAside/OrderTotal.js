@@ -67,9 +67,17 @@ const OrderTotal = (props) => {
       contacts: props.contacts,
       delivery: props.delivery,
       payment: props.payment,
-      orderProducts: products,
+      orderProducts: products.map((product) => ({
+        ...product,
+        salePrice: product.salePrice !== undefined ? product.salePrice : null,
+      })),
       promocode,
       status: "Обрабатывается",
+      date: {
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+        day: new Date().getDate(),
+      },
     };
 
     const setOrder = async () => {
@@ -80,11 +88,12 @@ const OrderTotal = (props) => {
 
         if (getExistingOrdersFromDatabase.exists()) {
           const data = getExistingOrdersFromDatabase.val();
-          await set(docRef, [order, ...data]);
+          await set(docRef, [...data, order]);
         }
         setIsOrderSent(true);
         setIsLoading(false);
       } catch (error) {
+        console.log(error.message);
         setIsLoading(false);
         setHttpErrorMessage(error.message);
       }
