@@ -50,7 +50,7 @@ const Customers = () => {
   };
 
   return (
-    <section className={styles.customers} ref={counterRef}>
+    <section className={styles.customers}>
       <div className={`container ${styles.customers__inner}`}>
         <div className={styles.customers__content}>
           <h3 className="title">Наши клиенты</h3>
@@ -61,7 +61,7 @@ const Customers = () => {
         </div>
         <div className={styles.customers__counter}>
           <h6>Счетчик клиентов</h6>
-          <h3>{formatNumber(currentNumber)}</h3>
+          <h3 ref={counterRef}>{formatNumber(currentNumber)}</h3>
         </div>
       </div>
     </section>

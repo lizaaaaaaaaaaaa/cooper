@@ -43,13 +43,7 @@ const ProductMain = () => {
         if (getDataFromDatabase.exists()) {
           const data = getDataFromDatabase.val();
           if (data[productId]) {
-            setDetails({
-              articleName: data[productId].articleName,
-              inStock: data[productId].inStock,
-              description: data[productId].description,
-              howToUse: data[productId].howToUse,
-              descrImages: data[productId].descrImages,
-            });
+            setDetails(data[productId]);
 
             setIsLoading(false);
           } else {
@@ -87,6 +81,8 @@ const ProductMain = () => {
   const getNewProductImageHandler = (image) => {
     setCurrentImage(image);
   };
+
+  console.log(details.descrImages);
 
   return (
     <div className={styles.product__main}>
