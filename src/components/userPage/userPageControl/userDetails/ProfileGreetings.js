@@ -44,7 +44,7 @@ const ProfileGreetings = () => {
       );
       await Promise.all(deletePromises);
     } catch (error) {
-        console.log(error.message);
+      console.log(error.message);
       setHttpErrorMessage(error.message);
     }
   };
@@ -72,31 +72,28 @@ const ProfileGreetings = () => {
 
       uploadTask.on(
         "state_changed",
+        (snapshot) => {},
         (error) => {
           setHttpErrorMessage(error.message);
         },
         async () => {
+          // Після успішного завершення завантаження
           try {
-            // завантаження зображення
-            await uploadTask;
-
-            // отримання ссилка завантаженої картинки
             const newAvatarUrl = await getDownloadURL(uploadTask.snapshot.ref);
             console.log(
               "Місцезнаходження завантаженого аватару: ",
               newAvatarUrl
             );
 
-            // оновлення контексту та локального сховища
+            // Оновлення контексту та локального сховища
             const updatedUserDetails = {
               ...context.userDetails,
               avatar: newAvatarUrl,
             };
-            context.updateUserDetails(updatedUserDetails);
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify(updatedUserDetails)
-            );
+
+            context.updateUserDetails(updatedUserDetails); // Оновлення контексту
+
+            console.log("Контекст оновлено: ", updatedUserDetails);
           } catch (error) {
             setHttpErrorMessage(error.message);
           }

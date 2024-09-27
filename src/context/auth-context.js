@@ -41,6 +41,7 @@ export const AuthProvider = (props) => {
   const updateUserDetails = (newDetails) => {
     setUserDetails((prevDetails) => {
       const updatedDetails = { ...prevDetails, ...newDetails };
+      localStorage.removeItem("userInfo");
       localStorage.setItem("userInfo", JSON.stringify(updatedDetails));
       console.log(updatedDetails);
       return updatedDetails;
