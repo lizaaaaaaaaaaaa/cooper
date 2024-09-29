@@ -71,6 +71,7 @@ const OrderTotal = (props) => {
         ...product,
         salePrice: product.salePrice !== undefined ? product.salePrice : null,
       })),
+      totalPrice,
       promocode,
       status: "Обрабатывается",
       date: {
