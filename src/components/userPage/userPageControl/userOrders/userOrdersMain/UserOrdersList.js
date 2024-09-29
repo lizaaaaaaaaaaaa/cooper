@@ -10,6 +10,7 @@ const UserOrdersList = ({ orders }) => {
       products={order.orderProducts}
       status={order.status}
       price={order.totalPrice}
+      contacts={order.contacts}
     />
   ));
   return <ul className={styles.user__list}>{orderList}</ul>;

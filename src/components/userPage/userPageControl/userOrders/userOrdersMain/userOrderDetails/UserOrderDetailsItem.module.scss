@@ -1,0 +1,59 @@
+.user {
+  &__details {
+    &Item {
+      border-top: 1px solid #e6e8e7;
+      padding-top: 20px;
+
+      & > li {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e6e8e7;
+
+        &:last-of-type {
+          padding-bottom: 0;
+          margin-bottom: 0;
+          border: none;
+        }
+
+        & div:first-child {
+          display: flex;
+          gap: 0 33px;
+          align-items: center;
+
+          & > img {
+            width: 90px;
+            height: 99px;
+          }
+
+          & > h4 {
+            max-width: 268px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.32;
+            text-transform: uppercase;
+          }
+        }
+
+        & p:first-of-type {
+          text-transform: uppercase;
+          font-weight: 500;
+          line-height: 1.32;
+        }
+
+        & p:last-of-type {
+          font-weight: 700;
+          line-height: 1.32;
+        }
+      }
+    }
+
+    &Link {
+      display: block;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0 15px;
+    }
+  }
+}
