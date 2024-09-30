@@ -39,14 +39,17 @@ const UserOrdersListItem = (props) => {
 
   return (
     <li>
-      <div className={styles.user__item} onClick={() => setIsUserDetailsVisible(!isUserDetailsVisible)}>
+      <div
+        className={styles.user__item}
+        onClick={() => setIsUserDetailsVisible(!isUserDetailsVisible)}
+      >
         <div>
           <p>Заказ от {orderDate}</p>
           <p className={`${styles.user__status} ${styles[statusStyle]}`}>
             {props.status}
           </p>
         </div>
-        <div>
+        <div className={isUserDetailsVisible ? styles["user-hidden"] : ""}>
           <p>Итоговая сумма</p>
           <p className={styles.user__price}>
             {<SlicePrice priceToSlice={props.price.toString()} />} грн.
@@ -65,7 +68,12 @@ const UserOrdersListItem = (props) => {
       {isUserDetailsVisible ? (
         <div className={styles.user__orderDetails}>
           <UserOrderDetailsItem products={props.products} />
-          <UserOrderDetailsAside contacts={props.contacts} date={orderDate} delivery={props.delivery} />
+          <UserOrderDetailsAside
+            contacts={props.contacts}
+            date={orderDate}
+            delivery={props.delivery}
+            payment={props.payment}
+          />
           <UserOrderDetailsSummary price={props.price} />
         </div>
       ) : (

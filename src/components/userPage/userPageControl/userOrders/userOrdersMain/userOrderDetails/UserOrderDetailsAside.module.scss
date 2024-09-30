@@ -1,0 +1,12 @@
+.user {
+  &__order {
+    &Aside {
+      padding-top: 20px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 5px 0;
+      color: #a1a1a1;
+    }
+  }
+}

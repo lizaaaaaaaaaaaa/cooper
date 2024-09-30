@@ -73,7 +73,9 @@
     grid-template-areas:
       "products aside"
       "summary aside";
-      gap: 30px;
+    gap: 30px;
+    border-top: 1px solid #e6e8e7;
+    margin-top: 20px;
 
     & > *:nth-child(1) {
       grid-area: products;
@@ -86,5 +88,9 @@
     & > *:nth-child(3) {
       grid-area: summary;
     }
+  }
+
+  &-hidden {
+    visibility: hidden;
   }
 }
