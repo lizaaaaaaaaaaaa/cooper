@@ -5,6 +5,15 @@
       align-items: center;
       justify-content: flex-end;
       gap: 0 5px;
+
+      @media screen and (max-width: 840px) {
+        justify-content: flex-start;
+      }
+
+      @media screen and (max-width: 400px) {
+        flex-wrap: wrap;
+        gap: 5px;
+      }
     }
 
     &Image {
