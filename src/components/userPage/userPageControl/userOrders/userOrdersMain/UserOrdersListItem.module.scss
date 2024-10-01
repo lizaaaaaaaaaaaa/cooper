@@ -88,6 +88,14 @@
     & > *:nth-child(3) {
       grid-area: summary;
     }
+
+    @media screen and (max-width: 950px) {
+      grid-template-columns: 100%;
+      grid-template-areas:
+        "aside"
+        "products"
+        "summary";
+    }
   }
 
   &-hidden {

@@ -74,7 +74,7 @@ const UserOrdersListItem = (props) => {
             delivery={props.delivery}
             payment={props.payment}
           />
-          <UserOrderDetailsSummary price={props.price} />
+          <UserOrderDetailsSummary price={props.price} delivery={props.delivery} />
         </div>
       ) : (
         ""

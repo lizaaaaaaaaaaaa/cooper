@@ -7,6 +7,17 @@
       flex-direction: column;
       gap: 5px 0;
       color: #a1a1a1;
+      max-width: 100%;
+
+      & > p:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      @media screen and (max-width: 400px) {
+        font-size: 18px;
+      }
     }
   }
 }

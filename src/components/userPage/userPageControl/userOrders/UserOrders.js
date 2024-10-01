@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
-import styles from "./UserOrders.module.scss";
 import { useState } from "react";
 import { db } from "../../../../firebase/firebase";
 import { ref as dbRef, get } from "firebase/database";
 import AuthContext from "../../../../context/auth-context";
 import { Navigate } from "react-router";
 import UserOrdersList from "./userOrdersMain/UserOrdersList";
+import Loader from './../../../UI/Loader';
 
 const UserOrders = () => {
   const context = useContext(AuthContext);
@@ -43,11 +43,15 @@ const UserOrders = () => {
     fetchData();
   }, []);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   if (httpErrorMessage) {
     return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;
   }
   return (
-    <section className={styles.user__orders}>
+    <section>
       <UserOrdersList orders={orders} />
     </section>
   );
