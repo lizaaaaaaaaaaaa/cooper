@@ -9,12 +9,19 @@ const RegForm = () => {
         <input type="text" id="email" name="email" placeholder="E-mail" />
       </label>
       <label htmlFor="password">
-        <input type="password" id="password" name="password" placeholder="Пароль" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Пароль"
+        />
       </label>
       <label htmlFor="name">
         <input type="text" id="name" name="name" placeholder="Имя" />
       </label>
-      <Button type="submit" className={styles.reg__btn}>Регистрация</Button>
+      <Button type="submit" className={styles.reg__btn}>
+        Регистрация
+      </Button>
     </form>
   );
 };

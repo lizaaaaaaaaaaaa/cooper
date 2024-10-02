@@ -46,12 +46,15 @@ const Header = () => {
 
   const location = useLocation();
   const isMainPage = location.pathname === "/main";
-  const isRegOrEnterPage =
-    location.pathname === "/registration" || location.pathname === "/enter";
+  const isRegOrEnterOrOrderorSuccessfulPage =
+    location.pathname === "/registration" ||
+    location.pathname === "/enter" ||
+    location.pathname === "/order" ||
+    location.pathname === "/successful";
   let headerClassName;
   if (isMainPage) {
     headerClassName = `${styles.header}  ${styles["header-main"]}`;
-  } else if (isRegOrEnterPage) {
+  } else if (isRegOrEnterOrOrderorSuccessfulPage) {
     headerClassName = `${styles.header}  ${styles["header-auth"]}`;
   } else {
     headerClassName = styles.header;
@@ -67,7 +70,7 @@ const Header = () => {
         <NavLink to="/main" className={styles.logo}>
           <img src={logo} alt="logo" />
         </NavLink>
-        {!isRegOrEnterPage && (
+        {!isRegOrEnterOrOrderorSuccessfulPage && (
           <React.Fragment>
             <nav>
               <Nav activeMenu={isMenuActive} />

@@ -106,7 +106,7 @@ const EnterForm = () => {
       onSubmit={formSubmitHandler}
       className={`${styles.form} ${isLoading ? styles.form__loading : ""}`}
     >
-      <h2 className={styles.form__title}>Авторизація</h2>
+      <h2 className={styles.form__title}>Авторизация</h2>
       <div>
         <input
           type="email"
@@ -153,9 +153,9 @@ const EnterForm = () => {
         </button>
       </div>
       <p className={styles["form__input-wrong"]}>{wrongSubmit}</p>
-      <p className={styles.form__forgot}>Забули пароль?</p>
+      <p className={styles.form__forgot}>Забыли пароль?</p>
       <Button className={styles.form__btn} type="submit">
-        Увійти
+        Войти
       </Button>
       {isLoading && <Loader className={styles.loader} />}
     </form>
