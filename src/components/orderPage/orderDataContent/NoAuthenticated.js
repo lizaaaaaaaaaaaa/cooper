@@ -42,7 +42,7 @@ const NoAuthenticated = () => {
           <NavLink to="/enter" className={styles.order__link}>
             <Button className={styles.order__btn}>Войти</Button>
           </NavLink>
-          <NavLink className={styles.order__link}>
+          <NavLink to="/registration" className={styles.order__link}>
             <button>Регистрация</button>
           </NavLink>
         </div>

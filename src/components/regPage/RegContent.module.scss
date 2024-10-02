@@ -1,0 +1,40 @@
+.reg {
+  padding: 68px 0 181px;
+
+  &__btn {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 0.96;
+    text-align: center;
+    color: #a1a1a1;
+    border: 1px solid #a1a1a1;
+    width: 327px;
+    padding: 16px 0;
+    margin-bottom: 95px;
+  }
+
+  &__enter {
+    display: flex;
+    align-items: center;
+    gap: 0 15px;
+    justify-content: space-between;
+    padding: 24px 36px;
+    width: 446px;
+    margin: 0 auto;
+    background: linear-gradient(331deg, #0b3f37 0%, #cb8d62 96.96%);
+
+    & > span {
+      font-size: 18px;
+      line-height: 0.96;
+      color: #fff;
+
+      &:first-child {
+        font-weight: 200;
+      }
+
+      &:last-child {
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -1,18 +1,15 @@
 import React from "react";
 import Header from "./../components/header/Header";
 import Footer from "./../components/footer/Footer";
+import RegistrationContent from "../components/regPage/RegContent";
 
 const Enter = () => {
   return (
-    <React.Fragment>
+    <div className="wrapper">
       <Header />
-      <div className="wrapper">
-        <div className="content">
-          {/* ТУТ ПОВИННА БУТИ СТОРІНКА РЕЄСТРАЦІЇЇ */}
-        </div>
-        <Footer />
-      </div>
-    </React.Fragment>
+      <RegistrationContent />
+      <Footer />
+    </div>
   );
 };
 
