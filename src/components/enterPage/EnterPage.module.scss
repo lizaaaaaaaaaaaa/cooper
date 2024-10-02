@@ -94,7 +94,7 @@
 
   &__title {
     font-size: 35px;
-    font-family: "Comfortaa", sans-serif;
+    font-family: var(--lh-font);
     text-align: center;
 
     @media (max-width: 550px) {
@@ -184,6 +184,10 @@
       background: linear-gradient(150deg, #5e3928 0%, #e4a16f 91.15%);
       bottom: 0;
     }
+  }
+
+  &__btn {
+    width: 100%;
   }
 }
 

@@ -8,6 +8,7 @@
     background: #fff;
     width: 446px;
     margin: 0 auto;
+    position: relative;
 
     @media screen and (max-width: 550px) {
       width: 100%;
@@ -16,6 +17,10 @@
     @media screen and (max-width: 400px) {
       padding: 30px 20px;
       gap: 19px 0;
+    }
+
+    &-disabled {
+      opacity: 0.6;
     }
 
     & > label {
@@ -56,4 +61,14 @@
   &__btn {
     width: 100%;
   }
+
+  &__wrong {
+    font-size: 13px;
+    color: #f84147;
+  }
+}
+
+.loader {
+  position: absolute;
+  transform: translateX(-7%);
 }
