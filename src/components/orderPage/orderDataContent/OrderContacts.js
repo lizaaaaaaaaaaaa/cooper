@@ -30,7 +30,7 @@ const OrderContacts = (props) => {
 
   useEffect(() => {
     let timer;
-    if (!name && !phone && !email && !country && !city) {
+    if (!name || !phone || !email || !country || !city) {
       timer = setTimeout(() => {
         setIsContactsModalShow(true);
       }, 3000);
@@ -38,6 +38,27 @@ const OrderContacts = (props) => {
 
     return () => clearTimeout(timer);
   }, [name, phone, email, country, city]);
+
+  const changePhoneHandler = (event) => {
+    let value = event.target.value;
+
+    value = value.replace(/[^\d+]/g, "");
+    if (value.indexOf("+") > 0) {
+      value = value.replace(/\+/g, "");
+    }
+    if (!value.startsWith("+")) {
+      value = "+" + value;
+    }
+
+    value = value.replace(
+      /(\+?\d{2})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/,
+      function (_, g1, g2, g3, g4, g5) {
+        return [g1, g2, g3, g4, g5].filter(Boolean).join(" ");
+      }
+    );
+
+    setPhone(value);
+  };
 
   return (
     <React.Fragment>
@@ -60,9 +81,8 @@ const OrderContacts = (props) => {
             type="text"
             placeholder="Телефон"
             value={phone}
-            onChange={(event) =>
-              setPhone(event.target.value.replace(/\D/g, ""))
-            }
+            onChange={changePhoneHandler}
+            maxLength={20}
           />
           <input
             type="text"

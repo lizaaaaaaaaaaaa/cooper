@@ -13,7 +13,15 @@ const UserOrdersList = ({ orders }) => {
       contacts={order.contacts}
     />
   ));
-  return <ul className={styles.user__list}>{orderList}</ul>;
+  return (
+    <ul className={styles.user__list}>
+      {orderList.length > 0 ? (
+        orderList
+      ) : (
+        <p className={styles.user__empty}>Вы еще не совершали покупок!</p>
+      )}
+    </ul>
+  );
 };
 
 export default UserOrdersList;
