@@ -29,7 +29,7 @@ const UserContacts = (props) => {
       setPhoneValue(userData.contacts?.phone || "");
       setCountryValue(userData.contacts?.country || "");
       setCityValue(userData.contacts?.city || "");
-      setStreetValue(setStreetValue || "");
+      setStreetValue(userData.contacts?.street || "");
       setDateValue(userData.contacts?.expirationDate || "");
       setCardValue(userData.contacts?.payCard || "");
       setCvvValue(userData.contacts?.cvv || "");
@@ -39,7 +39,22 @@ const UserContacts = (props) => {
 
   const changePhoneHandler = (event) => {
     let value = event.target.value;
-    value = value.replace(/\D/g, "");
+
+    value = value.replace(/[^\d+]/g, "");
+    if (value.indexOf("+") > 0) {
+      value = value.replace(/\+/g, ""); // видалити плюси, якщо вони не на початку
+    }
+    if (!value.startsWith("+")) {
+      value = "+" + value; // додати +, якщо його немає на початку
+    }
+
+    // пробіли
+    value = value.replace(
+      /(\+?\d{2})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/,
+      function (_, g1, g2, g3, g4, g5) {
+        return [g1, g2, g3, g4, g5].filter(Boolean).join(" ");
+      }
+    );
 
     setPhoneValue(value);
   };
@@ -157,7 +172,7 @@ const UserContacts = (props) => {
           <input
             value={phoneValue}
             className={styles.user__input}
-            maxLength={13}
+            maxLength={20}
             type="tel"
             name="phone"
             placeholder="Номер телефона"

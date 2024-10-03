@@ -10,7 +10,7 @@ const RegForm = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [wrongData, setWrongData] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState("");
 
   const context = useContext(AuthContext);
