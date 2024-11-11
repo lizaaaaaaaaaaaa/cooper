@@ -32,8 +32,8 @@ function App() {
           <NewsProvider>
             <AuthProvider>
               <Routes>
-                <Route path="/" element={<Navigate to="/main" />} />
-                <Route path="/main" element={<Main />} />
+                <Route path="/" element={<Navigate to="/cooper" />} />
+                <Route path="/cooper" element={<Main />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/news/:newsId" element={<ArticlePage />} />
