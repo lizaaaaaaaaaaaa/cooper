@@ -32,20 +32,20 @@ function App() {
           <NewsProvider>
             <AuthProvider>
               <Routes>
-                <Route path="/" element={<Navigate to="/main" />} />
-                <Route path="/main" element={<Main />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/news" element={<News />} />
-                <Route path="/news/:newsId" element={<ArticlePage />} />
-                <Route path="/catalog" element={<Catalog />} />
-                <Route path="/catalog/:productId" element={<ProductPage />} />
-                <Route path="/registration" element={<Registration />} />
-                <Route path="/enter" element={<EnterPage />} />
-                <Route path="/user" element={<UserPage />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/successful" element={<SuccessOrderPage />} />
-                <Route path="/order" element={<Order />} />
-                <Route path="/httpError" element={<HttpError />} />
+                <Route path="/" element={<Navigate to="/cooper/main" />} />
+                <Route path="/cooper/main" element={<Main />} />
+                <Route path="/cooper/about" element={<About />} />
+                <Route path="/cooper/news" element={<News />} />
+                <Route path="/cooper/news/:newsId" element={<ArticlePage />} />
+                <Route path="/cooper/catalog" element={<Catalog />} />
+                <Route path="/cooper/catalog/:productId" element={<ProductPage />} />
+                <Route path="/cooper/registration" element={<Registration />} />
+                <Route path="/cooper/enter" element={<EnterPage />} />
+                <Route path="/cooper/user" element={<UserPage />} />
+                <Route path="/cooper/cart" element={<Cart />} />
+                <Route path="/cooper/successful" element={<SuccessOrderPage />} />
+                <Route path="/cooper/order" element={<Order />} />
+                <Route path="/cooper/httpError" element={<HttpError />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AuthProvider>
