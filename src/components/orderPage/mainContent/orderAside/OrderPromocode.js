@@ -13,7 +13,7 @@ const OrderPromocode = (props) => {
 
   useEffect(() => {
     props.onGetLoadingStatus(isLoading);
-  }, [isLoading]);
+  }, [isLoading, props]);
 
   const promocodeSubmit = (event) => {
     event.preventDefault();

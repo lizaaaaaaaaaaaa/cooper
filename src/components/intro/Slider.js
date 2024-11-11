@@ -82,7 +82,7 @@ const Slider = ({
     };
 
     fetchDistillers();
-  }, []);
+  }, [onTakeDistillersCount]);
 
   const distillersSlider = distillers.map((distiller) => (
     <SliderItem key={distiller.id} id={distiller.id} image={distiller.image} />
@@ -93,7 +93,7 @@ const Slider = ({
   useEffect(() => {
     onData(activeDistiller);
     onTakeActiveSlide(activeSlide);
-  }, [activeDistiller]);
+  }, [activeDistiller, activeSlide, onData, onTakeActiveSlide]);
 
   if (httpErrorMessage) {
     return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;

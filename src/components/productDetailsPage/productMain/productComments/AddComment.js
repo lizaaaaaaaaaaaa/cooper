@@ -58,7 +58,7 @@ const AddComment = (props) => {
     }, 5000);
 
     return () => clearTimeout(timeoutForChangeState);
-  }, [props.isCommentAdd]);
+  }, [props.isCommentAdd, props]);
 
   if (httpErrorMessage) {
     return (

@@ -100,7 +100,7 @@ const CommentsSlider = (props) => {
 
   useEffect(() => {
     props.getCommentsArrayLength(comments.length);
-  }, [comments]);
+  }, [comments, props]);
 
   if (httpErrorMessage) {
     return <Navigate to="/httpError" errorMessage={httpErrorMessage} replace />;

@@ -41,7 +41,7 @@ const UserOrders = () => {
     };
 
     fetchData();
-  }, []);
+  }, [context.userDetails.key]);
 
   if (isLoading) {
     return <Loader />;

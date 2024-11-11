@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import AuthContext from "../../context/auth-context";
-import { getDatabase, ref as dbRef, set, update } from "firebase/database";
+import { getDatabase, ref as dbRef, set } from "firebase/database";
 import { NavLink } from "react-router-dom";
 import Button from "./Button";
 import SlicePrice from "./SlicePrice";

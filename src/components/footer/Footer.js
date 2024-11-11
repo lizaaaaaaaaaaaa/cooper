@@ -25,7 +25,7 @@ const Footer = () => {
             </p>
             {!isRegOrEnterPage && (
               <div className={styles.footer__politics}>
-                <a href="#">Политика конфиденциальности</a>
+                <a href="https://policies.google.com/privacy?hl=ru">Политика конфиденциальности</a>
               </div>
             )}
           </div>

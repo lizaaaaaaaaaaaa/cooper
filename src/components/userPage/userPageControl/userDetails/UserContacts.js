@@ -35,7 +35,17 @@ const UserContacts = (props) => {
       setCvvValue(userData.contacts?.cvv || "");
       setPasswordValue(userData.password || "");
     }
-  }, [context.userDetails]);
+  }, [
+    context.userDetails,
+    userData.contacts?.city,
+    userData.contacts?.country,
+    userData.contacts?.phone,
+    userData.contacts?.street,
+    userData.contacts?.expirationDate,
+    userData.contacts?.payCard,
+    userData.contacts?.cvv,
+    userData.password
+  ]);
 
   const changePhoneHandler = (event) => {
     let value = event.target.value;

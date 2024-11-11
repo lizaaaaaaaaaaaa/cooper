@@ -26,7 +26,7 @@ const OrderContacts = (props) => {
 
   useEffect(() => {
     props.onGetData({ name, phone, email, country, city });
-  }, [name, phone, email, country, city]);
+  }, [name, phone, email, country, city, props]);
 
   useEffect(() => {
     let timer;

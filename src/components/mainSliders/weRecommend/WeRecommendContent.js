@@ -9,9 +9,8 @@ const WeRecomendedContent = () => {
   const [recommendations, setRecommendations] = useState([]);
   const context = useContext(ProductsContext);
 
-  const filteredKeys = ["c6", "c9", "с11", "c24", "c25", "c29"];
-
   useEffect(() => {
+    const filteredKeys = ["c6", "c9", "с11", "c24", "c25", "c29"];
     const recommendationsArray = [];
     if (context.products.length > 0) {
       for (const item of context.products) {

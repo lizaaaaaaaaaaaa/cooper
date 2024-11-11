@@ -8,9 +8,8 @@ const BestSellersContent = () => {
   const [bestsellers, setBestsellers] = useState([]);
   const context = useContext(ProductsContext);
 
-  const filteredKeys = ["c1", "c3", "c13", "c19", "c22", "c26"];
-
   useEffect(() => {
+    const filteredKeys = ["c1", "c3", "c13", "c19", "c22", "c26"];
     const bestsellersArray = [];
     if (context.products.length > 0) {
       for (const item of context.products) {
