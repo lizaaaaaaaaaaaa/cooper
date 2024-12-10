@@ -54,6 +54,7 @@ const Slider = ({
       sliderRef.current.slickGoTo(activeDot);
     }
   }, [activeDot]);
+  
 
   useEffect(() => {
     const fetchDistillers = async () => {

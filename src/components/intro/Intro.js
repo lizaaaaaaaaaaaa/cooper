@@ -1,7 +1,7 @@
 import styles from "./Intro.module.scss";
 import Slider from "./Slider";
 import ItemInfo from "./itemInfo/ItemInfo";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const Intro = () => {
   const [info, setInfo] = useState(null);
@@ -12,9 +12,9 @@ const Intro = () => {
     setInfo(data);
   };
 
-  const takeDistillersCountHandler = (count) => {
+  const takeDistillersCountHandler = useCallback((count) => {
     setReceivingLength(count);
-  };
+  }, []);
 
   const handleDotClick = (index) => {
     setActiveSlide(index);
