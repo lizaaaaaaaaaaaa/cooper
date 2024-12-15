@@ -81,7 +81,7 @@ const ProductItem = (props) => {
         />
         {!props.isVisible && (
           <NavLink
-            to={`/catalog/${props.id}`}
+            to={`/cooper/catalog/${props.id}`}
             className={`${styles.product__navlink} ${
               isBtnVisible ? styles["product__navlink-active"] : ""
             }`}

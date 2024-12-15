@@ -11,12 +11,12 @@ const Nav = ({ activeMenu }) => {
       }
     >
       <li>
-        <NavLink to="/catalog" className={styles.link}>
+        <NavLink to="/cooper/catalog" className={styles.link}>
           Каталог
         </NavLink>
       </li>
       <li>
-        <NavLink to="/news" className={styles.link}>
+        <NavLink to="/cooper/news" className={styles.link}>
           Новости
         </NavLink>
       </li>
@@ -26,7 +26,7 @@ const Nav = ({ activeMenu }) => {
         </div>
       </li>
       <li>
-        <NavLink to="/about" className={styles.link}>
+        <NavLink to="/cooper/about" className={styles.link}>
           О нас
         </NavLink>
       </li>

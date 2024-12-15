@@ -12,7 +12,7 @@ const Benefit = () => {
           <h4 className={styles.benefit__subtitle}>
             Закажите два товара и получите третий бесплатно
           </h4>
-          <NavLink to="/catalog" replace>
+          <NavLink to="/cooper/catalog" replace>
             <Button className={styles.benefit__btn}>Перейти в каталог</Button>
           </NavLink>
         </div>

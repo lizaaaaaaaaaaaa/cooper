@@ -35,12 +35,12 @@ const HeaderInfo = ({ activeMenu }) => {
         <img className={styles["info__img"]} src={favorites} alt="favorites" />
       </li>
       <li>
-        <NavLink to={authContext.isAuthenticated ? "/user" : "/enter"} replace>
+        <NavLink to={authContext.isAuthenticated ? "/cooper/user" : "/cooper/enter"} replace>
           <img className={styles["info__img"]} src={user} alt="user" />
         </NavLink>
       </li>
       <li>
-        <NavLink to="/cart" replace>
+        <NavLink to="/cooper/cart" replace>
           <span className={styles.info__amount}>
             {cartContext.totalProducts}
           </span>

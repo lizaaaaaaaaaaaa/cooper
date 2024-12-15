@@ -11,7 +11,7 @@ const RegistrationContent = () => {
         </NavLink>
         <div className={styles.reg__content}>
           <RegForm />
-          <NavLink to="/enter">
+          <NavLink to="/cooper/enter">
             <button className={styles.reg__enter}>
               <span>Есть аккаунт ?</span>
               <span>Войти</span>

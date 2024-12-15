@@ -45,12 +45,13 @@ const Header = () => {
   }, [isMenuActive]);
 
   const location = useLocation();
-  const isMainPage = location.pathname === "/main";
+  const isMainPage = location.pathname === "/cooper/main";
+  console.log(location.pathname);
   const isRegOrEnterOrOrderorSuccessfulPage =
-    location.pathname === "/registration" ||
-    location.pathname === "/enter" ||
-    location.pathname === "/order" ||
-    location.pathname === "/successful";
+    location.pathname === "/cooper/registration" ||
+    location.pathname === "/cooper/enter" ||
+    location.pathname === "/cooper/cooper/order" ||
+    location.pathname === "/cooper/successful";
   let headerClassName;
   if (isMainPage) {
     headerClassName = `${styles.header}  ${styles["header-main"]}`;
@@ -67,7 +68,7 @@ const Header = () => {
   return (
     <header className={headerClassName}>
       <div className={`container ${styles["header__inner"]}`}>
-        <NavLink to="/main" className={styles.logo}>
+        <NavLink to="/" className={styles.logo}>
           <img src={logo} alt="logo" />
         </NavLink>
         {!isRegOrEnterOrOrderorSuccessfulPage && (

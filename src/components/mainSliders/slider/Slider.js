@@ -89,7 +89,7 @@ const Slider = ({ slidersInfo, hideBtn }) => {
       </div>
 
       {!hideBtn ? (
-        <NavLink to="/catalog" replace>
+        <NavLink to="/cooper/catalog" replace>
           <Button className="slider__button">Перейти в каталог</Button>
         </NavLink>
       ) : (

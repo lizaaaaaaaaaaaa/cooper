@@ -15,21 +15,21 @@ const Path = () => {
   const productContext = useContext(ProductContext);
 
   const locationSwitchCase = () => {
-    if (location.pathname.startsWith("/news/")) {
+    if (location.pathname.startsWith("/cooper/news/")) {
       return "Новости";
     }
-    if (location.pathname.startsWith("/catalog/")) {
+    if (location.pathname.startsWith("/cooper/catalog/")) {
       return "Каталог";
     }
 
     switch (location.pathname) {
-      case "/catalog":
+      case "/cooper/catalog":
         return "Каталог";
-      case "/about":
+      case "/cooper/about":
         return "О нас";
-      case "/news":
+      case "cooper/news":
         return "Новости";
-      case "/cart":
+      case "/cooper/cart":
         return "Корзина";
       default:
         return "";
@@ -51,11 +51,11 @@ const Path = () => {
   let locationPage;
   let locationDetails;
 
-  if (location.pathname.startsWith("/news/")) {
-    locationPage = "/news";
+  if (location.pathname.startsWith("/cooper/news/")) {
+    locationPage = "/cooper/news";
     locationDetails = getNewsTitleHandler();
-  } else if (location.pathname.startsWith("/catalog/")) {
-    locationPage = "/catalog";
+  } else if (location.pathname.startsWith("/cooper/catalog/")) {
+    locationPage = "/cooper/catalog";
     locationDetails = getProductTitleHandler();
   } else {
     locationPage = location.pathname;
@@ -71,16 +71,16 @@ const Path = () => {
       <Link
         to={locationPage}
         className={`${styles.path__page} ${
-          location.pathname.startsWith("/news/") ||
-          location.pathname.startsWith("/catalog/")
+          location.pathname.startsWith("/cooper/news/") ||
+          location.pathname.startsWith("/cooper/catalog/")
             ? styles["path__page-active"]
             : ""
         }`}
       >
         {locationSwitchCase()}
       </Link>
-      {location.pathname.startsWith("/news/") ||
-      location.pathname.startsWith("/catalog/") ? (
+      {location.pathname.startsWith("/cooper/news/") ||
+      location.pathname.startsWith("/cooper/catalog/") ? (
         <span>/</span>
       ) : (
         ""

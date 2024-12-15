@@ -45,7 +45,7 @@ const CartTotal = () => {
       <div className={styles.cart__bottom}>
         {deliveryBlock}
         <NavLink
-          to="/order"
+          to="/cooper/order"
           className={`${styles.cart__link} ${
             products.length <= 0 && styles["cart__link-disabled"]
           }`}

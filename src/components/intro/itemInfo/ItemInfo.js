@@ -35,7 +35,7 @@ const ItemInfo = ({
           {price ? <SlicePrice priceToSlice={price.toString()} /> : price} грн.
         </span>
       </div>
-      <NavLink to={`/catalog/${id}`}>
+      <NavLink to={`/cooper/catalog/${id}`}>
         <Button className={styles["intro__button"]}>Купить</Button>
       </NavLink>
       <div className={styles.intro__dots}>{sliderItems}</div>

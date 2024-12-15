@@ -7,7 +7,7 @@ const OrderContent = () => {
     <div className={`content ${styles.order}`}>
       <div className="container">
         <div className={styles.order__top}>
-          <NavLink to="/catalog" className={styles.order__link}>
+          <NavLink to="/cooper/catalog" className={styles.order__link}>
             Назад к покупкам
           </NavLink>
           <div className={styles.order__title}>Оформить заказ</div>

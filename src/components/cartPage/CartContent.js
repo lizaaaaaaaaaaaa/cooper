@@ -12,7 +12,7 @@ const CartContent = () => {
       <div className="container">
         <div className={styles.cart__title}>Корзина</div>
         <CartMain />
-        <NavLink to="/catalog" className={styles.cart__link}>Назад к покупкам</NavLink>
+        <NavLink to="/cooper/catalog" className={styles.cart__link}>Назад к покупкам</NavLink>
       </div>
     </section>
   );

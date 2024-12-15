@@ -8,7 +8,7 @@ import FooterContacts from "./FooterContacts";
 const Footer = () => {
   const location = useLocation();
   const isRegOrEnterPage =
-    location.pathname === "/registration" || location.pathname === "/enter";
+    location.pathname === "/cooper/registration" || location.pathname === "/cooper/enter";
   const footerClassName = isRegOrEnterPage
     ? `${styles.footer}  ${styles["footer-auth"]}`
     : styles.footer;

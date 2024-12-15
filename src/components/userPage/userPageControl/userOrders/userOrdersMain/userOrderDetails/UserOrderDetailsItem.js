@@ -8,7 +8,7 @@ const UserOrderDetailsItem = (props) => {
       {props.products.map((item) => (
         <li>
           <NavLink
-            to={`/catalog/${item.id}`}
+            to={`/cooper/catalog/${item.id}`}
             className={styles.user__detailsLink}
           >
             <div>
