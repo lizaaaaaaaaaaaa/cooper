@@ -20,7 +20,7 @@ const EnterPage = () => {
               <span>Нету аккаунта?</span>
               <NavLink
                 className={styles["enter__button-nav"]}
-                to="/registration"
+                to="/cooper/registration"
                 replace
               >
                 Регистрация
