@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cooper/static/css/main.3d904727.css",
-    "main.js": "/cooper/static/js/main.7d8fe977.js",
+    "main.js": "/cooper/static/js/main.a459f762.js",
     "static/media/mainSlidersBack.png": "/cooper/static/media/mainSlidersBack.5ee81ac35148cd3969da.png",
     "static/media/map-mid.svg": "/cooper/static/media/map-mid.c2a23cb38ce7afbafc709fc805834875.svg",
     "static/media/background.jpg": "/cooper/static/media/background.ab25296e3a63abf63abe.jpg",
@@ -114,10 +114,10 @@
     "static/media/chevron.svg": "/cooper/static/media/chevron.faa7bba974f37e6111dbded198787b99.svg",
     "static/media/radioUnactive.svg": "/cooper/static/media/radioUnactive.79b873468aea1f3d49f7.svg",
     "main.3d904727.css.map": "/cooper/static/css/main.3d904727.css.map",
-    "main.7d8fe977.js.map": "/cooper/static/js/main.7d8fe977.js.map"
+    "main.a459f762.js.map": "/cooper/static/js/main.a459f762.js.map"
   },
   "entrypoints": [
     "static/css/main.3d904727.css",
-    "static/js/main.7d8fe977.js"
+    "static/js/main.a459f762.js"
   ]
 }
